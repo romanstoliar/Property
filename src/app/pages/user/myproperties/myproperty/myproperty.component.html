@@ -1,0 +1,10 @@
+<a routerLink="/myproperty/{{property._id}}">
+    <div class="documents__title">{{property.name}}</div>
+</a>
+<a routerLink="/propertieshistories/{{property._id}}" class="nav__burger-link">
+  <span class="material-icons">article</span>
+</a>
+<span class="material-icons" (click)="update()">edit</span>
+<span class="material-icons" (click)="delete()">delete</span>
+  
+  

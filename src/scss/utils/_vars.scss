@@ -1,0 +1,121 @@
+@use 'sass:meta';
+    
+    $default-c-white: #fff;
+    $c-white: if(meta.variable-exists(--c-white), var(--c-white), $default-c-white);
+
+    $default-c-black: #000;
+    $c-black: if(meta.variable-exists(--c-black), var(--c-black), $default-c-black);
+
+    $default-c-grey: #e7e7e7;
+    $c-grey: if(meta.variable-exists(--c-grey), var(--c-grey), $default-c-grey);
+
+    $default-c-grey-dark: #bfbfbf;
+    $c-grey-dark: if(meta.variable-exists(--c-grey-dark), var(--c-grey-dark), $default-c-grey-dark);
+
+    // classic
+    $default-c-warn: #e67e22;
+    $c-warn: if(meta.variable-exists(--c-warn), var(--c-warn), $default-c-warn);
+
+    $default-c-error: #e74c3c;
+    $c-error: if(meta.variable-exists(--c-error), var(--c-error), $default-c-error);
+
+    $default-c-error-hover: #d62c1a;
+    $c-error-hover: if(meta.variable-exists(--c-error-hover), var(--c-error-hover), $default-c-error-hover);
+
+    $default-c-success: #14c76e;
+    $c-success: if(meta.variable-exists(--c-success), var(--c-success), $default-c-success);
+
+    $default-c-info: #17a2b8;
+    $c-info: if(meta.variable-exists(--c-info), var(--c-info), $default-c-info);
+
+    // geometry
+    $default-container: 1210px;
+    $container: if(meta.variable-exists(--container), var(--container), $default-container);
+
+    $default-b-radius: 8px;
+    $b-radius: if(meta.variable-exists(--b-radius), $b-radius, $default-b-radius);
+
+    $default-b-radius-card: 10px;
+    $b-radius-card: if(meta.variable-exists(--b-radius-card), var(--b-radius-card), $default-b-radius-card);
+
+    $default-b-radius-btn: 10px;
+    $b-radius-btn: if(meta.variable-exists(--b-radius-btn), var(--b-radius-btn), $default-b-radius-btn);
+
+    $default-b-radius-img: 50%;
+    $b-radius-img: if(meta.variable-exists(--b-radius-img), var(--b-radius-img), $default-b-radius-img);
+
+    $default-padding: 10px;
+    $padding: if(meta.variable-exists(--padding), var(--padding), $default-padding);
+
+    $default-fs: 16px;
+    $fs: if(meta.variable-exists(--fs), var(--fs), $default-fs);
+
+    $default-ff-bold: bold;
+    $ff-bold: if(meta.variable-exists(--ff-bold), var(--ff-bold), $default-ff-bold);
+
+    $default-ff-base: "Poppins",
+        sans-serif;
+    $ff-base: if(meta.variable-exists(--ff-base), var(--ff-base), $default-ff-base);
+
+    $default-letter-spacing: 0.3px;
+    $letter-spacing: if(meta.variable-exists(--letter-spacing), var(--letter-spacing), $default-letter-spacing);
+
+    $default-transition: .3s all ease-in-out;
+    $transition: if(meta.variable-exists(--transition), var(--transition), $default-transition);
+
+    // theme
+    :root {
+		--c-white: #fff;
+        --c-basic: #3558ae;
+        --c-primary: #256eff;
+        --c-primary-hover: #0051f1;
+        --c-secondary: rgb(197, 61, 61);
+        --c-secondary-hover: rgb(150, 42, 42);
+        --c-bg-primary: #f3f4f7;
+        --c-bg-secondary: #ffffff;
+        --c-bg-tertiary: #fcfdfe;
+        --c-border: #f0f1f7;
+        --c-shadow: #f3f3f3;
+        --c-text-primary: #666666;
+        --c-text-secondary: #19235c;
+        --c-placeholder: #313335ab;
+		--c-img-round: 50%;
+        --card-background: #fefefe;
+        --card-border-radius: 10px;
+        --card-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        --card-margin-bottom: 24px;
+        --card-header-padding: 20px;
+        --card-header-background: #e0e0e0;
+        --card-body-padding: 20px;
+        --card-section-padding: 10px 0;
+        --card-footer-padding: 20px;
+        --card-footer-background: #e0e0e0;
+        --card-border-width: 2px;
+        --card-border-color: #cccccc;
+        --file-img-border-radius: 50%;
+        --file-add-bg: #28a745;
+        --file-add-bg-hover: #218838;
+        --file-item-border-radius: 10px;
+        --day-name: #988888;
+        --b-radius-btn: 10px;
+        --transition: all .3s;
+        --events: #4c8e9d;
+        --border: rgba(102, 91, 91, 0.432);
+    }
+
+    html.dark:root {
+		--c-white: #fff;
+        --c-basic: #333;
+        --c-bg-primary: #282828;
+        --c-bg-secondary: #343434;
+        --c-bg-tertiary: #404040;
+        --c-border: #404040;
+        --c-shadow: #444444;
+        --c-text-primary: #ffffff;
+        --c-text-secondary: #ffffff;
+        --c-placeholder: #d3cdcd;
+        --c-calendar: #141414;
+        --day-name: #dad5d5;
+        --events: #1c2e32;  
+        --border: rgb(255 255 255 / 23%);
+    }

@@ -1,0 +1,90 @@
+<!-- General Input -->
+<label
+	*ngIf="type !== 'radio' && type !== 'checkbox' && type !== 'textarea'"
+	class="w-forms"
+	[for]="name"
+>
+	<span class="w-forms__title" *ngIf="label">{{ label }}</span>
+	<input
+		[placeholder]="placeholder || 'Enter text...'"
+		(ngModelChange)="value = $event; onChange()"
+		(keyup.enter)="onSubmit()"
+		[type]="type || 'text'"
+		class="w-forms__input"
+		(blur)="wBlur.emit()"
+		[class.error]="error"
+		[disabled]="disabled"
+		[ngModel]="value"
+		[ngClass]="wClass"
+		[name]="name"
+		#inputEl
+	/>
+	<!-- Error Message Display -->
+	<div *ngIf="error" class="error-message">
+		{{ label || placeholder }} is invalid.
+	</div>
+	<ng-content></ng-content>
+</label>
+
+<!-- Textarea -->
+<ng-container *ngIf="type === 'textarea'">
+	<label class="w-forms" [for]="name">
+		<span class="w-forms__title">{{ label }}</span>
+		<textarea
+			(ngModelChange)="value = $event; onChange()"
+			[placeholder]="placeholder"
+			(keyup.enter)="onSubmit()"
+			class="w-forms__textarea"
+			(blur)="wBlur.emit()"
+			[disabled]="disabled"
+			[class.error]="error"
+			[ngModel]="value"
+			[ngClass]="wClass"
+			[name]="name"
+			#inputEl
+		></textarea>
+		<!-- Error Message Display -->
+		<div *ngIf="error" class="error-message">
+			{{ label || placeholder }} is invalid.
+		</div>
+	</label>
+</ng-container>
+
+<!-- Radio Buttons -->
+<ng-container *ngIf="type === 'radio'">
+	<label class="check-label" *ngFor="let item of items">
+		<span class="form-label">{{ item }}</span>
+		<input
+			(ngModelChange)="value = $event; onChange()"
+			[disabled]="disabled"
+			[class.error]="error"
+			[ngModel]="value"
+			[ngClass]="wClass"
+			[value]="item"
+			[name]="name"
+			type="radio"
+			#inputEl
+		/>
+		<span class="checkbox _radio"></span>
+		<ng-content></ng-content>
+	</label>
+</ng-container>
+
+<!-- Checkboxes -->
+<ng-container *ngIf="type === 'checkbox'">
+	<label class="container-box">
+		<input
+			(ngModelChange)="value = $event; onChange()"
+			class="w-input__checkbox"
+			[disabled]="disabled"
+			[class.error]="error"
+			[ngModel]="value"
+			[ngClass]="wClass"
+			type="checkbox"
+			[name]="name"
+			#inputEl
+		/>
+		<span class="checkmark"></span>
+		<span class="check-text" *ngIf="label">{{ label }}</span>
+	</label>
+</ng-container>

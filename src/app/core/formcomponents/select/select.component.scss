@@ -1,0 +1,232 @@
+// waw-select styles
+.w-select {
+	width: 100%;
+	&__label {
+		margin-bottom: 5px;
+	}
+	&__body {
+		position: relative;
+		cursor: pointer;
+		display: flex;
+		min-height: 50px;
+		height: 50px;
+		align-items: center;
+		border: 2px solid var(--c-text-primary);
+		border-radius: 12px;
+		transition: var(--transition);
+		//background: var(--c-bg-secondary);
+		&._active {
+			border-color: var(--c-sky);
+		}
+	}
+	&__header {
+		padding-left: 15px;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		padding: 14px 10px 14px 40px;
+		color: #666;
+		position: relative;
+		svg {
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+            path{
+                fill:var(--c-primary);
+            }
+		}
+	}
+	&__text {
+		margin-right: 10px;
+		flex-grow: 1;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		.text-overflow {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: keep-all;
+            color: var(--c-text-primary);
+		}
+	}
+	&__arrow {
+		margin-right: 15px;
+		transition: var(--transition);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+        svg{
+            width: 12px;
+            height: 12px;
+            path{
+                fill: var(--c-text-primary);
+            }
+        }
+		&._active {
+			transform: rotate(180deg);
+		}
+	}
+	.item {
+		padding: 10px;
+		transition: var(--transition);
+		border-bottom: 1px solid var(--c-text-primary);
+		&:hover {
+			background: var(--c-shadow);
+			border-bottom: 1px solid #1ac5eb;
+			color: #1ac5eb;
+		}
+	}
+	&__popup {
+		z-index: 9;
+		width: 100%;
+		left: 0;
+		position: absolute;
+		top: calc(100% + 10px);
+		background: var(--c-white);
+		box-shadow: 0px 0px 4px var(--c-border);
+		border-radius: 10px;
+		border: 2px solid #173b59;
+		background: #f8f6f6;
+		color: #666;
+		padding-bottom: 15px;
+		padding-top: 15px;
+		&._search {
+			padding-top: 60px;
+		}
+		.popup-block {
+			max-height: 180px;
+			overflow-y: auto;
+			padding: 0 15px;
+			&__empty-search {
+				padding: 15px;
+				text-align: center;
+				color: #717171;
+			}
+		}
+	}
+	&__search {
+		top: 10px;
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		left: 0;
+		padding: 0 15px;
+		.search-input {
+			outline: none;
+			width: 100%;
+			cursor: pointer;
+			display: flex;
+			padding: 10px;
+			padding-right: 30px;
+			align-items: center;
+			border: 1px solid var(--c-border);
+			border-radius: 10px;
+			transition: var(--transition);
+		}
+		.search-icon {
+			position: absolute;
+			top: 50%;
+			right: 25px;
+			transform: translateY(-50%);
+		}
+	}
+	// scroll styles
+	*::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+		background-color: var(--c-white);
+	}
+	* ::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-color: var(--c-border);
+	}
+
+	// checkbox styles
+	.checkbox {
+		&__body {
+			display: inline-flex;
+			user-select: none;
+			cursor: pointer;
+			padding: 6px 8px;
+			color: var(--c-text);
+			border-radius: 6px;
+			overflow: hidden;
+			transition: var(--transition);
+			&:not(:last-child) {
+				margin-right: 6px;
+			}
+			&:hover {
+				background: rgba(var(--c-sky), 0.09);
+			}
+			&:hover .checkbox__svg {
+				border-color: var(--c-sky);
+			}
+		}
+		&__input {
+			display: none;
+			&:checked + .checkbox__body .checkbox__svg {
+				background: var(--c-sky);
+				border-color: var(--c-sky);
+				animation: wave 0.4s ease;
+			}
+			&:checked + .checkbox__body .checkbox__svg svg {
+				stroke-dashoffset: 0;
+			}
+		}
+		&__svg {
+			position: relative;
+			min-width: 18px;
+			min-height: 18px;
+			width: 18px;
+			height: 18px;
+			display: inline-block;
+			border-radius: 4px;
+			transform: scale(1);
+			border: 1px solid var(--c-border);
+			transition: var(--transition);
+			box-shadow: 0 1px 1px var(--c-shadow);
+		}
+		&__svg svg {
+			position: absolute;
+			top: 3px;
+			left: 2px;
+			fill: none;
+			stroke: var(--c-white);
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+			stroke-dasharray: 16px;
+			stroke-dashoffset: 16px;
+			transition: all 0.3s ease;
+			transition-delay: 0.1s;
+			transform: translate3d(0, 0, 0);
+		}
+		&__text {
+			padding-left: 8px;
+			line-height: 18px;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		&__svg-icon {
+			position: absolute;
+			width: 0;
+			height: 0;
+			pointer-events: none;
+			user-select: none;
+		}
+		@keyframes wave {
+			50% {
+				transform: scale(0.9);
+			}
+		}
+	}
+}
+.selected {
+	font-weight: bold;
+}

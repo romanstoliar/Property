@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #22252A;
+    border-radius: 12px;
+    &--open{
+        border-radius: 12px 12px 0 0;
+        .accardion__arrow{
+            transform: rotate(180deg);
+        }
+    }
+}
+.accardion__arrow{
+    display: flex;
+    transition: all .3s;
+}

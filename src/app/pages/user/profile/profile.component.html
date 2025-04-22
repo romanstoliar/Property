@@ -1,0 +1,48 @@
+<div class="container">
+	<wcard>
+		<div class="profile__header">
+			<div>
+				<div class="avatar _profile">
+					<ngx-file
+						(update)="updateThumb($event)"
+						[value]="us.user.thumb ? url + us.user.thumb : 'assets/default.png'"
+						[name]="us.user._id + '.jpg'"
+						err="assets/default.png"
+						[isPhoto]="true"
+						[imgStyle]="{
+							'border-radius': 'var(--c-img-round)',
+							'width': '52px',
+							'height': '52px'
+						}"
+						container="user"
+						[height]="512"
+						[width]="512"
+					></ngx-file>
+				</div>
+			</div>
+		</div>
+		<div class="profile__body">
+			<wform
+				[config]="formProfile"
+				(wChange)="update()"
+				[submition]="user"
+				*ngIf="user"
+			></wform>
+
+			<div class="profile__footer">
+				<div class="profile__logout">
+					<wbutton (click)="us.logout()" type="danger">
+						<span class="material-icons">logout</span>
+						<span translate>Profile.Logout</span>
+					</wbutton>
+				</div>
+
+				<div class="profile__password">
+					<wbutton (click)="changePassword()" type="link" translate>
+						Profile.Change Password
+					</wbutton>
+				</div>
+			</div>
+		</div>
+	</wcard>
+</div>

@@ -1,0 +1,88 @@
+<div class="form__wrap">
+	<div class="form__row">
+		<div class="form__input">
+			<input
+				type="text"
+				[(ngModel)]="form.title"
+				name="formTitle"
+				placeholder="Enter name"
+			/>
+		</div>
+
+		<div class="form__select">
+			<select [(ngModel)]="form.formId" placeholder="Choose smt.">
+				<option *ngFor="let formId of fs.formIds" [value]="formId">
+					{{formId}}
+				</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form__row">
+		<div class="form__select form__select--margin">
+			<select [(ngModel)]="addComponent" placeholder="Choose smt.">
+				<option
+					*ngFor="let component of fs.components"
+					[value]="component.name"
+				>
+					{{component.name}}
+				</option>
+			</select>
+		</div>
+		<wbutton
+			[disabled]="!addComponent"
+			(click)="addField()"
+			class="form__btn form__btn--add"
+		>
+			Add
+		</wbutton>
+	</div>
+
+	<div class="form__add-list">
+		<div
+			*ngFor="let component of form.components; index as i"
+			class="form__add"
+		>
+			<span class="form__add-title">{{component.name}}</span>
+			<label class="form__add-label">
+				<span>key</span>
+				<input
+					[(ngModel)]="component.key"
+					name="componentKey"
+					type="text"
+				/>
+			</label>
+			<div *ngFor="let field of component.fields">
+				<label class="form__add-label">
+					<span>{{field.name}}</span>
+					<input
+						[(ngModel)]="field.value"
+						name="componentValue"
+						type="text"
+					/>
+				</label>
+			</div>
+			<div class="form__add-btn">
+				<wbutton (click)="form.components.splice(i, 1)">remove</wbutton>
+			</div>
+		</div>
+	</div>
+
+	<div class="form__btns">
+		<wbutton
+			*ngIf="!form._id"
+			(click)="fs.create(form); close()"
+			class="form__btn form__btn--create"
+		>
+			Create
+		</wbutton>
+
+		<wbutton
+			*ngIf="form._id"
+			(click)="fs.save(form); close()"
+			class="form__btn"
+		>
+			Update
+		</wbutton>
+	</div>
+</div>

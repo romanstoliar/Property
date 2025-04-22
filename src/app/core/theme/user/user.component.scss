@@ -1,0 +1,307 @@
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
+
+/*  WRAPPER STYLE  */
+.wrapper {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	@include mixins.flexBox(flex, column, null, null, null);
+	background: var(--c-bg-primary);
+	transition: all 0.5s ease-in-out;
+	.main {
+		flex-grow: 1;
+		overflow-y: auto;
+		@include mixins.flexBox(flex, column, null, null, null);
+		position: relative;
+		// display: flex;
+		// flex-flow: row wrap;
+		max-width: 2000px;
+		margin: 0 auto;
+		width: 100%;
+		padding: 20px 270px 0 20px;
+
+		transition: all 0.5s ease-in-out;
+
+		@media screen and (max-width: 991px) {
+			padding: 20px;
+		}
+		@media screen and (max-width: 767px) {
+			padding: 10px;
+		}
+		// .fade {
+		// 	display: none;
+		// 	position: fixed;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	z-index: 9;
+		// 	background: rgba(0, 0, 0, 0.3);
+		// 	@media screen and (max-width: 991px) {
+		// 		display: block;
+		// 	}
+		// }
+	}
+}
+
+/*.showTable {
+	padding: 20px !important;
+}*/
+
+hr {
+	border: none;
+	border-top: 2px solid var(--c-text-primary);
+	margin: 5px 0;
+}
+
+/*  NAV STYLE  */
+.nav {
+	transition: all 0.5s ease-in-out;
+	background: var(--c-basic);
+	width: 100%;
+	box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+	@include mixins.flexBox(flex, null, space-between, center, null);
+	min-height: 50px;
+	z-index: 100;
+	overflow: hidden;
+	&__ul {
+		z-index: 1;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 0 20px;
+		transition: all 0.5s ease-in-out;
+		@include mixins.flexBox(flex, null, null, center, null);
+		width: 100%;
+		@media screen and (max-width: 767px) {
+			justify-content: end !important;
+		}
+	}
+	&__li {
+		display: inline-block;
+		&._burger {
+			width: 44px;
+			height: 34px;
+		}
+		&:last-child {
+			margin-left: auto;
+		}
+		&:not(:last-child) {
+			margin-right: 10px;
+		}
+	}
+	&__a {
+		cursor: pointer;
+		color: vars.$c-white;
+		font-size: var(--fs) - 2px;
+		padding: 5px 10px;
+		border-radius: vars.$b-radius;
+		transition: all 0.5s ease-in-out;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			width: 5px;
+			height: 5px;
+			background-color: vars.$c-white;
+			bottom: -1px;
+			border-radius: vars.$b-radius-img;
+			transform: translateY(15px);
+			opacity: 0;
+			@include media.bp-max(md) {
+				top: -3px;
+			}
+		}
+		&._activeLink {
+			&::before {
+				animation: navLinkAnimation 0.75s forwards;
+			}
+			@keyframes navLinkAnimation {
+				0% {
+					opacity: 0;
+					transform: translateY(15px);
+				}
+				100% {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		}
+		.material-icons {
+			color: vars.$c-white;
+			width: 24px;
+		}
+	}
+	&__toggle {
+		width: 100%;
+		height: 100%;
+		@include mixins.flexBox(flex, null, null, center, null);
+		position: relative;
+		order: 3;
+		cursor: pointer;
+		justify-content: center;
+		&-line,
+		&-line:before,
+		&-line:after {
+			cursor: pointer;
+			border-radius: 1px;
+			height: 2px;
+			width: 24px;
+			position: absolute;
+			display: block;
+			content: '';
+			transition: all 0.5s ease-in-out;
+			background-color: transparent;
+		}
+		&-line:before {
+			top: -7px;
+			top: 0;
+			transform: rotate(45deg);
+			background: vars.$c-white;
+		}
+		&-line:after {
+			bottom: -7px;
+			top: 0;
+			transform: rotate(-45deg);
+			background: vars.$c-white;
+		}
+		@media screen and (max-width: 767px) {
+			.nav__toggle-line,
+			.nav__toggle-line:before,
+			.nav__toggle-line:after {
+				background: #fff;
+			}
+			&-line:before {
+				top: -7px;
+				transform: unset;
+				background: vars.$c-white;
+			}
+			&-line:after {
+				top: 7px;
+				transform: unset;
+				background: vars.$c-white;
+			}
+		}
+		&._active &-line {
+			background: vars.$c-white;
+
+			&:before,
+			&:after {
+				top: 0;
+			}
+			&:before {
+				transform: unset;
+				top: -7px;
+			}
+			&:after {
+				transform: unset;
+				top: 7px;
+			}
+			@media screen and (max-width: 767px) {
+				background: transparent;
+
+				&:before {
+					transform: rotate(45deg);
+					top: -7px;
+					top: 0;
+				}
+				&:after {
+					transform: rotate(-45deg);
+					bottom: -7px;
+					top: 0;
+				}
+			}
+		}
+	}
+	&__burger {
+		margin: 0;
+		max-width: 250px;
+		width: 100%;
+		height: calc(100% - 50px);
+		transform: translateX(0) !important;
+		top: 50px;
+		position: fixed;
+		background-color: var(--c-bg-secondary);
+		right: 0;
+		transform: translateX(120%);
+		z-index: 10;
+		box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.03), 
+            0 6px 10px rgba(0, 0, 0, 0.24),
+            0 1px 18px rgba(0, 0, 0, 0.31);
+			transition: all 0.5s ease-in-out;
+		@media screen and (max-width: 767px) {
+			transform: translateX(120%) !important;
+		}
+		@include mixins.flexBox(flex, column, null, null, null);
+		
+		
+		&._active {
+			transform: translateX(120%) !important;
+			z-index: 0;
+			@media screen and (max-width: 767px) {
+				transform: translateX(0) !important;
+				z-index: 10;
+			}
+		}
+		&-list {
+			flex-grow: 1;
+			height: 100%;
+			@include mixins.flexBox(flex, column, null, null, null);
+			overflow-y: auto;
+			padding: 20px;
+			.nav__burger-link {
+				color: var(--c-text-primary);
+				padding: 10px;
+				.avatar__img {
+					border-radius: 50%;
+				}
+			}
+		}
+		&-link {
+			@include mixins.flexBox(flex, null, null, center, null);
+			gap: 10px;
+			.material-icons {
+				color: var(--c-text-primary);
+				font-size: 30px;
+			}
+		}
+		&-user {
+			@include mixins.flexBox(flex, column, center, center, null);
+			color: var(--c-text-primary);
+			padding: 5px;
+			.name {
+				word-break: break-word;
+			}
+			.material-icons {
+				color: var(--c-text-primary);
+				font-size: calc(vars.$fs + 32px);
+			}
+		}
+	}
+	@include media.bp-max(md) {
+		order: 2;
+		&__ul {
+			justify-content: space-between;
+		}
+		&__li:last-child {
+			margin-left: 0;
+		}
+		&__burger {
+			top: 0;
+		}
+	}
+}
+
+.theme-switch {
+	position: absolute;
+	right: 10px;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 10px;
+	.material-icons {
+		cursor: pointer;
+	}
+}

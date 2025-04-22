@@ -1,0 +1,73 @@
+@import 'angular';
+.w-table-user {
+    @include flexBox(flex, null, null, center, wrap);
+    &__img {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+        margin-right: 10px;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--b-radius-img);
+        }
+        @include bp-max(md) {
+            display: none;
+        }
+    }
+}
+
+.w-table {
+    @include bp-max(md) {
+        .email,
+        .role {
+            display: none;
+        }
+    }
+    .checkbox {
+        height: 18px;
+        max-height: 18px;
+        display: block;
+        &__body {
+            padding: 2px;
+        }
+    }
+}
+
+.users-field {
+    @include flexBox(flex, null, space-between, flex-end, null);
+    .w-btn {
+        margin: 10px;
+    }
+    .forms {
+        width: 100%;
+    }
+
+    @include bp-max(xs) {
+        flex-direction: column;
+		align-items: center;
+        .w-btn {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+    }
+}
+
+.w-table__td.actions .material-icons {
+    transition: var(--transition);
+    &:hover {
+        color: var(--c-error);
+    }
+    & i + i {
+        margin-left: 15px;
+    }
+}
+
+.users {
+    &__header {
+        @include text-default(0, 23px, 500, 20px, var(--c-text-primary));
+        @include flexBox(flex, null, space-between, center, null);
+        border-radius: var(--b-radius);
+    }
+}

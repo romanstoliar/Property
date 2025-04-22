@@ -1,0 +1,37 @@
+// src/scss/index.scss
+// ===== MAIN SCSS FILE =====
+
+// ## VENDORS
+@use 'vendors/normalize';
+
+// ## UTILS
+@use 'utils/vars' as vars;
+@use 'utils/media' as media;
+@use 'utils/mixins' as mixins;
+@use 'utils/fonts';
+@use 'utils/icons';
+
+// ## LAYOUT
+@use 'layout/base';
+@use 'layout/scroll';
+// @use 'layout/grid';
+
+// ## COMPONENTS
+@use 'components/w-alert';
+@use 'components/w-btn';
+@use 'components/w-switch';
+@use 'components/w-forms';
+@use 'components/w-card';
+@use 'components/w-checkbox';
+@use 'components/w-radio';
+@use 'components/w-table';
+@use 'components/w-select';
+@use 'components/w-modal';
+
+// ## ATOM
+@use 'atom/display';
+@use 'atom/margin';
+// @use 'atom/padding';
+// @use 'atom/size';
+// @use 'atom/text';
+// @use 'atom/other';

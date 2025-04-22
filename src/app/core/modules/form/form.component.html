@@ -1,0 +1,19 @@
+<div class="w-forms">
+	<h1 class="w-forms__title" *ngIf="config.title">{{config.title}}</h1>
+	<form (ngSubmit)="onSubmit()">
+		<ng-container *ngFor="let component of config.components; index as i">
+			<form-component
+				*ngIf="!component.hidden"
+				[class]="config.formId + '_' + i + ' ' +(component.class || '') + ' ' + config.formId"
+				class="w-forms__component"
+				[component]="component"
+				[submition]="submition"
+				[config]="config"
+				(wSubmit)="onSubmit()"
+				(wChange)="onChange()"
+				(wClick)="onClick()"
+				[index]="''+i"
+			></form-component>
+		</ng-container>
+	</form>
+</div>

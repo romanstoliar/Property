@@ -1,0 +1,57 @@
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+	<div class="documents-container">
+		<div class="documents-list">
+			<div
+				class="burger-wrap"
+				(click)="isMenuOpen=!isMenuOpen"
+				[class.burger-wrap--open]="isMenuOpen"
+			>
+				<div class="burger" [class.burger--close]="isMenuOpen"></div>
+			</div>
+			<div
+				class="documents-sidebar"
+				[class.documents-sidebar--open]="isMenuOpen"
+			>
+				<div class="documents-sidebar-content">
+					<div class="documents-sidebar__img">
+						<img src="assets/default.png" alt="Property Image" />
+					</div>
+					<div class="documents-sidebar__title">
+						{{property.name}}
+					</div>
+					<div class="documents-sidebar__description">
+						<wbutton (click)="update(property)">Edit</wbutton>  
+					 	<wbutton (click)="delete(property)">Delete</wbutton>  
+					</div>
+				</div>
+			</div>
+			<div class="documents-main">
+				<div class="documents-main-content">
+					<div class="documents-main-row">
+						<div class="documents__name">
+							{{property.name}}
+						</div>
+						<div class="documents__description">
+							{{property.description}}
+						</div>
+						<div class="documents__type">
+							{{property.type}}
+						</div>
+                        <div class="documents__address">
+							{{property.address}}
+						</div>
+						<div class="documents__price">
+							{{property.price}} $
+						</div>
+						<div class="documents__area">
+							{{property.area}} m²
+						</div>
+						<div class="documents__thumb">
+							{{property.thumb}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

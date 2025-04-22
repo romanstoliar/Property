@@ -1,0 +1,41 @@
+// ===== BLOCKS =====
+.d-b {
+	display: block !important;
+}
+.d-ib {
+	display: inline-block !important;
+}
+// ===== FLEXBOX =====
+.d-f {
+	display: flex !important;
+}
+.fd-c {
+	flex-direction: column !important;
+}
+.jc-sb {
+	justify-content: space-between !important;
+}
+.jc-fs {
+	justify-content: flex-start !important;
+}
+.jc-c {
+	justify-content: center !important;
+}
+.jc-fe {
+	justify-content: flex-end !important;
+}
+.ai-c {
+	align-items: center !important;
+}
+.ai-fe {
+	align-items: flex-end !important;
+}
+.ai-fs {
+	align-items: flex-start !important;
+}
+.ai-sb {
+	align-items: space-between !important;
+}
+.fg-1 {
+	flex-grow: 1 !important;
+}

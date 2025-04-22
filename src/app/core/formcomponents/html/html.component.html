@@ -1,0 +1,9 @@
+<ng-template #templateRef let-data>
+	<tinymce
+		[ngModel]="data.submition[data.key]"
+		(ngModelChange)="
+			data.submition[data.key] = $event;
+			data.wChange()
+		"
+	></tinymce>
+</ng-template>

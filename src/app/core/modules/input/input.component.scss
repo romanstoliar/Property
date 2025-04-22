@@ -1,0 +1,192 @@
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
+
+/* =====================================
+   General Input Styles
+   These styles apply to all input fields
+   ===================================== */
+.w-forms {
+	position: relative;
+	padding: 10px 0;
+	display: block;
+
+	&__title {
+		letter-spacing: 0;
+		line-height: 23px;
+		font-weight: 500;
+		font-size: 20px;
+		color: var(--c-text-primary);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-radius: var(--b-radius);
+		margin-bottom: 10px; /* Adjusted margin */
+	}
+
+	/* Input and Textarea shared styling */
+	&__field,
+	.w-forms__textarea {
+		background-color: transparent;
+		border: 1px solid var(--c-border);
+		border-radius: var(--b-radius);
+		color: var(--c-text-secondary);
+		font-size: calc(#{var(--fs)} - 2px);
+		line-height: calc(#{var(--fs)} + 4px);
+		transition: var(--transition);
+		width: 100%; /* Ensure input fields take full width of the container */
+		display: block;
+		letter-spacing: var(--letter-spacing);
+		padding: 8px 12px; /* Adjusted padding for better visual alignment */
+
+		/* Ensure compatibility across browsers */
+		appearance: textfield;
+		-webkit-appearance: textfield; /* For WebKit-based browsers */
+		-moz-appearance: textfield;    /* For Mozilla-based browsers */
+
+		&::placeholder {
+			color: var(--c-placeholder);
+			transition: var(--transition);
+		}
+
+		&:focus {
+			transition: var(--transition);
+			border-color: var(--c-primary);
+			outline: none; /* Remove default outline for better visual focus */
+		}
+
+		&:disabled {
+			background-color: var(--c-grey);
+			border-color: var(--c-grey);
+			color: var(--c-grey);
+			cursor: default;
+			opacity: 0.6;
+		}
+
+		&[type='time'] {
+			-webkit-appearance: textfield;
+			-moz-appearance: textfield;
+			appearance: textfield;
+		}
+	}
+
+	/* Hidden checkbox input, used in custom styled checkboxes */
+	&__checkbox {
+		display: none;
+
+		&:checked ~ .checkbox::before {
+			opacity: 1;
+		}
+	}
+}
+
+/* Error Styling */
+input.error, textarea.error {
+	border: 1px solid red; /* Red border to indicate validation error */
+}
+
+/* Error message display */
+.error-message {
+	color: red; /* Red text for error messages */
+	font-size: 12px; /* Slightly smaller text size for error messages */
+	margin-top: 4px; /* Spacing above the error message */
+}
+
+/* =====================================
+   Radio Button Styles
+   ===================================== */
+.check-label {
+	display: flex;
+	column-gap: 5px;
+	cursor: pointer;
+
+	/* Custom radio button checkbox styling */
+	.checkbox {
+		position: relative;
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		border-radius: 4px;
+		transform: scale(1);
+		border: 1px solid var(--c-border);
+		transition: var(--transition);
+		box-shadow: 0 1px 1px var(--c-shadow);
+
+		&::before {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transition: var(--transition);
+			opacity: 0;
+			transform: translate(-50%, -65%) rotate(45deg);
+			height: 11px;
+			width: 7px;
+			display: block;
+			content: '';
+			border-bottom: 2px solid var(--c-primary);
+			border-right: 2px solid var(--c-primary);
+		}
+	}
+}
+
+/* =====================================
+   Checkbox Styles
+   ===================================== */
+.container-box {
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	user-select: none;
+
+	/* Hidden checkbox input, used in custom styled checkboxes */
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+	}
+
+	/* Custom checkbox styling */
+	.checkmark {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 32px;
+		width: 32px;
+		background-color: #12677a6e;
+		border-radius: 50%;
+		transition: all 0.3s;
+
+		&:after,
+		&:before {
+			content: '';
+			position: absolute;
+			display: none;
+		}
+
+		&:after {
+			left: 10px;
+			top: 47%;
+			width: 8px;
+			height: 14px;
+			border: solid white;
+			border-width: 0 3px 3px 0;
+			transform: rotate(45deg) translate(-50%, -50%);
+		}
+	}
+
+	&:hover input ~ .checkmark {
+		background-color: #0f353d60;
+	}
+
+	input:checked ~ .checkmark {
+		background-color: var(--c-primary);
+
+		&:after {
+			display: block;
+		}
+	}
+}

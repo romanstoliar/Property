@@ -1,0 +1,10 @@
+{
+	"repo" : "git@github.com:WebArtWork/ngx-file.git",
+	"dependencies": {
+		"ngx-image-cropper": "*"
+	},
+	"modules": {
+		"button": "*",
+		"modal": "*"
+	}
+}

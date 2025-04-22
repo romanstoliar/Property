@@ -1,0 +1,16 @@
+<div class="w-card" [ngClass]="cardClass">
+	<div class="w-card__header" *ngIf="hasHeader">
+		<ng-content select="[header]"></ng-content>
+	</div>
+
+	<div class="w-card__body">
+		<ng-content *ngIf="!sections"></ng-content>
+		<div *ngFor="let section of sections" class="w-card__body-section">
+			{{ section }}
+		</div>
+	</div>
+
+	<div class="w-card__footer" *ngIf="hasFooter">
+		<ng-content select="[footer]"></ng-content>
+	</div>
+</div>

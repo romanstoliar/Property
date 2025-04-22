@@ -1,0 +1,347 @@
+<div class="wtable">
+	<div class="users__header w-card__header">
+		<!-- Table title -->
+		<h3 class="w-forms__title">{{ title }}</h3>
+
+		<!-- Search functionality -->
+		<div
+			*ngIf="config.searchable"
+			class="table-search"
+			[class.table-search--active]="searchShow"
+		>
+			<input
+				(keyup.enter)="search(); searchShow = false"
+				(ngModelChange)="searching()"
+				[(ngModel)]="searching_text"
+				class="table-search__input"
+				placeholder="Search..."
+				type="text"
+			/>
+			<span
+				class="material-icons material-symbols-outlined table-search__icon"
+				(click)="search(); searchShow = false"
+			>
+				search
+			</span>
+		</div>
+		<div class="table-search__icon-mobile" *ngIf="!searchShow">
+			<span
+				class="material-icons material-symbols-outlined"
+				(click)="searchShow = true"
+			>
+				search
+			</span>
+		</div>
+
+		<div class="users__btns">
+			<!-- Header buttons -->
+		<div class="user__icons">
+			<ng-container *ngIf="config.headerButtons">
+				<ng-container *ngFor="let button of config.headerButtons">
+					<wbutton
+						*ngIf="config.create && button"
+						(click)="button.click()"
+						class="edit-header"
+						[disableSubmit]="true"
+						[class]="button.class"
+					>
+						<i
+							class="material-icons"
+							[title]="button.icon"
+							*ngIf="button.icon"
+						>
+							{{ button.icon }}
+						</i>
+						<span *ngIf="button.text">{{ button.text }}</span>
+					</wbutton>
+				</ng-container>
+			</ng-container>
+			<wbutton
+			(click)="config.create()"
+			class="table-plus-btn"
+			*ngIf="config.create"
+			[disableSubmit]="true"
+		>
+			+ <span>Add new</span>
+		</wbutton>
+		</div>
+
+		<!-- Add new item button -->
+
+		</div>
+	</div>
+
+	<table class="table" cellpadding="0" cellspacing="0">
+		<thead class="table-header">
+			<tr>
+				<!-- Column for row numbers -->
+				<th *ngIf="config.num">No.</th>
+
+				<!-- Column headers with sorting -->
+				<th scope="col" *ngFor="let column of columns">
+					<div
+						[class._sortActiveDown]="sort_type.direction === 'desc' && column.field === sort_type.title"
+						[class._sortActiveUp]="sort_type.direction === 'asc' && column.field === sort_type.title"
+						class="table-header__sort"
+						(click)="sort(column)"
+					>
+						<span>{{ column.title }}</span>
+						<span
+							*ngIf="sortable[column.field]"
+							class="material-icons icon-arrow"
+						>
+							keyboard_backspace
+						</span>
+					</div>
+				</th>
+
+				<!-- Column for action buttons -->
+				<th *ngIf="config.delete || config.update">
+					<ng-template #customAction>
+						<ng-container
+							*ngTemplateOutlet="action.template"
+						></ng-container>
+					</ng-template>
+					<ng-template #defaultAction>Actions</ng-template>
+					<ng-container
+						*ngIf="action; then customAction; else defaultAction"
+					></ng-container>
+				</th>
+			</tr>
+		</thead>
+		<tbody class="table-body">
+			<tr
+				*ngFor="let row of config.allDocs ? (rows | search: filter_filter: (config.searchBy || 'title') | perPage: config: sort_type: filter_filter + now) : rows; index as i;"
+			>
+				<!-- Row number -->
+				<td *ngIf="config.num">{{ row.num }}</td>
+
+				<!-- Data rows with custom cells if defined -->
+				<ng-container *ngFor="let column of columns">
+					<ng-template #defaultRows>
+						<td [attr.data-label]="column.title + ':&nbsp;'">
+							{{ row[column.field] }}
+						</td>
+					</ng-template>
+					<ng-template #customRows>
+						<td [attr.data-label]="column.title + ':&nbsp;'">
+							<ng-container
+								*ngTemplateOutlet="custom_cell[column.field]; context: { $implicit: row }"
+							></ng-container>
+						</td>
+					</ng-template>
+					<ng-container
+						*ngIf="custom_cell[column.field]; then customRows; else defaultRows"
+					></ng-container>
+				</ng-container>
+
+				<!-- Action buttons for each row -->
+				<td
+					class="table-body__last-td"
+					*ngIf="config.delete || config.update || config.buttons"
+					data-label="Actions:&nbsp;"
+				>
+					<div class="table__actions">
+						<!-- Custom buttons -->
+						<ng-container *ngIf="config.buttons">
+							<ng-container *ngFor="let button of config.buttons">
+								<ng-container *ngIf="button">
+									<i
+										(click)="button.click(row)"
+										class="material-icons"
+										[title]="button.icon"
+										*ngIf="!button.ahref && !button.ahrefFunc && !button.href && !button.hrefFunc"
+									>
+										{{ button.icon }}
+									</i>
+									<a
+										[href]="button.ahref"
+										[target]="button.target || '_blank'"
+										*ngIf="button.href"
+									>
+										<i
+											class="material-icons"
+											[title]="button.icon"
+										>
+											{{ button.icon }}
+										</i>
+									</a>
+									<a
+										[href]="button.ahrefFunc(row)"
+										[target]="button.target || '_blank'"
+										*ngIf="button.ahrefFunc"
+									>
+										<i
+											class="material-icons"
+											[title]="button.icon"
+										>
+											{{ button.icon }}
+										</i>
+									</a>
+									<a
+										[routerLink]="button.href"
+										*ngIf="button.href"
+									>
+										<i
+											class="material-icons"
+											[title]="button.icon"
+										>
+											{{ button.icon }}
+										</i>
+									</a>
+									<a
+										[routerLink]="button.hrefFunc(row)"
+										*ngIf="button.hrefFunc"
+									>
+										<i
+											class="material-icons"
+											[title]="button.icon"
+										>
+											{{ button.icon }}
+										</i>
+									</a>
+								</ng-container>
+							</ng-container>
+						</ng-container>
+
+						<!-- Edit and Delete buttons -->
+						<i
+							class="material-icons"
+							*ngIf="config.update"
+							(click)="config.update(row)"
+							title="Edit"
+						>
+							edit
+						</i>
+						<i
+							class="material-icons"
+							*ngIf="config.delete"
+							(click)="config.delete(row)"
+							title="Delete"
+						>
+							delete_outline
+						</i>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot
+			class="table-footer"
+			*ngIf="config.perPage || (config.formCreate && config.create)"
+		>
+			<!-- Items per page dropdown -->
+			<div class="item-page" *ngIf="config.perPage">
+				<div class="item-page__text">Showing items per page</div>
+				<div
+					class="item-page__dropdown"
+					(clickOutside)="select_page_size = false"
+					[class.open]="select_page_size"
+				>
+					<div
+						class="caption"
+						(click)="select_page_size = !select_page_size"
+					>
+						{{ config.perPage === -1 ? 'All' : config.perPage }}
+					</div>
+					<div class="list">
+						<div
+							class="item"
+							*ngFor="let pageSize of config.pageSizeOptions"
+						>
+							<div
+								[class.selected]="config.perPage === pageSize"
+								(click)="changePerPage(pageSize)"
+							>
+								{{ pageSize }}
+							</div>
+						</div>
+						<div class="item" *ngIf="config.allDocs">
+							<div
+								[class.selected]="config.perPage === -1"
+								(click)="changePerPage(-1)"
+							>
+								All
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="item-page__result"
+					*ngIf="config.perPage >= 0 && !config.allDocs"
+				>
+					Page {{ config.page }}
+				</div>
+				<div
+					class="item-page__result"
+					*ngIf="config.perPage >= 0 && config.allDocs"
+				>
+					<span
+						>{{ ((config.page - 1) * config.perPage) + 1 }} - {{
+						config.page * config.perPage > rows?.length &&
+						rows?.length || config.page * config.perPage }}</span
+					>
+					<span> of </span>
+					<span
+						>{{ (rows | search: searching_text: (config.searchBy ||
+						'title'))?.length }}</span
+					>
+				</div>
+			</div>
+
+			<!-- Pagination controls -->
+			<div
+				class="table-footer__pagination"
+				*ngIf="config.perPage !== -1 && config.allDocs"
+			>
+				<wbutton
+					class="table-footer__arrow _start"
+					[disabled]="config.page === 1"
+					(click)="config.page = 1"
+				>
+					<span class="material-icons"
+						>keyboard_double_arrow_left</span
+					>
+				</wbutton>
+				<wbutton
+					class="table-footer__arrow _left"
+					[disabled]="config.page === 1"
+					(click)="previous()"
+				>
+					<span class="material-icons">chevron_left</span>
+				</wbutton>
+				<wbutton
+					[disabled]="config.page * config.perPage > rows?.length"
+					class="table-footer__arrow _right"
+					(click)="next()"
+				>
+					<span class="material-icons">chevron_right</span>
+				</wbutton>
+				<wbutton
+					class="table-footer__arrow _end"
+					[disabled]="isLast()"
+					(click)="lastPage()"
+				>
+					<span class="material-icons"
+						>keyboard_double_arrow_right</span
+					>
+				</wbutton>
+			</div>
+			<div class="table-footer__pagination" *ngIf="!config.allDocs">
+				<wbutton
+					class="table-footer__arrow _left"
+					[disabled]="config.page === 1"
+					(click)="previous()"
+				>
+					<span class="material-icons">chevron_left</span>
+				</wbutton>
+				<wbutton
+					[disabled]="rows.length !== config.perPage"
+					class="table-footer__arrow _right"
+					(click)="next()"
+				>
+					<span class="material-icons">chevron_right</span>
+				</wbutton>
+			</div>
+		</tfoot>
+	</table>
+</div>

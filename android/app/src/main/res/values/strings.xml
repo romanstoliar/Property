@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">wProperty</string>
+    <string name="title_activity_main">wProperty</string>
+    <string name="package_name">wproperty.webart.work</string>
+    <string name="custom_url_scheme">wproperty.webart.work</string>
+</resources>

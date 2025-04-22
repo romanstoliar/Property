@@ -1,0 +1,14 @@
+<image-cropper
+	(imageCropped)="imageCropped($event)"
+	[maintainAspectRatio]="true"
+	[imageBase64]="dataUrl"
+	[aspectRatio]="1"
+	output="base64"
+	format="png"
+	[cropperStaticWidth]="width"
+	[cropperStaticHeight]="height"
+></image-cropper>
+
+<wbutton class="mt10" (click)="uploadImage(croppedDataUrl); close()"
+	>Cropper</wbutton
+>

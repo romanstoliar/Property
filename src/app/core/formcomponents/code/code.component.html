@@ -1,0 +1,12 @@
+<ng-template #templateRef let-data>
+	<ace
+		(valueChange)="
+			data.submition[data.key] = $event;
+			data.wChange()
+		"
+		[value]="data.submition[data.key]"
+		style="width: 100%"
+		theme="monkai"
+		mode="json"
+	></ace>
+</ng-template>

@@ -1,0 +1,8 @@
+<a routerLink="/propertyhistory/{{record._id}}">
+	<div class="documents__title">{{record.name}}</div>
+	<div class="documents__description">
+		{{record._id|mongodate|date:'d MMMM y'}}
+	</div>
+</a>
+<span (click)="update()" class="material-icons">edit</span>
+<span (click)="delete()" class="material-icons">delete</span>`

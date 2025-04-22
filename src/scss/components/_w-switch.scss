@@ -1,0 +1,61 @@
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
+  
+// SWITCH
+.w-switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &__toggle {
+        position: relative;
+        width: 45px;
+        height: 25px;
+    }
+    &__input {
+        display: none;
+        &:checked+.w-switch__slider {
+            background-color: var(--c-primary);
+            border: 1px solid var(--c-primary);
+        }
+        &:focus+.w-switch__slider {
+            box-shadow: 0 0 1px var(--c-shadow);
+        }
+        &:checked+.w-switch__slider:before {
+            transform: translate(15px, -50%);
+            background-color: vars.$c-white;
+        }
+    }
+    &__slider {
+        position: absolute;
+        inset: 0;
+        background-color: vars.$c-grey;
+        border: 1px solid var(--c-border);
+        outline: none;
+        transition: vars.$transition;
+        &:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: vars.$c-white;
+            transition: vars.$transition;
+        }
+        &._round {
+            border-radius: 34px;
+            &:before {
+                border-radius: 50%;
+            }
+        }
+    }
+    &__text {
+        margin-left: 10px;
+        font-size: calc(#{vars.$fs} - 2px);
+        line-height: calc(#{vars.$fs} - 2px);
+        letter-spacing: vars.$letter-spacing;
+        color: var(--c-text);
+    }
+}

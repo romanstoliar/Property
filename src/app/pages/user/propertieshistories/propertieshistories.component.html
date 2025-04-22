@@ -1,0 +1,42 @@
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+    <div class="documents-container">
+        <div class="documents-list">
+            <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+                <div class="burger" [class.burger--close]="isMenuOpen"></div>
+            </div> 
+            <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+                <div class="documents-sidebar-content">
+                    <div class="documents-sidebar__img">
+                        <img src="assets/default.png" alt="Sidebar Image">
+                    </div>
+                    <div class="documents-sidebar__title">
+                        Records
+                    </div>
+                    <div class="documents-sidebar__description">
+                        <wbutton (click)="create()">Create</wbutton>
+
+                        <wselect
+							[items]=" [
+                            'sell / buy payment',
+                            'service',
+                            'materials',
+                            'rent payment',
+                            'incident'
+                        ]"
+							[placeholder]="'Type'"
+							(modelChange)="type=$event; load()"
+							[clearable]="true"
+						></wselect>
+                    </div>
+                </div>
+            </div>
+            <div class="documents-main">
+                <div class="documents-main-content">
+                    <div *ngFor="let record of propertyRecords" class="documents-main-row">
+                        <app-history [record]="record" (load)="load()"></app-history>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

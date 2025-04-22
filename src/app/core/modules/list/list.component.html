@@ -1,0 +1,15 @@
+<div class="scroll-box" #container (scroll)="onScroll($event)">
+	<div class="pull-to-refresh" *ngIf="isPulling">
+		<span>Pull to refresh...</span>
+	</div>
+
+	<div *ngFor="let item of items.slice(0, limit)">
+		<ng-container
+			*ngTemplateOutlet="action.template; context: {$implicit: item}"
+		></ng-container>
+	</div>
+
+	<button class="load-more" *ngIf="canLoadMore" (click)="loadMore()">
+		Load More
+	</button>
+</div>

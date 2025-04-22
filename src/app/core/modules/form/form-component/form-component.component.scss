@@ -1,0 +1,63 @@
+:host {
+  position: relative;
+}
+
+.w-forms {
+  position: relative;
+  padding: 0 !important;
+  background-color: red;
+  &__component{
+    align-items: end;
+    margin: 0 0 10px 0;
+  }
+  &__level {
+    top: 3px;
+    right: 5px;
+    position: absolute;
+    display: inline-block;
+    color: var(--c-text-secondary);
+    // font-size: calc(#{var(--fs)} - 6px);
+    font-size: 22px;
+    line-height: calc(#{var(--fs)} + 4px);
+    letter-spacing: var(--letter-spacing);
+    transition: var(--transition);
+
+    &._sky {
+      color: var(--c-info);
+    }
+
+    &._orange {
+      color: var(--c-warn);
+    }
+
+    &._green {
+      color: var(--c-success);
+    }
+  }
+
+  &__input {
+    padding-right: 35px;
+  }
+
+  &__input-block {
+    position: relative;
+  }
+
+  &__toggle {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: var(--c-placeholder);
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    i {
+      font-size: 21px;
+    }
+  }
+
+  .icon-visibility {
+    color: var(--c-primary);
+  }
+}

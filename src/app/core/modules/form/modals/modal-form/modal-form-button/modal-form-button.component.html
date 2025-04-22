@@ -1,0 +1,13 @@
+<ng-container
+	*ngTemplateOutlet="
+		buttonRef;
+		context: {
+			$implicit: {
+				field: {
+					Label: button.label
+				},
+				wClick: clickedd.bind(this)
+			}
+		}
+	"
+></ng-container>

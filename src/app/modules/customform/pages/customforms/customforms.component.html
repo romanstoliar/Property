@@ -1,0 +1,22 @@
+<wtable
+	title="Forms Customization"
+	[columns]="columns"
+	[config]="config"
+	[rows]="rows"
+>
+	<ng-template cell="components" let-element>
+		{{element.components?.length}}
+	</ng-template>
+	<ng-template cell="active" let-element>
+		<label class="container-box">
+			<input
+				(ngModelChange)="changeStatus(element)"
+				[(ngModel)]="element.active"
+				type="checkbox"
+				class="w-input__checkbox"
+			/>
+			<span class="checkmark"></span>
+			<span class="checkmark-text">Active</span>
+		</label>
+	</ng-template>
+</wtable>

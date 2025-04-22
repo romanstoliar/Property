@@ -1,0 +1,70 @@
+<div class="container-fluid">
+	<div class="page-wrapper">
+		<div class="translate__top-inner">
+			<div class="translate__inner">
+				<label class="formboxs" for="">
+					<div class="formboxs_title" translate>
+						Common.Select language
+					</div>
+					<wselect
+						value="code"
+						[items]="ts.languages"
+						[select]="ts.language.code"
+						(modelChange)="set_language($event)"
+					></wselect>
+				</label>
+				<label class="formboxs" for="">
+					<div class="formboxs_title" translate>
+						Common.Select page
+					</div>
+					<wselect
+						style="width: 300px"
+						[items]="pages"
+						[select]="page"
+						(modelChange)="setPage($event)"
+					></wselect>
+				</label>
+			</div>
+
+			<div class="translate__buttons">
+				<wbutton class="translate__dawn-jcon" (click)="translateAll()">
+					<span class="material-icons ng-tns-c405976996-4">
+						translate
+					</span>
+
+					<span translate>Common.Translate all</span>
+				</wbutton>
+				<wbutton
+					class="translate__dawn-jcon"
+					(click)="translateAll(true)"
+				>
+					<span class="material-icons ng-tns-c405976996-4">
+						translate
+					</span>
+
+					<span translate>Common.Translate missed</span>
+				</wbutton>
+
+				<!-- <wbutton
+					class="translate__dawn-jcon"
+					(click)="ts.download_json()"
+				>
+					<span class="material-icons ng-tns-c405976996-4">
+						download
+					</span>
+
+					<span translate>Common.Download JSON</span>
+				</wbutton> -->
+			</div>
+		</div>
+
+		<wtable [columns]="columns" [config]="config" [rows]="rows">
+			<ng-template cell="page" let-element>
+				{{element?.slug?.split('.')[0]}}
+			</ng-template>
+			<ng-template cell="translation" let-element>
+				{{element?.slug|translate:ts.now}}
+			</ng-template>
+		</wtable>
+	</div>
+</div>

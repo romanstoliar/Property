@@ -1,0 +1,286 @@
+<div class="calendar-nav">
+	<div class="calendar-nav__today">
+		<wbutton (click)="setNow()">Сьогодні</wbutton>
+	</div>
+	<div class="calendar-nav-year">
+		<div class="calendar-nav-year__buttons">
+			<i (click)="setPreviousMonth()" class="material-icons arrow-back">
+				<svg
+					width="34"
+					height="34"
+					viewBox="0 0 14 14"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M8.94961 2.7043L8.89219 2.75352L4.61289 6.47227C4.46797 6.59805 4.37773 6.78672 4.37773 6.99727C4.37773 7.20781 4.4707 7.39648 4.61289 7.52227L8.88398 11.2383L8.95508 11.3012C9.02344 11.3477 9.10547 11.375 9.19297 11.375C9.43086 11.375 9.625 11.1727 9.625 10.9211L9.625 3.07891C9.625 2.82734 9.43086 2.625 9.19297 2.625C9.10273 2.625 9.01797 2.65508 8.94961 2.7043Z"
+						fill="black"
+					/>
+				</svg>
+			</i>
+			<div class="calendar-nav-year__data">
+				<span>{{monthTitle[currentMonth]}}</span>
+				<span>{{currentYear}}</span>
+			</div>
+			<i (click)="setNextMonth()" class="material-icons arrow-next">
+				<svg
+					width="34"
+					height="34"
+					viewBox="0 0 14 14"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M5.05039 11.2957L5.10781 11.2465L9.38711 7.52773C9.53203 7.40195 9.62227 7.21328 9.62227 7.00273C9.62227 6.79219 9.5293 6.60352 9.38711 6.47773L5.11602 2.76172L5.04492 2.69883C4.97656 2.65234 4.89453 2.625 4.80703 2.625C4.56914 2.625 4.375 2.82734 4.375 3.07891V10.9211C4.375 11.1727 4.56914 11.375 4.80703 11.375C4.89727 11.375 4.98203 11.3449 5.05039 11.2957Z"
+						fill="black"
+					/>
+				</svg>
+			</i>
+		</div>
+	</div>
+</div>
+
+<div class="calendar" [class.calendar-mobile]="isMobile">
+	<div *ngFor="let week of weeksInMonth; index as i" class="calendar__row">
+		<span class="calendar__week">{{week}}</span>
+		<span
+			(click)="dateClicked(
+				(!i && skipDays >= day) ?
+					toDate(previousYear, previousMonth, startDay + day) :
+					(i === weeksInMonth.length - 1 && keepDays < day) ?
+						toDate(nextYear, nextMonth, day - keepDays) :
+						toDate(currentYear, currentMonth, day + (i * 7) - skipDays)
+			)"
+			*ngFor="let day of [1, 2, 3, 4, 5, 6, 7]"
+			class="calendar__day"
+		>
+			<!-- extra row on first row -->
+			<span *ngIf="!i" class="calendar__day-name">{{dayTitle[day]}}</span>
+
+			<!-- previous month dates -->
+			<span class="calendar__stard-day" *ngIf="!i && skipDays >= day">
+				<span class="calendar__stard-day">{{startDay + day}}</span>
+				<div>
+					<div
+						class="calendar-events"
+						*ngFor="let appointment of eventsByDate[toDate(previousYear, previousMonth, startDay +
+					day)]"
+						(click)="eventClicked(appointment); $event.stopPropagation()"
+					>
+						<!--
+
+							<span class="calendar-events__text"
+							>{{appointment.from}} - {{appointment.to}}</span
+						>
+						<div class="calendar-events__time">
+							{{appointment.fromTime}}
+						</div>
+						-->
+						<!-- <div class="calendar-events__row">
+							<div class="calendar-events__column">
+								<div class="calendar-events__name">
+									{{appointment.from}}
+								</div>
+								<div class="calendar-events__time">
+									{{appointment.fromTime}}
+								</div>
+							</div>
+							<div class="calendar-events__column">
+								<div class="calendar-events__name">
+									{{appointment.to}}
+								</div>
+								<div class="calendar-events__time">
+									{{appointment.toTime}}
+								</div>
+							</div>
+						</div>
+						<div class="calendar-events__row">
+							<div class="calendar-events__column">
+								<div class="calendar-events__name">
+									{{appointment.name}}
+								</div>
+								<div class="calendar-events__time">
+									{{appointment.phone}}
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</span>
+
+			<!-- this month dates  -->
+			<span
+				*ngIf="
+					(i && i !== weeksInMonth.length - 1) ||
+					(i === weeksInMonth.length - 1 && keepDays >= day) ||
+					(!i && skipDays < day)
+				"
+			>
+				<div class="calendar__stard-day">
+					{{day + (i * 7) - skipDays}}
+				</div>
+				<div>
+					<div
+						class="calendar-events"
+						*ngFor="let appointment of eventsByDate[toDate(currentYear, currentMonth, day + (i * 7) - skipDays)]"
+						(click)="eventClicked(appointment); $event.stopPropagation()"
+					>
+						<!-- <div class="calendar-events__row">
+							<div class="calendar-events__column">
+								<div class="calendar-events__name">
+									{{appointment.from}}
+								</div>
+								<div class="calendar-events__time">
+									{{appointment.fromTime}}
+								</div>
+							</div>
+							<div class="calendar-events__column">
+								<div class="calendar-events__name">
+									{{appointment.to}}
+								</div>
+								<div class="calendar-events__time">
+									{{appointment.toTime}}
+								</div>
+							</div>
+						</div>
+						<div class="calendar-events__row">
+							<div class="calendar-events__column">
+								<div class="calendar-events__name">
+									{{appointment.name}}
+								</div>
+								<div class="calendar-events__time">
+									{{appointment.phone}}
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</span>
+
+			<!-- next month dates -->
+			<span *ngIf="i === weeksInMonth.length - 1 && keepDays < day">
+				<div>{{day - keepDays}}</div>
+				<div>
+					<div
+						class="calendar-events"
+						*ngFor="let appointment of eventsByDate[toDate(nextYear, nextMonth, day - keepDays)]"
+						(click)="eventClicked(appointment); $event.stopPropagation()"
+					>
+						<!-- <span class="calendar-events__text"
+							>{{appointment.from}} - {{appointment.to}}</span
+						>
+						<div class="calendar-events__time">
+							<span>{{appointment.fromTime}}</span>
+							<span>{{appointment.toTime}}</span>
+						</div> -->
+					</div>
+				</div>
+			</span>
+		</span>
+	</div>
+</div>
+
+<div *ngIf="isMobile && selectedDate" class="line"></div>
+
+<div *ngIf="isMobile && selectedDate" class="events-wrapper">
+	<!-- (click)="updateAppointment(appointment)" -->
+	<div
+		*ngFor="let appointment of eventsByDate[selectedDate]"
+		class="event__item"
+	>
+		<div class="event__icon">
+			<svg
+				width="40"
+				height="40"
+				viewBox="0 0 40 40"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<g clip-path="url(#clip0_120_2)">
+					<path
+						d="M5.38231 1.1333C2.68075 1.1333 1.16199 2.53004 1.16199 5.38396V34.8037C1.16199 37.4732 2.52741 38.8709 5.22682 38.8709H34.771C37.4705 38.8709 38.838 37.5428 38.838 34.8037V5.38396C38.838 2.59964 37.4705 1.1333 34.6862 1.1333C34.6862 1.1333 5.37303 1.12396 5.38231 1.1333Z"
+						fill="#256EFF"
+						stroke="#256EFF"
+						stroke-width="3.408"
+					/>
+					<path
+						d="M20.1713 6.70935C17.5403 6.70935 13.9067 7.46112 12.4032 8.08759C10.8996 8.71406 9.8973 9.34053 9.58409 10.9067L8.45651 19.5891V31.5528H10.3985V33.429C10.3985 35.7165 13.7461 35.7165 13.7461 33.429V31.5528H19.9263H19.9459H26.3712V33.429C26.3712 35.7165 29.7187 35.7165 29.7187 33.429V31.5528H31.6607V19.5891L30.5331 10.9067C30.2199 9.34053 29.2176 8.71406 27.714 8.08759C26.2105 7.46112 22.5769 6.70935 19.9459 6.70935"
+						fill="white"
+					/>
+					<path
+						d="M28.0436 27.8023C28.9304 27.8023 29.6493 27.0833 29.6493 26.1965C29.6493 25.3097 28.9304 24.5906 28.0436 24.5906C27.1568 24.5906 26.4377 25.3097 26.4377 26.1965C26.4377 27.0833 27.1568 27.8023 28.0436 27.8023Z"
+						fill="#256EFF"
+					/>
+					<path
+						d="M12.0736 27.8023C11.1868 27.8023 10.4679 27.0833 10.4679 26.1965C10.4679 25.3097 11.1868 24.5906 12.0736 24.5906C12.9604 24.5906 13.6794 25.3097 13.6794 26.1965C13.6794 27.0833 12.9604 27.8023 12.0736 27.8023Z"
+						fill="#256EFF"
+					/>
+					<path
+						d="M19.9344 10.3115H15.285C14.3453 10.3115 14.3453 8.90198 15.285 8.90198H19.9459H24.8322C25.7719 8.90198 25.7719 10.3115 24.8322 10.3115H19.9344Z"
+						fill="#256EFF"
+					/>
+					<path
+						d="M19.9344 11.7346H12.7516C11.7589 11.7346 11.4996 12.2391 11.3791 13.0041L10.5014 19.3014C10.4195 19.9049 10.5941 20.5041 11.4281 20.5041H19.9458H28.6891C29.523 20.5041 29.6977 19.9049 29.6158 19.3014L28.7381 13.0041C28.6176 12.2391 28.3583 11.7346 27.3656 11.7346H19.9344Z"
+						fill="#256EFF"
+					/>
+				</g>
+				<defs>
+					<clipPath id="clip0_120_2">
+						<rect width="40" height="40" fill="white" />
+					</clipPath>
+				</defs>
+			</svg>
+		</div>
+		<div class="event-text">
+			<div class="event-text event-text__left">
+				<div class="event-text__row">
+					<!-- <a
+						[href]="appointment.fromHref || 'javascript:void(0)'"
+						(click)="
+							$event.stopPropagation();
+							appointment.fromHref || $event.preventDefault()
+						"
+						target="_blank"
+						class="event-text__column"
+					>
+						<div class="event-text__column-from">
+							{{appointment.from}}
+						</div>
+						<div class="event-text__column-time">
+							{{appointment.fromTime}}
+						</div>
+					</a>
+					<a
+						[href]="appointment.toHref || 'javascript:void(0)'"
+						(click)="
+							$event.stopPropagation();
+							appointment.toHref || $event.preventDefault()
+						"
+						target="_blank"
+						class="event-text__column"
+					>
+						<div class="event-text__column-from">
+							{{appointment.to}}
+						</div>
+						<div class="event-text__column-time">
+							{{appointment.toTime}}
+						</div>
+					</a>
+				</div>
+				<a
+					(click)="$event.stopPropagation()"
+					href="tel:{{appointment.phone}}"
+					class="event-driver"
+				>
+					<div class="event-driver__name">{{appointment.name}}</div>
+					<div class="event-driver__phone">{{appointment.phone}}</div>
+				</a> -->
+			</div>
+		</div>
+	</div>
+
+	<!--  (click)="createAppointment(selectedDate)" -->
+	<button class="add-event-mobile">
+		+ ADD NEW TRAVEL
+	</button>
+</div>

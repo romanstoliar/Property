@@ -1,0 +1,50 @@
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
+
+
+.w-card {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--c-bg-secondary);
+	border-radius: var(--card-border-radius, 8px);
+	box-shadow: var(--card-box-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+	overflow: hidden;
+	margin-bottom: var(--card-margin-bottom, 20px);
+
+	&__header {
+		padding: var(--card-header-padding, 16px);
+		border-bottom: var(--card-border-width, 1px) solid
+			var(--card-border-color, #eaeaea);
+		//background-color: var(--card-header-background, #f5f5f5);
+		flex-shrink: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__body {
+		padding: var(--card-body-padding, 16px);
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+
+		&-section {
+			padding: var(--card-section-padding, 8px 0);
+			border-bottom: var(--card-border-width, 1px) solid
+				var(--card-border-color, #eaeaea);
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+
+	&__footer {
+		padding: var(--card-footer-padding, 16px);
+		border-top: var(--card-border-width, 1px) solid
+			var(--card-border-color, #eaeaea);
+		background-color: var(--card-footer-background, #f5f5f5);
+		flex-shrink: 0;
+	}
+}

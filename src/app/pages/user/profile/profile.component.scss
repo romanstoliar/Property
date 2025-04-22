@@ -1,0 +1,104 @@
+@use 'src/scss/utils/mixins' as mixins;
+@use 'src/scss/utils/media' as media;
+@use 'src/scss/utils/vars' as vars;
+:host {
+	width: 100%;
+
+	wcard {
+		width: 100%;
+		// padding: 20px 260px 0px 20px;
+		transition: all 0.3s;
+		display: block;
+	}
+}
+
+/*  PROFILE STYLE  */
+.container {
+	padding: unset;
+}
+
+.profile {
+	&__header {
+		z-index: 9;
+		top: 20px;
+		position: absolute;
+		right: 30px;
+		@include mixins.text-default(0, 23px, 500, 20px, var(--c-text-primary));
+		@include mixins.flexBox(flex, null, space-between, center, null);
+		border-radius: 12px;
+	}
+
+	&__footer {
+		margin-top: 20px;
+		@include mixins.flexBox(flex, null, space-between, center, wrap);
+
+		@include media.bp-max(sm) {
+			flex-direction: column;
+			align-items: center;
+
+			.profile__logout {
+				order: 2;
+				margin-top: 20px;
+			}
+		}
+	}
+
+	&__logout {
+		.w-btn {
+			margin: 0;
+			@include mixins.flexBox(flex, null, space-between, center, null);
+		}
+
+		.material-icons {
+			margin-right: 10px;
+		}
+	}
+}
+
+.imgClass {
+	height: 52px;
+	width: 52px;
+}
+
+/*  AVATAR PHOTO STYLE  */
+.avatar {
+	border-radius: vars.$b-radius-img;
+	border: 1px solid var(--c-border);
+	position: relative;
+	margin: 0 auto;
+	padding: 3px;
+
+	&._profile {
+		width: 60px;
+		height: 60px;
+	}
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: vars.$b-radius-img;
+	}
+
+	&__upload {
+		cursor: pointer;
+		position: absolute;
+		right: 0px;
+		bottom: 0px;
+		width: 24px;
+		height: 24px;
+		border-radius: vars.$b-radius-img;
+		background: var(--c-primary);
+		@include mixins.flexBox(flex, null, center, center, null);
+		transition: vars.$transition;
+	}
+
+	&__icon {
+		color: vars.$c-white;
+		font-size: vars.$fs;
+	}
+}
+
+.profile__password {
+	cursor: pointer;
+}

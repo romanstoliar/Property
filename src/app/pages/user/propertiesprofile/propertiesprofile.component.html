@@ -1,0 +1,40 @@
+
+
+
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+    <div class="documents-container">
+        <div class="documents-list">
+            <div class="burger-wrap" class="burger-wrap"  (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+                <div class="burger" [class.burger--close]="isMenuOpen"></div>
+            </div> 
+            <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+                <div class="documents-sidebar-content">
+                    <div class="documents-sidebar__img">
+                        <img src="assets/default.png" alt="">
+                    </div>
+                    <div class="documents-sidebar__title">
+                        Title of sidebar...
+                    </div>
+                    <div class="documents-sidebar__description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint molestiae consequatur quae. Modi corporis rem amet tempore debitis assumenda minima repellat labore expedita quam. Itaque accusamus culpa ullam necessitatibus nisi.
+                    </div>
+                </div>
+            </div>
+            <div class="documents-main">
+                <div class="documents-main-content">
+                    <div  class="documents-main-row">
+                        <p>Page Propertiesprofile is connected</p>
+
+                        <section>title: Property Profile</section>
+                        <section>description: Детальна інформація про об'єкт нерухомості.</section>
+                        <section>property details (address, price, area, status)</section>
+                        <section>form to edit property details</section>
+                        <section>action buttons: save changes, delete property</section>                  
+                    </div>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+  </div>
+  

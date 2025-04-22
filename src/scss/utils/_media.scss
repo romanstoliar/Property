@@ -1,0 +1,70 @@
+// ===== MEDIA MIXINS FOR RESPONSIVE =====
+// USE: @include bp-max(sm)... bp-min... bp-only...
+
+// Мапа брейкпоінтів для відповідності
+$breakpoints-map: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1980px
+) !default;
+
+// Імпорт sass:map для роботи з мапами
+@use 'sass:map';
+@use 'sass:list';
+
+// Функція для отримання наступного брейкпоінту
+@function breakpoint-next($name, $breakpoints: $breakpoints-map) {
+  $breakpoint-names: map.keys($breakpoints); // Отримуємо ключі з мапи
+  $n: list.index($breakpoint-names, $name); // Отримуємо індекс з іменем брейкпоінту
+  @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null); // Повертаємо наступний брейкпоінт
+}
+
+// Функція для отримання мінімального брейкпоінту
+@function breakpoint-min($name, $breakpoints: $breakpoints-map) {
+  $min: map.get($breakpoints, $name); // Отримуємо значення мінімального брейкпоінту
+  @return if($min != 0, $min, null);
+}
+
+// Функція для отримання максимального брейкпоінту
+@function breakpoint-max($name, $breakpoints: $breakpoints-map) {
+  $next: breakpoint-next($name, $breakpoints); // Отримуємо наступний брейкпоінт
+  @return if($next, breakpoint-min($next, $breakpoints) - 0.1, null);
+}
+
+// Міксін для мінімального брейкпоінту
+@mixin bp-min($name, $breakpoints: $breakpoints-map) {
+  $min: breakpoint-min($name, $breakpoints); // Отримуємо мінімальний брейкпоінт
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+// Міксін для максимального брейкпоінту
+@mixin bp-max($name, $breakpoints: $breakpoints-map) {
+  $max: breakpoint-max($name, $breakpoints); // Отримуємо максимальний брейкпоінт
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+// Міксін для точного брейкпоінту
+@mixin bp-only($name, $breakpoints: $breakpoints-map) {
+  @include bp-min($name, $breakpoints) {
+    @include bp-max($name, $breakpoints) {
+      @content;
+    }
+  }
+}
