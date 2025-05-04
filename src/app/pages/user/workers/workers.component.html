@@ -10,9 +10,10 @@
                         <img src="assets/default.png" alt="">
                     </div>
                     <div class="documents-sidebar__title">
-                        Title of sidebar...
+                        Workers
                     </div>
                     <div class="documents-sidebar__description">
+                        Choose a category of workers
 						<wbutton (click)="create()">Create</wbutton>
 					</div>
                 </div>
@@ -23,7 +24,8 @@
                         *ngFor="let provider of workers" 
                         class="documents-main-row"
                     >
-                        <app-worker [provider]="provider" (load)="load()"></app-worker>
+                        <app-worker [provider]="provider" 
+                        (load)="load()"></app-worker>
                 </div>
             </div>
             

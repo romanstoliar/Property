@@ -5,10 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
-	// {
-	// 	path: ':provider_id',
-	// 	component: PropertieshistoriesComponent
-	// },
 	{
 		path: ':property_id',
 		component: PropertieshistoriesComponent

@@ -1,10 +1,34 @@
-<a routerLink="/myproperty/{{property._id}}">
+<div class="documents-sidebar__img property__img">
+  <img src="assets/default.png" alt="">
+</div>
+
+<a routerLink="/myproperty/{{property._id}}" class="property__name">
     <div class="documents__title">{{property.name}}</div>
 </a>
-<a routerLink="/propertieshistories/{{property._id}}" class="nav__burger-link">
-  <span class="material-icons">article</span>
+
+<a routerLink="/myproperty/{{property._id}}" class="property-loc">
+  <div class="property-loc__img">
+    <span class="material-icons">location_on</span>
+  </div>
+  <div class="documents__title property-loc__title">{{property.address}}</div>
 </a>
-<span class="material-icons" (click)="update()">edit</span>
-<span class="material-icons" (click)="delete()">delete</span>
-  
-  
+<a routerLink="/myproperty/{{property._id}}" class="property-loc">
+  <div class="property-loc__img">
+    <span class="material-icons">holiday_village</span>
+  </div>
+  <div class="documents__title property-loc__title">{{property.type}}</div>
+</a>
+
+<div class="property-links">
+  <div class="property-links__wrap">
+    <a routerLink="/propertieshistories/{{property._id}}" class="">
+      <span class="material-icons">article</span>
+    </a>
+  </div>
+  <div class="property-links__wrap">
+    <span class="material-icons" (click)="update()">edit</span>
+  </div>
+  <div class="property-links__wrap">
+    <span class="material-icons" (click)="delete()">delete</span>
+  </div>
+</div>
