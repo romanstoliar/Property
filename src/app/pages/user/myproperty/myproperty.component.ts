@@ -7,6 +7,7 @@ import { propertyFormComponents } from 'src/app/modules/property/formcomponents/
 import { Property } from 'src/app/modules/property/interfaces/property.interface';
 import { PropertyService } from 'src/app/modules/property/services/property.service';
 import { CoreService, AlertService } from 'wacom';
+import { PhotoGalleryComponent } from 'src/app/components/photo-gallery/photo-gallery.component';
 
 @Component({
 	templateUrl: './myproperty.component.html',

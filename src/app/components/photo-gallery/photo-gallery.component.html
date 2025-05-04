@@ -1,0 +1,11 @@
+<div class="gallery-upload">
+    <input type="file" multiple (change)="handleFileInput($event)" />
+  </div>
+  
+  <div class="gallery-grid">
+    <div class="gallery-item" *ngFor="let photo of photos; index as i">
+      <img [src]="photo" alt="Photo {{ i + 1 }}" />
+      <button (click)="removePhoto(i)">✖</button>
+    </div>
+  </div>
+  
