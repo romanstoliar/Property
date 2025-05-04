@@ -96,18 +96,18 @@ export const propertyFormComponents = {
 					value: 'Статус'
 				},
 				{
-					name: 'Options',
-					value: 'active,rent,sale,archived'
+					name: 'Items',
+					value: ['active', 'rent', 'sale', 'archived']
 				}
 			]
 		},
 		{
-			name: 'Photo',
-			key: 'thumb',
+			name: 'Gallery',
+			key: 'photos',
 			fields: [
 				{
-					name: 'Photo',
-					value: 'photo'
+					name: 'Label',
+					value: 'Gallery'
 				}
 			]
 		}

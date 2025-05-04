@@ -9,4 +9,5 @@ export interface Property extends CrudDocument {
 	price: number;
 	thumb: string;
 	status: 'active' | 'rent' | 'sale' | 'archived';
+	photos: string[];
 }

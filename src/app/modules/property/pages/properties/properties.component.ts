@@ -217,11 +217,4 @@ export class PropertiesComponent {
 	private _preCreate(property: Property): void {
 		delete property.__created;
 	}
-	/*private _query(): string {
-		let query = '';
-		if (this.property_id) {
-			query += (query ? '&' : '') + 'property=' + this.property_id;
-		}
-		return query;
-	}*/
 }
