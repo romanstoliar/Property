@@ -27,34 +27,56 @@
 			</div>
 			<div class="documents-main">
 				<div class="documents-main-content">
+					<div class="property__name">
+						<h2>{{ property.name }}</h2>
+					</div>
+					<div class="property__description">
+						<p>{{ property.description }}</p>
+					</div>
 				
-				  
-
-					<div class="documents-main-row">
-						<div class="documents__name">
-							{{property.name}}
-						</div>
-						<div class="documents__description">
-							{{property.description}}
-						</div>
-						<div class="documents__type">
-							{{property.type}}
-						</div>
-                        <div class="documents__address">
-							{{property.address}}
-						</div>
-						<div class="documents__price">
-							{{property.price}} $
-						</div>
-						<div class="documents__area">
-							{{property.area}} m²
-						</div>
-						<div class="documents__thumb">
-							{{property.thumb}}
-						</div>
+					<!-- Адреса та типи -->
+					<div class="property__row">
+						<strong>Address:</strong> {{ property.address }}
+					</div>
+					<div class="property__row">
+						<strong>Type:</strong> {{ property.type }}
+					</div>
+					<div class="property__row">
+						<strong>Building type:</strong> {{ property.buildingtype }}
+					</div>
+				
+					<!-- Характеристики -->
+					<div class="property__row">
+						<strong>Area:</strong> {{ property.area }} m²
+					</div>
+					<div class="property__row">
+						<strong>Rooms:</strong> {{ property.rooms }}
+					</div>
+					<div class="property__row">
+						<strong>Floor:</strong> {{ property.floor }}
+					</div>
+				
+					<!-- Інше -->
+					<div class="property__row">
+						<strong>Renovation:</strong> {{ property.renovation }}
+					</div>
+					<div class="property__row">
+						<strong>Appliances:</strong> {{ property.appliances }}
+					</div>
+					<div class="property__row">
+						<strong>Utilities:</strong> {{ property.utilities }}
+					</div>
+					<div class="property__row">
+						<strong>Nearby:</strong> {{ property.nearby }}
+					</div>
+					<div class="property__row">
+						<strong>Status:</strong> {{ property.status }}
+					</div>
+					<div class="property__row">
+						<strong>Price:</strong> {{ property.price }} $
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </div>

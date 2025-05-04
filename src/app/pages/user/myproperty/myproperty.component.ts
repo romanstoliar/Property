@@ -38,12 +38,31 @@ export class MypropertyComponent {
 	}
 
 	update(prop: Property): void {
-		this._form
-			.modal<Property>(this.form, [], prop)
-			.then((updated: Property) => {
-				this._core.copy(updated, prop);
-				this._propertyService.update(prop);
-			});
+		this._form.modal<Property>(
+			this.form,
+			{
+				label: 'Update',
+				click: async (updated: unknown, close: () => void) => {
+					close();
+
+					this._core.copy(updated as Property, prop);
+
+					this._propertyService.update(prop).subscribe({
+						next: (res: Property) => {
+							this.property = { ...res }; // 🔁 замінюємо об'єкт, щоб Angular помітив зміни
+							this._alert.success({
+								text: 'Property updated successfully'
+							});
+						},
+						error: (err) => {
+							console.error('❌ Update failed:', err);
+							this._alert.error({ text: 'Update failed' });
+						}
+					});
+				}
+			},
+			prop
+		);
 	}
 
 	delete(prop: Property): void {

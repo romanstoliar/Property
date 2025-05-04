@@ -9,7 +9,7 @@ import {
 } from 'wacom';
 
 @Injectable({
-	providedIn: 'root',
+	providedIn: 'root'
 })
 export class PropertyService extends CrudService<Property> {
 	constructor(
@@ -20,7 +20,7 @@ export class PropertyService extends CrudService<Property> {
 	) {
 		super(
 			{
-				name: 'property',
+				name: 'property'
 			},
 			_http,
 			_store,
