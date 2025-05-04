@@ -9,11 +9,11 @@ export const propertyFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill property title'
+					value: 'Enter property title'
 				},
 				{
 					name: 'Label',
-					value: 'Name'
+					value: 'Title'
 				}
 			]
 		},
@@ -23,7 +23,7 @@ export const propertyFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill property description'
+					value: 'Enter detailed property description'
 				},
 				{
 					name: 'Label',
@@ -51,11 +51,29 @@ export const propertyFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Enter property type'
+					value: 'Enter property type (e.g. apartment, house)'
 				},
 				{
 					name: 'Label',
 					value: 'Type'
+				}
+			]
+		},
+		{
+			name: 'Select',
+			key: 'buildingtype',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Choose a building type'
+				},
+				{
+					name: 'Label',
+					value: 'buildingtype'
+				},
+				{
+					name: 'Items',
+					value: ['new building', 'old stock']
 				}
 			]
 		},
@@ -65,11 +83,95 @@ export const propertyFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Enter property area'
+					value: 'Enter property area in sq. m'
 				},
 				{
 					name: 'Label',
 					value: 'Area (sq. m)'
+				}
+			]
+		},
+		{
+			name: 'Number',
+			key: 'rooms',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Enter number of rooms'
+				},
+				{
+					name: 'Label',
+					value: 'Rooms'
+				}
+			]
+		},
+		{
+			name: 'Number',
+			key: 'floor',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Enter floor number'
+				},
+				{
+					name: 'Label',
+					value: 'Floor'
+				}
+			]
+		},
+		{
+			name: 'Text',
+			key: 'renovation',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Enter renovation details'
+				},
+				{
+					name: 'Label',
+					value: 'Renovation'
+				}
+			]
+		},
+		{
+			name: 'Text',
+			key: 'appliances',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'List included appliances'
+				},
+				{
+					name: 'Label',
+					value: 'Appliances'
+				}
+			]
+		},
+		{
+			name: 'Text',
+			key: 'utilities',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'List available utilities'
+				},
+				{
+					name: 'Label',
+					value: 'Utilities'
+				}
+			]
+		},
+		{
+			name: 'Text',
+			key: 'nearby',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'List nearby infrastructure (shops, schools, transport)'
+				},
+				{
+					name: 'Label',
+					value: 'Nearby'
 				}
 			]
 		},
@@ -87,13 +189,18 @@ export const propertyFormComponents = {
 				}
 			]
 		},
+
 		{
 			name: 'Select',
 			key: 'status',
 			fields: [
 				{
+					name: 'Placeholder',
+					value: 'Choose status'
+				},
+				{
 					name: 'Label',
-					value: 'Статус'
+					value: 'Status'
 				},
 				{
 					name: 'Items',
@@ -102,12 +209,12 @@ export const propertyFormComponents = {
 			]
 		},
 		{
-			name: 'Gallery',
-			key: 'photos',
+			name: 'Photo',
+			key: 'photo',
 			fields: [
 				{
 					name: 'Label',
-					value: 'Gallery'
+					value: 'Photo'
 				}
 			]
 		}

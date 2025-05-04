@@ -6,7 +6,7 @@ import { propertyFormComponents } from 'src/app/modules/property/formcomponents/
 import { Property } from 'src/app/modules/property/interfaces/property.interface';
 import { PropertyService } from 'src/app/modules/property/services/property.service';
 import { AlertService, CoreService } from 'wacom';
-
+import { environment } from 'src/environments/environment.prod';
 @Component({
 	selector: 'app-myproperty',
 	standalone: false,
@@ -16,6 +16,9 @@ import { AlertService, CoreService } from 'wacom';
 })
 export class MypropertyComponent {
 	@Input() property: Property;
+
+	apiUrl = environment.url;
+
 	form: FormInterface = this._form.getForm(
 		'property',
 		propertyFormComponents
@@ -30,13 +33,12 @@ export class MypropertyComponent {
 		private _alert: AlertService,
 		private _translate: TranslateService
 	) {}
-	update(): void {
+	update(prop: Property): void {
 		this._form
-			.modal<Property>(this.form, [], this.property)
+			.modal<Property>(this.form, [], prop)
 			.then((updated: Property) => {
-				this._core.copy(updated, this.property);
-
-				this._propertyService.update(this.property);
+				this._core.copy(updated, prop);
+				this._propertyService.update(prop).subscribe();
 			});
 	}
 

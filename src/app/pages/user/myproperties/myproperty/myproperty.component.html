@@ -1,5 +1,8 @@
 <div class="documents-sidebar__img property__img">
-  <img src="assets/default.png" alt="">
+  <img [src]="apiUrl + property.thumb" height="60px" alt="Property photo" />
+</div>
+<div *ngIf="property.thumb" class="main-thumb">
+  <img [src]="property.thumb" alt="Main photo" />
 </div>
 
 <a routerLink="/myproperty/{{property._id}}" class="property__name">
@@ -26,7 +29,8 @@
     </a>
   </div>
   <div class="property-links__wrap">
-    <span class="material-icons" (click)="update()">edit</span>
+    <span class="material-icons" (click)="update(property)">edit</span>
+
   </div>
   <div class="property-links__wrap">
     <span class="material-icons" (click)="delete()">delete</span>
