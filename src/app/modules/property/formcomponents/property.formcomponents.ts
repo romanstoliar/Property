@@ -88,6 +88,20 @@ export const propertyFormComponents = {
 			]
 		},
 		{
+			name: 'Select',
+			key: 'status',
+			fields: [
+				{
+					name: 'Label',
+					value: 'Статус'
+				},
+				{
+					name: 'Options',
+					value: 'active,rent,sale,archived'
+				}
+			]
+		},
+		{
 			name: 'Photo',
 			key: 'thumb',
 			fields: [

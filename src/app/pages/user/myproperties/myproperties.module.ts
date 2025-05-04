@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { CoreModule } from 'src/app/core/core.module';
 import { MypropertiesComponent } from './myproperties.component';
-import { Routes, RouterModule } from '@angular/router';
 import { MypropertyComponent } from './myproperty/myproperty.component';
 
 const routes: Routes = [
@@ -10,13 +12,13 @@ const routes: Routes = [
 		component: MypropertiesComponent
 	},
 	{
-		path: ':properties/',
+		path: ':properties',
 		component: MypropertiesComponent
 	}
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(routes), CoreModule],
+	imports: [RouterModule.forChild(routes), CoreModule, FormsModule],
 	declarations: [MypropertiesComponent, MypropertyComponent]
 })
 export class MypropertiesModule {}

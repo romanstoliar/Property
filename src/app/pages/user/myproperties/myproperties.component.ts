@@ -14,6 +14,9 @@ export class MypropertiesComponent {
 	isMenuOpen = false;
 	properties: Property[] = [];
 
+	searchTerm = '';
+	filterStatus = '';
+
 	constructor(
 		private _propertyService: PropertyService,
 		private _form: FormService
@@ -29,19 +32,16 @@ export class MypropertiesComponent {
 		});
 	}
 
-	/** Форма для створення нової властивості */
 	form: FormInterface = this._form.getForm(
 		'myproperty',
 		propertyFormComponents
 	);
 
-	/** Метод створення нової властивості */
 	create(): void {
 		this._form.modal<Property>(this.form, {
 			label: 'Create',
 			click: async (created: unknown, close: () => void) => {
 				close();
-
 				this._preCreate(created as Property);
 
 				this._propertyService
@@ -53,8 +53,22 @@ export class MypropertiesComponent {
 		});
 	}
 
-	/** Попередня обробка перед створенням */
 	private _preCreate(property: Property): void {
-		delete property.__created; // Видаляємо системне поле, якщо воно є
+		delete property.__created;
+	}
+
+	filteredProperties(): Property[] {
+		const search = this.searchTerm?.toLowerCase().trim() || '';
+
+		return this.properties.filter((p) => {
+			const matchSearch =
+				p.name?.toLowerCase().includes(search) ||
+				p.address?.toLowerCase().includes(search);
+
+			const matchStatus =
+				!this.filterStatus || p.status === this.filterStatus;
+
+			return matchSearch && matchStatus;
+		});
 	}
 }

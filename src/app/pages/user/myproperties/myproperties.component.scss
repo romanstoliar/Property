@@ -1,0 +1,16 @@
+.documents-sidebar__search,
+.documents-sidebar__filter,
+.documents-sidebar__create {
+  margin-bottom: 1rem;
+
+  input,
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: #fff;
+    color: #111;
+  }
+}

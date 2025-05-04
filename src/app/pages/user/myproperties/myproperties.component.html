@@ -1,33 +1,60 @@
-<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
     <div class="documents-container">
-        <div class="documents-list">
-            <div class="burger-wrap" class="burger-wrap"  (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-                <div class="burger" [class.burger--close]="isMenuOpen"></div>
-            </div> 
-            <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
-                <div class="documents-sidebar-content">
-                    <div class="documents-sidebar__img">
-                        <img src="assets/default.png" alt="">
-                    </div>
-                    <div class="documents-sidebar__title">
-                        Title of sidebar...
-                    </div>
-                    <div class="documents-sidebar__description">
-						<wbutton (click)="create()">Create</wbutton>
-					</div>
-                </div>
-            </div>
-            <div class = "documents-main">
-                <div class = "documents-main-content">
-                    <div
-                        *ngFor="let property of properties" 
-                        class="documents-main-row"
-                    >
-                    <app-myproperty [property]="property" (load)="load()"></app-myproperty>
-                </div>
-            </div>
-            
+      <div class="documents-list">
+  
+        <!-- Бургер -->
+        <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+          <div class="burger" [class.burger--close]="isMenuOpen"></div>
         </div>
+  
+        <!-- Сайдбар -->
+        <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+          <div class="documents-sidebar-content">
+            <div class="documents-sidebar__img">
+              <img src="assets/default.png" alt="">
+            </div>
+  
+            <div class="documents-sidebar__title">
+              My properties
+            </div>
+  
+            <!-- Пошук -->
+            <div class="documents-sidebar__search">
+              <input
+                type="text"
+                placeholder="🔍 Search"
+                [(ngModel)]="searchTerm"
+              />
+            </div>
+  
+            <!-- Фільтр -->
+            <div class="documents-sidebar__filter">
+              <select [(ngModel)]="filterStatus">
+                <option value="">All status</option>
+                <option value="active">Active</option>
+                <option value="rent">В Rent/option>
+                <option value="sale">On sale</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+  
+            <!-- Створення -->
+            <div class="documents-sidebar__create">
+              <wbutton (click)="create()">➕ Add</wbutton>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Основна частина -->
+        <div class="documents-main">
+          <div class="documents-main-content">
+            <div *ngFor="let property of filteredProperties()" class="documents-main-row">
+              <app-myproperty [property]="property" (load)="load()"></app-myproperty>
+            </div>
+          </div>
+        </div>
+  
+      </div>
     </div>
   </div>
   
