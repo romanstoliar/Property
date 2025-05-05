@@ -49,6 +49,19 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'workerprofile',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Workerprofile'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./pages/user/workerprofile/workerprofile.module'
+					).then((m) => m.WorkerprofileModule)
+			},
+			{
 				path: 'propertyhistory',
 				canActivate: [MetaGuard],
 				data: {

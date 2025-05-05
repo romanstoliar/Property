@@ -208,7 +208,6 @@ export class PropertiesComponent {
 							}
 						}
 					}
-
 					this.setRows();
 				});
 		};

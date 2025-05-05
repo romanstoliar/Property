@@ -4,7 +4,8 @@ import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interfa
 import { propertyFormComponents } from 'src/app/modules/property/formcomponents/property.formcomponents';
 import { Property } from 'src/app/modules/property/interfaces/property.interface';
 import { PropertyService } from 'src/app/modules/property/services/property.service';
-
+import { environment } from 'src/environments/environment.prod';
+import { CoreService } from 'wacom';
 @Component({
 	templateUrl: './myproperties.component.html',
 	styleUrls: ['./myproperties.component.scss'],
@@ -16,6 +17,7 @@ export class MypropertiesComponent {
 
 	searchTerm = '';
 	filterStatus = '';
+	apiUrl = environment.url;
 
 	constructor(
 		private _propertyService: PropertyService,

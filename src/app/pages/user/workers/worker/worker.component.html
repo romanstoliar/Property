@@ -1,51 +1,17 @@
-<div class="worker-card">
-	<a>
-		<div class="documents__fullname">full name</div>
-		<div class="documents__position">position</div>
-		<div class="documents__fullname">experience</div>
-		<div class="documents__fullname">task</div>
-		<div class="documents__fullname">contakts</div>
-		<div class="documents__status">
-			<link
-				href="https://fonts.googleapis.com/icon?family=Material+Icons"
-				rel="stylesheet"
-			/>
+<div *ngIf="worker" class="worker-card">
+	<div class="documents-sidebar__img property__img">
+		<a class="documents" [routerLink]="['/workerprofile', worker._id]">
+		</a>
+	</div>
 
-			<span class="material-icons" style="color: rgb(13, 200, 13)"
-				>circle</span
-			>
-			<span class="material-icons" style="color: rgb(255, 0, 0)"
-				>circle</span
-			>
-			status
-		</div>
+	<a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
+		<div class="documents__title">{{ worker.name }}</div>
 	</a>
 
-	<a routerLink="//{{provider._id}}" class="nav__burger-link">
-		<span class="material-icons">task</span>
-	</a>
-</div>
-
-<div class="worker-card">
-	<a>
-		<div class="documents__fullname">full name</div>
-		<div class="documents__position">position</div>
-		<div class="documents__fullname">experience</div>
-		<div class="documents__fullname">task</div>
-		<div class="documents__fullname">contakts</div>
-		<div class="documents__status">
-			<link
-				href="https://fonts.googleapis.com/icon?family=Material+Icons"
-				rel="stylesheet"
-			/>
-
-			<span class="material-icons" style="color: rgb(13, 200, 13)"
-				>circle</span
-			>
-			<span class="material-icons" style="color: rgb(255, 0, 0)"
-				>circle</span
-			>
-			status
-		</div>
-	</a>
-</div>
+	<div class="worker-details">
+		<div class="worker-detail"><strong>Name:</strong> {{ worker.name }}</div>
+		<div class="worker-detail"><strong>Position:</strong> {{ worker.position }}</div>
+		<div class="worker-detail"><strong>Experience:</strong> {{ worker.experience }} years</div>
+		<div class="worker-detail"><strong>Task:</strong> {{ worker.task }}</div>
+		<div class="worker-detail"><strong>Status:</strong> {{ worker.status }}</div>
+	</div>

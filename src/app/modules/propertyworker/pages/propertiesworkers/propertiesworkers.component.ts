@@ -15,7 +15,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 	standalone: false
 })
 export class PropertiesworkersComponent {
-	columns = ['name', 'description'];
+	columns = [
+		'name',
+		'description',
+		'experience',
+		'task',
+		'status',
+		'worker?'
+	];
 
 	form: FormInterface = this._form.getForm(
 		'propertyworker',
@@ -29,34 +36,37 @@ export class PropertiesworkersComponent {
 			this._propertyworkerService
 		),
 		allDocs: false,
-		create: this._router.url.includes('propertiesworkers/')
-			? (): void => {
-					this._form.modal<Propertyworker>(this.form, {
-						label: 'Create',
-						click: async (created: unknown, close: () => void) => {
-							close();
+		create: (): void => {
+			this._form.modal<Propertyworker>(this.form, {
+				label: 'Create',
+				click: async (created: unknown, close: () => void) => {
+					close();
 
-							this._preCreate(created as Propertyworker);
+					this._preCreate(created as Propertyworker);
 
-							await firstValueFrom(
-								this._propertyworkerService.create(
-									created as Propertyworker
-								)
-							);
+					await firstValueFrom(
+						this._propertyworkerService.create(
+							created as Propertyworker
+						)
+					);
 
-							this.setRows();
-						}
-					});
-			  }
-			: null,
+					this.setRows();
+				}
+			});
+		},
 		update: (doc: Propertyworker): void => {
-			this._form
-				.modal<Propertyworker>(this.form, [], doc)
-				.then((updated: Propertyworker) => {
-					this._core.copy(updated, doc);
+			this._form.modal<Propertyworker>(this.form, {
+				label: 'Update',
+				click: async (updated: unknown, close: () => void) => {
+					close();
 
-					this._propertyworkerService.update(doc);
-				});
+					this._core.copy(updated as Propertyworker, doc);
+
+					await firstValueFrom(
+						this._propertyworkerService.update(doc)
+					);
+				}
+			});
 		},
 		delete: (doc: Propertyworker): void => {
 			this._alert.question({
@@ -108,7 +118,7 @@ export class PropertiesworkersComponent {
 
 	rows: Propertyworker[] = [];
 
-	provider_id = '';
+	//worker_id = '';
 
 	constructor(
 		private _translate: TranslateService,
@@ -121,10 +131,10 @@ export class PropertiesworkersComponent {
 	) {
 		this.setRows();
 
-		this._route.paramMap.subscribe((params) => {
-			this.provider_id = params.get('provider_id') || '';
-			console.log(this.provider_id);
-		});
+		/*this._route.paramMap.subscribe((params) => {
+			this.worker_id = params.get('worker_id') || '';
+			console.log(this.worker_id);
+		});*/
 	}
 
 	setRows(page = this._page): void {
@@ -133,13 +143,11 @@ export class PropertiesworkersComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._propertyworkerService
-					.get({ page, query: this._query() })
-					.subscribe((rows) => {
-						this.rows.splice(0, this.rows.length);
+				this._propertyworkerService.get({ page }).subscribe((rows) => {
+					this.rows.splice(0, this.rows.length);
 
-						this.rows.push(...rows);
-					});
+					this.rows.push(...rows);
+				});
 			},
 			250
 		);
@@ -215,17 +223,13 @@ export class PropertiesworkersComponent {
 	}
 
 	private _preCreate(propertyworker: Propertyworker): void {
-		propertyworker.__created = false;
-
-		if (this.provider_id) {
-			propertyworker.provider = this.provider_id;
-		}
+		delete propertyworker.__created;
 	}
-	private _query(): string {
+	/*private _query(): string {
 		let query = '';
-		if (this.provider_id) {
-			query += (query ? '&' : '') + 'property=' + this.provider_id;
+		if (this.worker_id) {
+			query += (query ? '&' : '') + 'worker=' + this.worker_id;
 		}
 		return query;
-	}
+	}*/
 }

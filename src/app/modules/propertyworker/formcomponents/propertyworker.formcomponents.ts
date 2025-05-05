@@ -4,7 +4,7 @@ export const propertyworkerFormComponents = {
 	components: [
 		{
 			name: 'Text',
-			key: 'fullname',
+			key: 'name',
 			focused: true,
 			fields: [
 				{
@@ -13,7 +13,7 @@ export const propertyworkerFormComponents = {
 				},
 				{
 					name: 'Label',
-					value: 'Full Name'
+					value: 'Name'
 				}
 			]
 		},

@@ -1,9 +1,11 @@
 <div class="documents-sidebar__img property__img">
-  <img [src]="apiUrl + property.thumb" height="60px" alt="Property photo" />
-</div>
-<div *ngIf="property.thumb" class="main-thumb">
-  <img [src]="property.thumb" alt="Main photo" />
-</div>
+  <a class="documents" routerLink="/myproperty/{{property._id}}">
+		<img
+			class="documents__img"
+			[src]="apiUrl + property.thumb"
+			alt="Property photo"
+		/>
+	</a>
 
 <a routerLink="/myproperty/{{property._id}}" class="property__name">
     <div class="documents__title">{{property.name}}</div>

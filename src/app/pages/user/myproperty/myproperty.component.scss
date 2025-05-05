@@ -1,6 +1,6 @@
 .property-details {
 	padding: 1.5rem;
-	background: #fff;
+	background: var(--c-bg); // 🔄 заміна білого фону
 	border-radius: 12px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 	max-width: 800px;
@@ -15,14 +15,14 @@
 			max-width: 400px;
 			height: auto;
 			border-radius: 8px;
-			border: 1px solid #ddd;
+			border: 1px solid var(--c-border); // 🔄 заміна #ddd
 			object-fit: cover;
 		}
 	}
 
 	.property__name h2 {
 		font-size: 26px;
-		color: #2563eb;
+		color: var(--c-title); // 🔄 заміна #2563eb
 		margin-bottom: 0.5rem;
 		text-align: center;
 	}
@@ -31,14 +31,16 @@
 		font-size: 1rem;
 		margin-bottom: 1rem;
 		text-align: center;
-		color: #4b5563;
+		color: var(--c-text-secondary); // 🔄 заміна #4b5563
 	}
 
 	.property__row {
 		margin: 0.5rem 0;
 		font-size: 1rem;
+		color: var(--c-text-primary); // додано, щоб рядки не були темні
+
 		strong {
-			color: #374151;
+			color: var(--c-text-primary); // 🔄 заміна #374151
 			margin-right: 8px;
 		}
 	}

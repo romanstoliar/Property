@@ -210,11 +210,11 @@ export const propertyFormComponents = {
 		},
 		{
 			name: 'Photo',
-			key: 'photo',
+			key: 'thumb',
 			fields: [
 				{
-					name: 'Label',
-					value: 'Photo'
+					name: 'Photo',
+					value: 'Upload a property photo'
 				}
 			]
 		}

@@ -20,19 +20,17 @@ export class WorkersComponent {
 	) {}
 
 	ngOnInit(): void {
-		this.loadWorkers();
+		this.load();
 	}
 
 	/** Метод завантаження списку працівників */
-	private loadWorkers(): void {
+
+	load(): void {
 		this._propertyworkerService
 			.get()
 			.subscribe((data: Propertyworker[]) => {
 				this.workers = data;
 			});
-	}
-	load(): void {
-		this.loadWorkers();
 	}
 
 	/** Форма для створення нового працівника */
@@ -53,7 +51,7 @@ export class WorkersComponent {
 				this._propertyworkerService
 					.create(created as Propertyworker)
 					.subscribe(() => {
-						this.loadWorkers();
+						this.load();
 					});
 			}
 		});

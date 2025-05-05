@@ -7,10 +7,6 @@ const routes: Routes = [
 	{
 		path: '',
 		component: PropertiesworkersComponent
-	},
-	{
-		path: ':provider_id',
-		component: PropertiesworkersComponent
 	}
 ];
 

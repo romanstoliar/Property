@@ -21,10 +21,8 @@
             <div class = "documents-main">
                 <div class = "documents-main-content">
                     <div
-                        *ngFor="let provider of workers" 
-                        class="documents-main-row"
-                    >
-                        <app-worker [provider]="provider" 
+                        *ngFor="let worker of workers" class="documents-main-row">
+                        <app-worker [worker]="worker" 
                         (load)="load()"></app-worker>
                 </div>
             </div>
