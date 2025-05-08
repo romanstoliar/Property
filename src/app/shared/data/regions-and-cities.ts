@@ -1,0 +1,30 @@
+export const REGIONS_AND_CITIES: { [region: string]: string[] } = {
+	'Cherkasy Oblast': ['Cherkasy', 'Uman', 'Smila'],
+	'Chernihiv Oblast': ['Chernihiv', 'Nizhyn', 'Pryluky'],
+	'Chernivtsi Oblast': ['Chernivtsi', 'Storozhynets', 'Khotyn'],
+	'Dnipropetrovsk Oblast': ['Dnipro', 'Kryvyi Rih', 'Pavlohrad'],
+	'Donetsk Oblast': ['Donetsk', 'Mariupol', 'Kramatorsk'],
+	'Ivano-Frankivsk Oblast': ['Ivano-Frankivsk', 'Kalush', 'Kolomyia'],
+	'Kharkiv Oblast': ['Kharkiv', 'Lozova', 'Chuhuiv'],
+	'Kherson Oblast': ['Kherson', 'Nova Kakhovka', 'Skadovsk'],
+	'Khmelnytskyi Oblast': [
+		'Khmelnytskyi',
+		'Kamianets-Podilskyi',
+		'Shepetivka'
+	],
+	'Kirovohrad Oblast': ['Kropyvnytskyi', 'Oleksandriia', 'Znamianka'],
+	'Kyiv Oblast': ['Kyiv', 'Bila Tserkva', 'Boryspil'],
+	'Luhansk Oblast': ['Luhansk', 'Sievierodonetsk', 'Alchevsk'],
+	'Lviv Oblast': ['Lviv', 'Drohobych', 'Chervonohrad'],
+	'Mykolaiv Oblast': ['Mykolaiv', 'Voznesensk', 'Pervomaisk'],
+	'Odesa Oblast': ['Odesa', 'Izmail', 'Bilhorod-Dnistrovskyi'],
+	'Poltava Oblast': ['Poltava', 'Kremenchuk', 'Lubny'],
+	'Rivne Oblast': ['Rivne', 'Dubno', 'Kostopil'],
+	'Sumy Oblast': ['Sumy', 'Konotop', 'Shostka'],
+	'Ternopil Oblast': ['Ternopil', 'Chortkiv', 'Kremenets'],
+	'Vinnytsia Oblast': ['Vinnytsia', 'Zhmerynka', 'Mohyliv-Podilskyi'],
+	'Volyn Oblast': ['Lutsk', 'Kovel', 'Volodymyr'],
+	'Zakarpattia Oblast': ['Uzhhorod', 'Mukachevo', 'Berehove'],
+	'Zaporizhzhia Oblast': ['Zaporizhzhia', 'Melitopol', 'Berdyansk'],
+	'Zhytomyr Oblast': ['Zhytomyr', 'Berdychiv', 'Korosten']
+};
