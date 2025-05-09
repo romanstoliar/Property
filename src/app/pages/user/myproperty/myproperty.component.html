@@ -1,99 +1,138 @@
 <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
 	<div class="documents-container">
 	  <div class="documents-list">
-  
-		<!-- Бургер -->
-		<div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-		  <div class="burger" [class.burger--close]="isMenuOpen"></div>
-		</div>
-  
 		<!-- Sidebar -->
 		<div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
-		  <div class="documents-sidebar__close" (click)="isMenuOpen = false">
-		  </div>
 		  <div class="documents-sidebar-content">
 			<div class="documents-sidebar__img">
-			    <img src="assets/default.png" alt="Property Image" />
+			  <img src="assets/default.png" alt="Photo" />
 			</div>
-			<div class="documents-sidebar__title">
-			  {{ property.name }}
-			</div>
+			<div class="documents-sidebar__title">{{ property.name }}</div>
 			<div class="documents-sidebar__description">
-			  <wbutton (click)="update(property)">Edit</wbutton>
-			  <wbutton (click)="delete(property)">Delete</wbutton>
+			  <wbutton (click)="update(property)">
+				<span class="material-icons">edit</span> Edit
+			  </wbutton>
+			  <wbutton (click)="delete(property)">
+				<span class="material-icons">delete</span> Delete
+			  </wbutton>
 			</div>
 		  </div>
 		</div>
   
 		<!-- Main content -->
 		<div class="documents-main">
-		  <div class="documents-main-content">
-			<div class="property-block">
-  
-			  <!-- Назва + опис -->
-			  <div class="prop-section">
-				<div class="prop-section__title">General Information</div>
-				<div class="prop-section__content">
-				  <div class="property__description">
-					<h3>{{ property.name }}</h3>
-					<p>{{ property.description }}</p>
-				  </div>
-				</div>
+		  <div class="property-details">
+			<!-- Основна інформація -->
+			<div
+			  class="property-section"
+			  *ngIf="property.description || property.status || property.price"
+			>
+			  <h3><span class="material-icons">info</span> General</h3>
+			  <div *ngIf="property.description" class="property__row">
+				<strong>Description:</strong> {{ property.description }}
 			  </div>
-  
-			  <!-- Розташування -->
-			  <div class="prop-section">
-				<div class="prop-section__title">Location</div>
-				<div class="prop-section__content">
-				  <div class="property__row"><strong>Region:</strong> {{ property.region }}</div>
-				  <div class="property__row"><strong>City:</strong> {{ property.city }}</div>
-				  <div class="property__row"><strong>Address:</strong> {{ property.address }}</div>
-				</div>
+			  <div *ngIf="property.status" class="property__row">
+				<strong>Status:</strong> {{ property.status }}
 			  </div>
-  
-			  <!-- Тип -->
-			  <div class="prop-section">
-				<div class="prop-section__title">Type</div>
-				<div class="prop-section__content">
-				  <div class="property__row"><strong>Property Type:</strong> {{ property.type }}</div>
-				  <div class="property__row"><strong>Building Type:</strong> {{ property.buildingtype }}</div>
-				</div>
+			  <div *ngIf="property.price" class="property__row">
+				<strong>Price:</strong> {{ property.price }} $
 			  </div>
-  
-			  <!-- Характеристики -->
-			  <div class="prop-section">
-				<div class="prop-section__title">Characteristics</div>
-				<div class="prop-section__content">
-				  <div class="property__row"><strong>Area:</strong> {{ property.area }} m²</div>
-				  <div class="property__row"><strong>Rooms:</strong> {{ property.rooms }}</div>
-				  <div class="property__row"><strong>Floor:</strong> {{ property.floor }}</div>
-				</div>
-			  </div>
-  
-			  <!-- Додатково -->
-			  <div class="prop-section">
-				<div class="prop-section__title">Details</div>
-				<div class="prop-section__content">
-				  <div class="property__row"><strong>Renovation:</strong> {{ property.renovation }}</div>
-				  <div class="property__row"><strong>Appliances:</strong> {{ property.appliances }}</div>
-				  <div class="property__row"><strong>Utilities:</strong> {{ property.utilities }}</div>
-				  <div class="property__row"><strong>Nearby:</strong> {{ property.nearby }}</div>
-				</div>
-			  </div>
-  
-			  <!-- Статус і ціна -->
-			  <div class="prop-section">
-				<div class="prop-section__title">Status & Price</div>
-				<div class="prop-section__content">
-				  <div class="property__row"><strong>Status:</strong> {{ property.status }}</div>
-				  <div class="property__row"><strong>Price:</strong> {{ property.price }} $</div>
-				</div>
-			  </div>
-  
 			</div>
-		  </div>
-		</div>
   
+			<!-- Локація -->
+			<div
+			  class="property-section"
+			  *ngIf="property.region || property.city || property.address"
+			>
+			  <h3><span class="material-icons">location_on</span> Location</h3>
+			  <div *ngIf="property.region" class="property__row">
+				<strong>Region:</strong> {{ property.region }}
+			  </div>
+			  <div *ngIf="property.city" class="property__row">
+				<strong>City:</strong> {{ property.city }}
+			  </div>
+			  <div *ngIf="property.address" class="property__row">
+				<strong>Address:</strong> {{ property.address }}
+			  </div>
+			</div>
+  
+			<!-- Тип -->
+			<div
+			  class="property-section"
+			  *ngIf="property.type || property.buildingtype"
+			>
+			  <h3><span class="material-icons">home</span> Type</h3>
+			  <div *ngIf="property.type" class="property__row">
+				<strong>Type:</strong> {{ property.type }}
+			  </div>
+			  <div *ngIf="property.buildingtype" class="property__row">
+				<strong>Building type:</strong> {{ property.buildingtype }}
+			  </div>
+			</div>
+  
+			<!-- Характеристики -->
+			<div
+			  class="property-section"
+			  *ngIf="property.area || property.rooms || property.floor"
+			>
+			  <h3><span class="material-icons">domain</span> Specs</h3>
+			  <div *ngIf="property.area" class="property__row">
+				<strong>Area:</strong> {{ property.area }} m²
+			  </div>
+			  <div *ngIf="property.rooms" class="property__row">
+				<strong>Rooms:</strong> {{ property.rooms }}
+			  </div>
+			  <div *ngIf="property.floor" class="property__row">
+				<strong>Floor:</strong> {{ property.floor }}
+			  </div>
+			</div>
+  
+			<!-- Додатково -->
+			<div
+			  class="property-section"
+			  *ngIf="property.renovation || property.appliances || property.utilities || property.nearby"
+			>
+			  <h3><span class="material-icons">construction</span> Other</h3>
+			  <div *ngIf="property.renovation" class="property__row">
+				<strong>Renovation:</strong> {{ property.renovation }}
+			  </div>
+			  <div *ngIf="property.appliances" class="property__row">
+				<strong>Appliances:</strong> {{ property.appliances }}
+			  </div>
+			  <div *ngIf="property.utilities" class="property__row">
+				<strong>Utilities:</strong> {{ property.utilities }}
+			  </div>
+			  <div *ngIf="property.nearby" class="property__row">
+				<strong>Nearby:</strong> {{ property.nearby }}
+			  </div>
+			</div>
+		</div>
+			<div class="property-details">
+			<!-- 🆕 Records -->
+			<div class="property-section">
+			  <h3><span class="material-icons">history</span> Records</h3>
+			  <div *ngIf="records.length > 0; else noRecords">
+				<div
+				  *ngFor="let record of records.slice(0, 3)"
+				  class="record-preview"
+				  (click)="goToRecord(record._id)"
+				>
+				  <div class="record-preview__title">{{ record.name }}</div>
+				  <div class="record-preview__date">
+					{{ record._id | mongodate | date: 'd MMMM y, HH:mm' }}
+				  </div>
+				  <div class="record-preview__desc">{{ record.description }}</div>
+				</div>
+				<a class="see-all" [routerLink]="['/propertieshistories', property._id]">
+				  <span class="material-icons">chevron_right</span> See full history
+				</a>
+			  </div>
+			  <ng-template #noRecords>
+				<p class="no-records">No records available.</p>
+			  </ng-template>
+			</div>
+		</div>
+		</div>
 	  </div>
 	</div>
   </div>

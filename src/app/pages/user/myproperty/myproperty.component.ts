@@ -6,6 +6,8 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { propertyFormComponents } from 'src/app/modules/property/formcomponents/property.formcomponents';
 import { Property } from 'src/app/modules/property/interfaces/property.interface';
 import { PropertyService } from 'src/app/modules/property/services/property.service';
+import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
+import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { CoreService, AlertService } from 'wacom';
 
 @Component({
@@ -17,9 +19,11 @@ export class MypropertyComponent {
 	property = this._propertyService.doc(
 		this._router.url.replace('/myproperty/', '')
 	);
+	records: Propertyrecord[] = [];
 
 	constructor(
 		private _propertyService: PropertyService,
+		private _recordService: PropertyrecordService,
 		private _router: Router,
 		private _form: FormService,
 		private _core: CoreService,
@@ -33,6 +37,23 @@ export class MypropertyComponent {
 		'property',
 		propertyFormComponents
 	);
+
+	ngOnInit(): void {
+		this.loadRecords();
+	}
+
+	loadRecords(): void {
+		this._recordService
+			.get({ query: `property_id=${this.property._id}` })
+			.subscribe((data: Propertyrecord[]) => {
+				this.records = data;
+			});
+	}
+
+	goToRecord(id: string): void {
+		this._router.navigate(['/propertyhistory', id]);
+	}
+
 	savePhotos(): void {
 		this._propertyService.update(this.property).subscribe();
 	}
@@ -44,12 +65,10 @@ export class MypropertyComponent {
 				label: 'Update',
 				click: async (updated: unknown, close: () => void) => {
 					close();
-
 					this._core.copy(updated as Property, prop);
-
 					this._propertyService.update(prop).subscribe({
 						next: (res: Property) => {
-							this.property = { ...res }; // 🔁 замінюємо об'єкт, щоб Angular помітив зміни
+							this.property = { ...res };
 							this._alert.success({
 								text: 'Property updated successfully'
 							});
@@ -71,9 +90,7 @@ export class MypropertyComponent {
 				'Common.Are you sure you want to delete this property?'
 			),
 			buttons: [
-				{
-					text: this._translate.translate('Common.No')
-				},
+				{ text: this._translate.translate('Common.No') },
 				{
 					text: this._translate.translate('Common.Yes'),
 					callback: (): void => {
