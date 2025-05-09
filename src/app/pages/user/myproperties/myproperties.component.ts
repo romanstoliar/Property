@@ -5,7 +5,7 @@ import { propertyFormComponents } from 'src/app/modules/property/formcomponents/
 import { Property } from 'src/app/modules/property/interfaces/property.interface';
 import { PropertyService } from 'src/app/modules/property/services/property.service';
 import { environment } from 'src/environments/environment.prod';
-import { CoreService } from 'wacom';
+
 @Component({
 	templateUrl: './myproperties.component.html',
 	styleUrls: ['./myproperties.component.scss'],
@@ -14,9 +14,10 @@ import { CoreService } from 'wacom';
 export class MypropertiesComponent {
 	isMenuOpen = false;
 	properties: Property[] = [];
-
 	searchTerm = '';
 	filterStatus = '';
+	selectedRegion: '';
+	selectedCity: '';
 	apiUrl = environment.url;
 
 	constructor(
@@ -45,7 +46,6 @@ export class MypropertiesComponent {
 			click: async (created: unknown, close: () => void) => {
 				close();
 				this._preCreate(created as Property);
-
 				this._propertyService
 					.create(created as Property)
 					.subscribe(() => {
@@ -61,16 +61,27 @@ export class MypropertiesComponent {
 
 	filteredProperties(): Property[] {
 		const search = this.searchTerm?.toLowerCase().trim() || '';
+		const region = this.selectedRegion?.toLowerCase().trim() || '';
+		const city = this.selectedCity?.toLowerCase().trim() || '';
+		const status = this.filterStatus?.toLowerCase().trim() || '';
 
 		return this.properties.filter((p) => {
 			const matchSearch =
-				p.name?.toLowerCase().includes(search) ||
-				p.address?.toLowerCase().includes(search);
+				!search ||
+				(p.name && p.name.toLowerCase().includes(search)) ||
+				(p.address && p.address.toLowerCase().includes(search));
+
+			const matchRegion =
+				!region ||
+				(p.region && p.region.toLowerCase().includes(region));
+
+			const matchCity =
+				!city || (p.city && p.city.toLowerCase().includes(city));
 
 			const matchStatus =
-				!this.filterStatus || p.status === this.filterStatus;
+				!status || (p.status && p.status.toLowerCase() === status);
 
-			return matchSearch && matchStatus;
+			return matchSearch && matchRegion && matchCity && matchStatus;
 		});
 	}
 }

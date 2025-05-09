@@ -1,6 +1,7 @@
 <div *ngIf="worker" class="worker-card">
 	<div class="documents-sidebar__img property__img">
 		<a class="documents" [routerLink]="['/workerprofile', worker._id]">
+			<!-- <img [src]="worker.photo || 'assets/default.png'" alt="Worker photo" />-->
 		</a>
 	</div>
 
@@ -9,9 +10,34 @@
 	</a>
 
 	<div class="worker-details">
-		<div class="worker-detail"><strong>Name:</strong> {{ worker.name }}</div>
-		<div class="worker-detail"><strong>Position:</strong> {{ worker.position }}</div>
-		<div class="worker-detail"><strong>Experience:</strong> {{ worker.experience }} years</div>
-		<div class="worker-detail"><strong>Task:</strong> {{ worker.task }}</div>
-		<div class="worker-detail"><strong>Status:</strong> {{ worker.status }}</div>
+
+		<div class="worker-detail">
+			<span class="material-icons">location_on</span>
+			<strong>Region:</strong> {{ worker.region }}
+		</div>
+
+		<div class="worker-detail">
+			<span class="material-icons">location_city</span>
+			<strong>City:</strong> {{ worker.city }}
+		</div>
+
+		<div class="worker-detail">
+			<span class="material-symbols-outlined">engineering</span>
+			<strong>Position:</strong> {{ worker.position }}
+		</div>
+
+		<div class="worker-detail">
+			<span class="material-icons">calendar_month</span>
+			<strong>Experience:</strong> {{ worker.experience }} years
+		</div>
+
+		<div class="worker-detail">
+			<strong>Task:</strong> {{ worker.task }}
+		</div>
+
+		<div class="worker-detail">
+			<strong>Status:</strong> {{ worker.status }}
+		</div>
+
 	</div>
+</div>

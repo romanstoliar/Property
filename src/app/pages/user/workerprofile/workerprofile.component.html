@@ -1,1 +1,48 @@
-<p>Page Workerprofile is connected</p>
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+	<div class="documents-container">
+		<div class="documents-list">
+			<div
+				class="burger-wrap"
+				(click)="isMenuOpen=!isMenuOpen"
+				[class.burger-wrap--open]="isMenuOpen"
+			>
+				<div class="burger" [class.burger--close]="isMenuOpen"></div>
+			</div>
+			<div
+				class="documents-sidebar"
+				[class.documents-sidebar--open]="isMenuOpen"
+			>
+				<div class="documents-sidebar-content">
+					<div class="documents-sidebar__img">
+						<img src="assets/default.png" alt="Worker Image" />
+					</div>
+					<div class="documents-sidebar__title">
+						{{worker.name}}
+					</div>
+					<div class="documents-sidebar__description">
+						<wbutton (click)="update(worker)">Edit</wbutton>  
+					 	<wbutton (click)="delete(worker)">Delete</wbutton>  
+					</div>
+				</div>
+			</div>
+			
+			<div class="documents-main">
+				<div class="documents-main-content">
+					<div class="worker__name">
+						<h2>{{ worker.name }}</h2>
+					</div>
+					<div class="worker__experience">
+						<p><strong>Experience: </strong>{{ worker.experience }}</p>
+					</div>
+				
+					<!-- Адреса та типи -->
+					<div class="property__row">
+						<strong>Status:</strong> {{ worker.status }}
+					</div>
+					<div class="property__row">
+						<strong>Type:</strong> 
+					</div>
+					<div class="property__row">
+						<strong>Building type:</strong> >
+					</div>
+</div>

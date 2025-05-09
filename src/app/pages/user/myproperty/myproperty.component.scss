@@ -1,57 +1,89 @@
-.property-details {
-	padding: 1.5rem;
-	background: var(--c-bg); // 🔄 заміна білого фону
+:root {
+	--c-bg-light: #f7f7f7;
+	--c-bg-dark: #1f1f1f;
+	--c-border-light: #e0e0e0;
+	--c-border-dark: #444;
+	--c-text-light: #1e1e1e;
+	--c-text-dark: #eee;
+  }
+  
+  body.light-theme {
+	--c-bg: var(--c-bg-light);
+	--c-border: var(--c-border-light);
+	--c-text: var(--c-text-light);
+  }
+  
+  body.dark-theme {
+	--c-bg: var(--c-bg-dark);
+	--c-border: var(--c-border-dark);
+	--c-text: var(--c-text-dark);
+  }
+  
+  .property-block {
+	background: var(--c-bg);
+	border: 1px solid var(--c-border);
 	border-radius: 12px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-	max-width: 800px;
-	margin: auto;
-
+	padding: 2rem;
+	margin-top: 2rem;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+	transition: background 0.3s ease, border 0.3s ease;
+  
 	.property__img {
-		text-align: center;
-		margin-bottom: 1.5rem;
-
-		img {
-			width: 100%;
-			max-width: 400px;
-			height: auto;
-			border-radius: 8px;
-			border: 1px solid var(--c-border); // 🔄 заміна #ddd
-			object-fit: cover;
-		}
+	  text-align: center;
+	  margin-bottom: 1.5rem;
+  
+	  img {
+		max-width: 400px;
+		width: 100%;
+		height: auto;
+		border-radius: 8px;
+		border: 1px solid var(--c-border);
+		object-fit: cover;
+	  }
 	}
-
-	.property__name h2 {
-		font-size: 26px;
-		color: var(--c-title); // 🔄 заміна #2563eb
+  
+	.prop-section {
+	  margin-bottom: 1.5rem;
+  
+	  &__title {
+		font-size: 1.2rem;
+		font-weight: 600;
 		margin-bottom: 0.5rem;
-		text-align: center;
+		color: var(--c-text);
+		border-bottom: 1px solid var(--c-border);
+		padding-bottom: 0.25rem;
+	  }
+  
+	  &__content {
+		padding-left: 1rem;
+	  }
 	}
-
+  
 	.property__description {
+	  color: var(--c-text);
+	  text-align: center;
+	  font-size: 1rem;
+  
+	  h3 {
+		font-size: 1.6rem;
+		margin-bottom: 0.5rem;
+	  }
+  
+	  p {
 		font-size: 1rem;
-		margin-bottom: 1rem;
-		text-align: center;
-		color: var(--c-text-secondary); // 🔄 заміна #4b5563
+		margin: 0;
+	  }
 	}
-
+  
 	.property__row {
-		margin: 0.5rem 0;
-		font-size: 1rem;
-		color: var(--c-text-primary); // додано, щоб рядки не були темні
-
-		strong {
-			color: var(--c-text-primary); // 🔄 заміна #374151
-			margin-right: 8px;
-		}
+	  color: var(--c-text);
+	  font-size: 1rem;
+	  margin: 0.4rem 0;
+  
+	  strong {
+		margin-right: 8px;
+		font-weight: 600;
+	  }
 	}
-}
-
-@media (max-width: 600px) {
-	.property-details {
-		padding: 1rem;
-	}
-
-	.property__name h2 {
-		font-size: 20px;
-	}
-}
+  }
+  

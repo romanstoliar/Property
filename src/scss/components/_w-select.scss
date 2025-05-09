@@ -37,9 +37,9 @@
 			left: 10px;
 			top: 50%;
 			transform: translateY(-50%);
-            path{
-                fill:var(--c-primary);
-            }
+			path {
+				fill: var(--c-primary);
+			}
 		}
 	}
 	&__text {
@@ -52,7 +52,7 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			word-break: keep-all;
-            color: var(--c-text-primary);
+			color: var(--c-text-primary);
 		}
 	}
 	&__arrow {
@@ -62,13 +62,13 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
-        svg{
-            width: 12px;
-            height: 12px;
-            path{
-                fill: var(--c-text-primary);
-            }
-        }
+		svg {
+			width: 12px;
+			height: 12px;
+			path {
+				fill: var(--c-text-primary);
+			}
+		}
 		&._active {
 			transform: rotate(180deg);
 		}

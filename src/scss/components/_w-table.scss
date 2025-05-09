@@ -2,12 +2,12 @@
 @use 'src/scss/utils/media' as media;
 @use 'src/scss/utils/vars' as vars;
 
-.user{
-	&__icons{
+.user {
+	&__icons {
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: right;
-		wbutton{
+		wbutton {
 			margin-left: 10px;
 			@media screen and (max-width: 599px) {
 				margin-left: 5px;
@@ -18,29 +18,30 @@
 .users__header {
 	padding: 10px;
 }
-.edit-header{
+.edit-header {
 	height: 45px;
 	@media screen and (max-width: 599px) {
 		height: 38px;
 	}
-	.edit, .playlist{
+	.edit,
+	.playlist {
 		width: 45px;
 		height: 45px;
 	}
 
 	@media screen and (max-width: 599px) {
-		.material-icons{
+		.material-icons {
 			font-size: 21px;
 		}
-		
-		width: 38px ;  
-		.playlist, .edit{
-			width: 38px ;
+
+		width: 38px;
+		.playlist,
+		.edit {
+			width: 38px;
 			height: 38px;
 			padding: 10px;
 		}
 	}
-
 }
 .wtable {
 	background: var(--c-bg-secondary);
@@ -83,14 +84,15 @@
 			background-color: var(--c-primary);
 			color: var(--c-white);
 			border: 1px solid var(--c-primary);
-			button{
+			button {
 				width: unset !important;
 				@media screen and (max-width: 599px) {
 					width: 38px !important;
 				}
 			}
 
-			.playlist, .edit{
+			.playlist,
+			.edit {
 				width: 45px;
 				min-width: 45px;
 			}

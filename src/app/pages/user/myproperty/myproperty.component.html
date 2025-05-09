@@ -1,83 +1,100 @@
-<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
 	<div class="documents-container">
-		<div class="documents-list">
-			<div
-				class="burger-wrap"
-				(click)="isMenuOpen=!isMenuOpen"
-				[class.burger-wrap--open]="isMenuOpen"
-			>
-				<div class="burger" [class.burger--close]="isMenuOpen"></div>
-			</div>
-			<div
-				class="documents-sidebar"
-				[class.documents-sidebar--open]="isMenuOpen"
-			>
-				<div class="documents-sidebar-content">
-					<div class="documents-sidebar__img">
-						<img src="assets/default.png" alt="Property Image" />
-					</div>
-					<div class="documents-sidebar__title">
-						{{property.name}}
-					</div>
-					<div class="documents-sidebar__description">
-						<wbutton (click)="update(property)">Edit</wbutton>  
-					 	<wbutton (click)="delete(property)">Delete</wbutton>  
-					</div>
-				</div>
-			</div>
-			
-			<div class="documents-main">
-				<div class="documents-main-content">
-					<div class="property__name">
-						<h2>{{ property.name }}</h2>
-					</div>
-					<div class="property__description">
-						<p>{{ property.description }}</p>
-					</div>
-				
-					<!-- Адреса та типи -->
-					<div class="property__row">
-						<strong>Address:</strong> {{ property.address }}
-					</div>
-					<div class="property__row">
-						<strong>Type:</strong> {{ property.type }}
-					</div>
-					<div class="property__row">
-						<strong>Building type:</strong> {{ property.buildingtype }}
-					</div>
-				
-					<!-- Характеристики -->
-					<div class="property__row">
-						<strong>Area:</strong> {{ property.area }} m²
-					</div>
-					<div class="property__row">
-						<strong>Rooms:</strong> {{ property.rooms }}
-					</div>
-					<div class="property__row">
-						<strong>Floor:</strong> {{ property.floor }}
-					</div>
-				
-					<!-- Інше -->
-					<div class="property__row">
-						<strong>Renovation:</strong> {{ property.renovation }}
-					</div>
-					<div class="property__row">
-						<strong>Appliances:</strong> {{ property.appliances }}
-					</div>
-					<div class="property__row">
-						<strong>Utilities:</strong> {{ property.utilities }}
-					</div>
-					<div class="property__row">
-						<strong>Nearby:</strong> {{ property.nearby }}
-					</div>
-					<div class="property__row">
-						<strong>Status:</strong> {{ property.status }}
-					</div>
-					<div class="property__row">
-						<strong>Price:</strong> {{ property.price }} $
-					</div>
-					</div>
-				</div>
-			</div>
+	  <div class="documents-list">
+  
+		<!-- Бургер -->
+		<div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+		  <div class="burger" [class.burger--close]="isMenuOpen"></div>
 		</div>
-</div>
+  
+		<!-- Sidebar -->
+		<div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+		  <div class="documents-sidebar__close" (click)="isMenuOpen = false">
+		  </div>
+		  <div class="documents-sidebar-content">
+			<div class="documents-sidebar__img">
+			    <img src="assets/default.png" alt="Property Image" />
+			</div>
+			<div class="documents-sidebar__title">
+			  {{ property.name }}
+			</div>
+			<div class="documents-sidebar__description">
+			  <wbutton (click)="update(property)">Edit</wbutton>
+			  <wbutton (click)="delete(property)">Delete</wbutton>
+			</div>
+		  </div>
+		</div>
+  
+		<!-- Main content -->
+		<div class="documents-main">
+		  <div class="documents-main-content">
+			<div class="property-block">
+  
+			  <!-- Назва + опис -->
+			  <div class="prop-section">
+				<div class="prop-section__title">General Information</div>
+				<div class="prop-section__content">
+				  <div class="property__description">
+					<h3>{{ property.name }}</h3>
+					<p>{{ property.description }}</p>
+				  </div>
+				</div>
+			  </div>
+  
+			  <!-- Розташування -->
+			  <div class="prop-section">
+				<div class="prop-section__title">Location</div>
+				<div class="prop-section__content">
+				  <div class="property__row"><strong>Region:</strong> {{ property.region }}</div>
+				  <div class="property__row"><strong>City:</strong> {{ property.city }}</div>
+				  <div class="property__row"><strong>Address:</strong> {{ property.address }}</div>
+				</div>
+			  </div>
+  
+			  <!-- Тип -->
+			  <div class="prop-section">
+				<div class="prop-section__title">Type</div>
+				<div class="prop-section__content">
+				  <div class="property__row"><strong>Property Type:</strong> {{ property.type }}</div>
+				  <div class="property__row"><strong>Building Type:</strong> {{ property.buildingtype }}</div>
+				</div>
+			  </div>
+  
+			  <!-- Характеристики -->
+			  <div class="prop-section">
+				<div class="prop-section__title">Characteristics</div>
+				<div class="prop-section__content">
+				  <div class="property__row"><strong>Area:</strong> {{ property.area }} m²</div>
+				  <div class="property__row"><strong>Rooms:</strong> {{ property.rooms }}</div>
+				  <div class="property__row"><strong>Floor:</strong> {{ property.floor }}</div>
+				</div>
+			  </div>
+  
+			  <!-- Додатково -->
+			  <div class="prop-section">
+				<div class="prop-section__title">Details</div>
+				<div class="prop-section__content">
+				  <div class="property__row"><strong>Renovation:</strong> {{ property.renovation }}</div>
+				  <div class="property__row"><strong>Appliances:</strong> {{ property.appliances }}</div>
+				  <div class="property__row"><strong>Utilities:</strong> {{ property.utilities }}</div>
+				  <div class="property__row"><strong>Nearby:</strong> {{ property.nearby }}</div>
+				</div>
+			  </div>
+  
+			  <!-- Статус і ціна -->
+			  <div class="prop-section">
+				<div class="prop-section__title">Status & Price</div>
+				<div class="prop-section__content">
+				  <div class="property__row"><strong>Status:</strong> {{ property.status }}</div>
+				  <div class="property__row"><strong>Price:</strong> {{ property.price }} $</div>
+				</div>
+			  </div>
+  
+			</div>
+		  </div>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+  

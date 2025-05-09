@@ -14,7 +14,7 @@ import { CoreService, AlertService } from 'wacom';
 	standalone: false
 })
 export class WorkerprofileComponent {
-	propertyworker = this._propertyworkerService.doc(
+	worker = this._propertyworkerService.doc(
 		this._router.url.replace('/workerprofile/', '')
 	);
 
@@ -35,7 +35,7 @@ export class WorkerprofileComponent {
 	);
 
 	savePhotos(): void {
-		this._propertyworkerService.update(this.propertyworker).subscribe();
+		this._propertyworkerService.update(this.worker).subscribe();
 	}
 
 	update(worker: Propertyworker): void {
@@ -50,7 +50,7 @@ export class WorkerprofileComponent {
 
 					this._propertyworkerService.update(worker).subscribe({
 						next: (res: Propertyworker) => {
-							this.propertyworker = { ...res }; // 🔁 force update
+							this.worker = { ...res }; // 🔁 force update
 							this._alert.success({
 								text: 'Worker updated successfully'
 							});

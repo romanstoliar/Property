@@ -15,14 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 	standalone: false
 })
 export class PropertiesworkersComponent {
-	columns = [
-		'name',
-		'description',
-		'experience',
-		'task',
-		'status',
-		'worker?'
-	];
+	columns = ['name', 'description', 'experience', 'task', 'status'];
 
 	form: FormInterface = this._form.getForm(
 		'propertyworker',
@@ -71,7 +64,7 @@ export class PropertiesworkersComponent {
 		delete: (doc: Propertyworker): void => {
 			this._alert.question({
 				text: this._translate.translate(
-					'Common.Are you sure you want to delete this propertyworker?'
+					'Common.Are you sure you want to delete this worker?'
 				),
 				buttons: [
 					{

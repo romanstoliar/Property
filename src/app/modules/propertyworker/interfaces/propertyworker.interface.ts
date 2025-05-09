@@ -6,5 +6,6 @@ export interface Propertyworker extends CrudDocument {
 	experience: number;
 	task: string;
 	status: string;
-	//worker?: string;
+	region: string;
+	city: string;
 }

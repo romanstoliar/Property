@@ -3,7 +3,7 @@
 @use 'src/scss/utils/vars' as vars;
 // forms
 
-.form-container{
+.form-container {
 	margin-bottom: 15px;
 }
 
@@ -26,11 +26,11 @@
 		font-weight: 500;
 		margin-bottom: 15px;
 	}
-	&__component{
-		label{
+	&__component {
+		label {
 			padding: 0 !important;
 		}
-		.w-btn{
+		.w-btn {
 			//margin: 0 20px;
 		}
 	}

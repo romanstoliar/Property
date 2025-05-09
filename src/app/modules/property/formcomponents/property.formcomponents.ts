@@ -33,6 +33,31 @@ export const propertyFormComponents = {
 		},
 		{
 			name: 'Text',
+			key: 'region',
+			fields: [
+				{ name: 'Placeholder', value: 'Enter region' },
+				{
+					name: 'Label',
+					value: 'Region'
+				}
+			]
+		},
+		{
+			name: 'Text',
+			key: 'city',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Enter city'
+				},
+				{
+					name: 'Label',
+					value: 'City'
+				}
+			]
+		},
+		{
+			name: 'Text',
 			key: 'address',
 			fields: [
 				{

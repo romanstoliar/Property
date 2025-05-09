@@ -3,31 +3,30 @@
 @use 'src/scss/utils/vars' as vars;
 
 #html .modal {
-  padding: 20px;
+	padding: 20px;
 
-  &-content {
-    background: var(--c-bg-secondary);
-    border-radius: vars.$b-radius;
-    border: 1px solid var(--c-border);
-    max-width: 700px;
-    padding-top: 45px;
-  }
-  .close {
-    top: -2px;
-    right: 5px;
+	&-content {
+		background: var(--c-bg-secondary);
+		border-radius: vars.$b-radius;
+		border: 1px solid var(--c-border);
+		max-width: 700px;
+		padding-top: 45px;
+	}
+	.close {
+		top: -2px;
+		right: 5px;
 
-    font-size: 50px;
-  }
-  .close:hover {
-    color: var(--c-text-secondary);
-  }
+		font-size: 50px;
+	}
+	.close:hover {
+		color: var(--c-text-secondary);
+	}
 }
-
 
 #html body._modal-small .modal-content,
 #html .forms_modal .modal-content {
-  max-width: 500px;
-  width: 100%;
+	max-width: 500px;
+	width: 100%;
 }
 
 .modal {
@@ -75,8 +74,8 @@
 
 .big {
 	.modal-content {
-		margin-top: 5%!important;
-		margin-bottom: 0!important;
-		max-width: 100%!important;
+		margin-top: 5% !important;
+		margin-bottom: 0 !important;
+		max-width: 100% !important;
 	}
 }
