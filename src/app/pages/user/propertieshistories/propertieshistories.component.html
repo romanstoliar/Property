@@ -1,42 +1,93 @@
-<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
-    <div class="documents-container">
-        <div class="documents-list">
-            <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-                <div class="burger" [class.burger--close]="isMenuOpen"></div>
-            </div> 
-            <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
-                <div class="documents-sidebar-content">
-                    <div class="documents-sidebar__img">
-                        <img src="assets/default.png" alt="Sidebar Image">
-                    </div>
-                    <div class="documents-sidebar__title">
-                        Records
-                    </div>
-                    <div class="documents-sidebar__description">
-                        <wbutton (click)="create()">Create</wbutton>
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+  <div class="documents-container">
+    <div class="documents-list">
 
-                        <wselect
-							[items]=" [
-                            'sell / buy payment',
-                            'service',
-                            'materials',
-                            'rent payment',
-                            'incident'
-                        ]"
-							[placeholder]="'Type'"
-							(modelChange)="type=$event; load()"
-							[clearable]="true"
-						></wselect>
-                    </div>
-                </div>
-            </div>
-            <div class="documents-main">
-                <div class="documents-main-content">
-                    <div *ngFor="let record of propertyRecords" class="documents-main-row">
-                        <app-history [record]="record" (load)="load()"></app-history>
-                    </div>
-                </div>
-            </div>
+      <!-- Бургер -->
+      <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+        <div class="burger" [class.burger--close]="isMenuOpen"></div>
+      </div>
+
+      <!-- Сайдбар -->
+      <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+        <div class="documents-sidebar-content">
+          <div class="documents-sidebar__img">
+            <img src="assets/default.png" alt="">
+          </div>
+
+          <div class="documents-sidebar__title">
+            Property Records
+          </div>
+
+          <!-- Пошук -->
+          <div class="documents-sidebar__search">
+            <input
+              type="text"
+              placeholder="🔍 Search"
+              [(ngModel)]="searchTerm"
+              (ngModelChange)="load()"
+            />
+          </div>
+
+          <!-- Тип запису -->
+          <div class="documents-sidebar__filter">
+            <select [(ngModel)]="type" (ngModelChange)="load()">
+              <option value="">All types</option>
+              <option value="sell / buy payment">sell / buy payment</option>
+              <option value="service">service</option>
+              <option value="materials">materials</option>
+              <option value="rent payment">rent payment</option>
+              <option value="incident">incident</option>
+            </select>
+          </div>
+
+          <!-- Початкова дата -->
+          <div class="documents-sidebar__filter">
+            <input
+              type="date"
+              [(ngModel)]="dateStart"
+              (ngModelChange)="load()"
+            />
+          </div>
+
+          <!-- Кінцева дата -->
+          <div class="documents-sidebar__filter">
+            <input
+              type="date"
+              [(ngModel)]="dateEnd"
+              (ngModelChange)="load()"
+            />
+          </div>
+
+          <!-- Сортування -->
+          <div class="documents-sidebar__filter">
+            <select [(ngModel)]="sort" (ngModelChange)="load()">
+              <option value="">Default sort</option>
+              <option value="asc">Date ↑</option>
+              <option value="desc">Date ↓</option>
+            </select>
+          </div>
+
+          <!-- Створення -->
+          <div class="documents-sidebar__create">
+            <wbutton (click)="create()">➕ Add</wbutton>
+          </div>
         </div>
+      </div>
+
+      <!-- Основна частина -->
+      <div class="documents-main">
+        <div class="documents-main-content">
+
+
+
+          <!-- Список записів -->
+          <div *ngFor="let record of filteredRecords()" class="documents-main-row">
+            <app-history [record]="record" (load)="load()"></app-history>
+          </div>
+          
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>

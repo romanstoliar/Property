@@ -216,8 +216,6 @@ export class PropertiesrecordsComponent {
 	}
 
 	private _preCreate(propertyrecord: Propertyrecord): void {
-		propertyrecord.__created = false;
-
 		if (this.property_id) {
 			propertyrecord.property_id = this.property_id;
 		}

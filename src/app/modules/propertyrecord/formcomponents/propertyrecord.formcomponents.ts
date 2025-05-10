@@ -3,14 +3,18 @@ export const propertyrecordFormComponents = {
 	title: 'Record',
 	components: [
 		{
+			name: 'Text',
+			key: 'name',
+			fields: [
+				{ name: 'Label', value: 'Event Name' },
+				{ name: 'Placeholder', value: 'Enter event name' }
+			]
+		},
+		{
 			name: 'Select',
 			key: 'type',
-			focused: true,
 			fields: [
-				{
-					name: 'Placeholder',
-					value: 'fill propertyrecord title'
-				},
+				{ name: 'Label', value: 'Type' },
 				{
 					name: 'Items',
 					value: [
@@ -24,33 +28,19 @@ export const propertyrecordFormComponents = {
 			]
 		},
 		{
-			name: 'Text',
-			key: 'name',
-			focused: true,
-			fields: [
-				{
-					name: 'Placeholder',
-					value: 'fill propertyrecord title'
-				},
-				{
-					name: 'Label',
-					value: 'Title'
-				}
-			]
-		},
-
-		{
-			name: 'Text',
+			name: 'Textarea',
 			key: 'description',
 			fields: [
-				{
-					name: 'Placeholder',
-					value: 'fill propertyrecord description'
-				},
-				{
-					name: 'Label',
-					value: 'Description'
-				}
+				{ name: 'Label', value: 'Description' },
+				{ name: 'Placeholder', value: 'Enter description' }
+			]
+		},
+		{
+			name: 'Number',
+			key: 'cost',
+			fields: [
+				{ name: 'Label', value: 'Cost' },
+				{ name: 'Placeholder', value: 'Enter cost' }
 			]
 		}
 	]

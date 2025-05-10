@@ -101,6 +101,8 @@
         --transition: all .3s;
         --events: #4c8e9d;
         --border: rgba(102, 91, 91, 0.432);
+        --c-card: #ffffff;
+
     }
 
     html.dark:root {
@@ -118,4 +120,6 @@
         --day-name: #dad5d5;
         --events: #1c2e32;  
         --border: rgb(255 255 255 / 23%);
+        --c-card: #343434;
+
     }

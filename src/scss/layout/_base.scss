@@ -247,6 +247,139 @@ wform {
 }
 
 //DOCUments
+// 👇 Custom property and record styles
+
+.prop-details {
+  background-color: var(--c-card);
+  color: var(--c-text-primary);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: background 0.3s ease, border 0.3s ease;
+
+  .prop-img {
+    text-align: center;
+    margin-bottom: 1.5rem;
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--c-border);
+      object-fit: cover;
+    }
+  }
+
+  .prop-name h2 {
+    font-size: 26px;
+    color: var(--c-title);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .prop-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--c-text-secondary);
+  }
+
+  .prop-section {
+    margin-bottom: 2rem;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      color: var(--c-title);
+
+      .material-icons {
+        font-size: 22px;
+        color: #2563eb;
+      }
+    }
+  }
+
+  .prop-row {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    strong {
+      color: var(--c-text-primary);
+      min-width: 120px;
+    }
+
+    span.material-icons {
+      font-size: 20px;
+      color: #2563eb;
+    }
+  }
+}
+
+.record-preview {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba(37, 99, 235, 0.05);
+  }
+
+  &__title {
+    font-weight: 600;
+    color: var(--c-title);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  &__date {
+    font-size: 0.9rem;
+    color: var(--c-text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  &__desc {
+    color: var(--c-text-primary);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+.record-see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 0.5rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .material-icons {
+    font-size: 18px;
+  }
+}
+
+.record-no {
+  color: var(--c-text-secondary);
+  font-style: italic;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
 
 /*  burger  */
 .burger-wrap {
@@ -360,9 +493,9 @@ wform {
             padding: 15px 0 5px 0;
             color: var(--c-text-primary);
         }
-        &__description{
-            color: var(--c-text-primary);
-        }
+        &__description {
+    color: var(--c-text-primary);
+}
     }
     &-tags{
         display: flex;

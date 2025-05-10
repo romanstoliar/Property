@@ -29,12 +29,12 @@ export class HistoryComponent {
 		private _translate: TranslateService
 	) {}
 
-	update(): void {
+	update(record: Propertyrecord): void {
 		this._form
-			.modal<Propertyrecord>(this.form, [], this.record)
+			.modal<Propertyrecord>(this.form, [], record)
 			.then((updated: Propertyrecord) => {
-				this._core.copy(updated, this.record);
-				this._propertyrecordService.update(this.record);
+				this._core.copy(updated, record);
+				this._propertyrecordService.update(record);
 			});
 	}
 
