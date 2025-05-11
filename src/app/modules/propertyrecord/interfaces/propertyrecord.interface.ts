@@ -7,7 +7,10 @@ export interface Propertyrecord extends Omit<CrudDocument, '__created'> {
 	type:
 		| 'sell / buy payment'
 		| 'service'
+		| 'utility bill'
+		| 'inspection'
 		| 'materials'
+		| 'cleaning'
 		| 'rent payment'
 		| 'incident';
 
@@ -16,4 +19,5 @@ export interface Propertyrecord extends Omit<CrudDocument, '__created'> {
 	data?: {
 		type?: string;
 	};
+	createdAt: string | Date; // ✅ Додай це
 }

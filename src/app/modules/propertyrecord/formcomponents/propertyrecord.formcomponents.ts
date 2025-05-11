@@ -14,13 +14,16 @@ export const propertyrecordFormComponents = {
 			name: 'Select',
 			key: 'type',
 			fields: [
-				{ name: 'Label', value: 'Type' },
+				{ name: 'Label', value: 'Enter type of record' },
 				{
 					name: 'Items',
 					value: [
 						'sell / buy payment',
 						'service',
+						'utility bill',
+						'inspection',
 						'materials',
+						'cleaning',
 						'rent payment',
 						'incident'
 					]

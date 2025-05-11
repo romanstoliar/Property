@@ -1,0 +1,42 @@
+.worker__name h2,
+.worker__experience p,
+.property__row {
+  color: var(--c-text-primary);
+  font-size: 16px;
+  margin-bottom: 0.75rem;
+}
+
+.property__row {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  .worker-loc__title {
+    color: var(--c-text-primary);
+  }
+}
+
+.worker-detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+
+  strong {
+    color: var(--c-text-secondary);
+    font-weight: 600;
+  }
+
+  .worker-loc__title {
+    color: var(--c-text-primary);
+    font-weight: 500;
+  }
+
+  .material-icons {
+    color: #528df4;
+    font-size: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

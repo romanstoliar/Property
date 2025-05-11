@@ -1,43 +1,52 @@
-<div *ngIf="worker" class="worker-card">
-	<div class="documents-sidebar__img property__img">
-		<a class="documents" [routerLink]="['/workerprofile', worker._id]">
-			<!-- <img [src]="worker.photo || 'assets/default.png'" alt="Worker photo" />-->
-		</a>
-	</div>
+<div *ngIf="worker" class="worker worker-card">
+  <div class="documents-sidebar__img property__img">
+    <a class="documents" [routerLink]="['/workerprofile', worker._id]">
+      <!-- <img [src]="worker.photo || 'assets/default.png'" alt="Worker photo" />-->
+    </a>
+  </div>
 
-	<a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
-		<div class="documents__title">{{ worker.name }}</div>
-	</a>
+  <a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
+    <div class="documents__title">{{ worker.name }}</div>
+  </a>
 
-	<div class="worker-details">
+  <div class="worker-details">
 
-		<div class="worker-detail">
-			<span class="material-icons">location_on</span>
-			<strong>Region:</strong> {{ worker.region }}
-		</div>
+    <div class="worker-detail">
+      <span class="material-icons">location_on</span>
+      <strong>Region:</strong>
+      <span class="worker-loc__title">{{ worker.region }}</span>
+    </div>
 
-		<div class="worker-detail">
-			<span class="material-icons">location_city</span>
-			<strong>City:</strong> {{ worker.city }}
-		</div>
+    <div class="worker-detail">
+      <span class="material-icons">location_city</span>
+      <strong>City:</strong>
+      <span class="worker-loc__title">{{ worker.city }}</span>
+    </div>
 
-		<div class="worker-detail">
-			<span class="material-symbols-outlined">engineering</span>
-			<strong>Position:</strong> {{ worker.position }}
-		</div>
+    <div class="worker-detail">
+      <span class="material-icons">build</span> <!-- заміна engineering -->
+      <strong>Position:</strong>
+      <span class="worker-loc__title">{{ worker.position }}</span>
+    </div>
 
-		<div class="worker-detail">
-			<span class="material-icons">calendar_month</span>
-			<strong>Experience:</strong> {{ worker.experience }} years
-		</div>
+<div class="worker-detail">
+  <span class="material-icons">work</span>
+  <strong>Experience:</strong>
+  <span class="worker-loc__title">{{ worker.experience }} years</span>
+</div>
 
-		<div class="worker-detail">
-			<strong>Task:</strong> {{ worker.task }}
-		</div>
 
-		<div class="worker-detail">
-			<strong>Status:</strong> {{ worker.status }}
-		</div>
+    <div class="worker-detail">
+      <span class="material-icons">task</span>
+      <strong>Task:</strong>
+      <span class="worker-loc__title">{{ worker.task }}</span>
+    </div>
 
-	</div>
+    <div class="worker-detail">
+      <span class="material-icons">check_circle</span> <!-- або 'pending', 'block' -->
+      <strong>Status:</strong>
+      <span class="worker-loc__title">{{ worker.status }}</span>
+    </div>
+
+  </div>
 </div>

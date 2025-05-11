@@ -123,27 +123,27 @@ export class PropertieshistoriesComponent {
 			const typeMatch =
 				!type || (r.type && r.type.toLowerCase() === type);
 
-			const dateCreated = (r as any)['__created']
-				? new Date((r as any)['__created'])
-				: null;
+			const createdAt = r['createdAt'] ? new Date(r['createdAt']) : null;
 			const dateMatch =
-				(!start || (dateCreated && dateCreated >= start)) &&
-				(!end || (dateCreated && dateCreated <= end));
+				(!start || (createdAt && createdAt >= start)) &&
+				(!end || (createdAt && createdAt <= end));
 
 			return nameMatch && typeMatch && dateMatch;
 		});
 
+		// ✅ Default = "по спаданні дати" (останній перший)
 		if (this.sort === 'asc') {
 			filtered = filtered.sort(
 				(a, b) =>
-					new Date((a as any)['__created']).getTime() -
-					new Date((b as any)['__created']).getTime()
+					new Date(a['createdAt']).getTime() -
+					new Date(b['createdAt']).getTime()
 			);
-		} else if (this.sort === 'desc') {
+		} else {
+			// Includes both 'desc' and '' (default)
 			filtered = filtered.sort(
 				(a, b) =>
-					new Date((b as any)['__created']).getTime() -
-					new Date((a as any)['__created']).getTime()
+					new Date(b['createdAt']).getTime() -
+					new Date(a['createdAt']).getTime()
 			);
 		}
 

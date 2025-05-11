@@ -29,13 +29,23 @@ export class HistoryComponent {
 		private _translate: TranslateService
 	) {}
 
-	update(record: Propertyrecord): void {
-		this._form
-			.modal<Propertyrecord>(this.form, [], record)
-			.then((updated: Propertyrecord) => {
-				this._core.copy(updated, record);
-				this._propertyrecordService.update(record);
-			});
+	update(): void {
+		this._form.modal<Propertyrecord>(
+			this.form,
+			{
+				label: 'Update',
+				click: async (updated, close) => {
+					close();
+					Object.assign(this.record, updated);
+					this._propertyrecordService
+						.update(this.record)
+						.subscribe(() => {
+							this.load.emit();
+						});
+				}
+			},
+			this.record
+		);
 	}
 
 	delete(): void {
