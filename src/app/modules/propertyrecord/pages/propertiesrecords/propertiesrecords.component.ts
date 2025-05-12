@@ -9,7 +9,7 @@ import { propertyrecordFormComponents } from '../../formcomponents/propertyrecor
 import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { log } from 'console';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
 	templateUrl: './propertiesrecords.component.html',
 	styleUrls: ['./propertiesrecords.component.scss'],
@@ -69,12 +69,11 @@ export class PropertiesrecordsComponent {
 
 						const upd = updated as Propertyrecord;
 
-						// Явне копіювання з корекцією типів
 						doc.name = upd.name;
 						doc.description = upd.description;
 						doc.type = upd.type;
-						doc.cost = Number(upd.cost); // ✅ виправлено
-						doc.date = upd.date ? new Date(upd.date) : undefined; // ✅ виправлено
+						doc.cost = Number(upd.cost);
+						doc.date = upd.date ? new Date(upd.date) : undefined;
 						doc.status = upd.status;
 						doc.duration = upd.duration;
 						doc.files = upd.files;
@@ -84,7 +83,14 @@ export class PropertiesrecordsComponent {
 							this._propertyrecordService.update(doc)
 						);
 
-						this.setRows();
+						// 🔁 заміна у масиві
+						const index = this.rows.findIndex(
+							(r) => r._id === doc._id
+						);
+						if (index !== -1) {
+							this.rows[index] = { ...doc };
+							this.rows = [...this.rows]; // ⬅️ ключовий крок
+						}
 					}
 				},
 				doc
@@ -150,7 +156,8 @@ export class PropertiesrecordsComponent {
 		private _route: ActivatedRoute,
 		private _form: FormService,
 		private _core: CoreService,
-		private _router: Router
+		private _router: Router,
+		private _cdr: ChangeDetectorRef
 	) {
 		this.setRows();
 

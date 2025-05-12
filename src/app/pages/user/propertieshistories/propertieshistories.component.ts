@@ -26,18 +26,12 @@ export class PropertieshistoriesComponent {
 	dateEnd = '';
 	sort = '';
 
-	form: FormInterface = this._form.getForm(
-		'propertyrecord',
-		propertyrecordFormComponents
-	);
-
 	constructor(
 		private _propertyrecordService: PropertyrecordService,
 		private _form: FormService,
 		private _route: ActivatedRoute,
 		private _core: CoreService,
-		private _alert: AlertService,
-		private _cdr: ChangeDetectorRef
+		private _alert: AlertService
 	) {
 		this._route.paramMap.subscribe((params) => {
 			this.property_id = params.get('property_id') || '';
@@ -45,6 +39,18 @@ export class PropertieshistoriesComponent {
 		});
 	}
 
+	load(): void {
+		const query = this._buildQuery();
+		this._propertyrecordService
+			.get({ page: 1, query })
+			.subscribe((records) => {
+				this.propertyRecords = records;
+			});
+	}
+	form: FormInterface = this._form.getForm(
+		'propertyrecord',
+		propertyrecordFormComponents
+	);
 	create(): void {
 		this._form.modal<Propertyrecord>(this.form, {
 			label: 'Create Record',
@@ -60,18 +66,23 @@ export class PropertieshistoriesComponent {
 			}
 		});
 	}
-
+	private _preCreate(record: Propertyrecord): void {
+		if (this.property_id) {
+			record.property_id = this.property_id;
+		}
+	}
 	delete(record: Propertyrecord): void {
 		this._propertyrecordService.delete(record).subscribe(() => this.load());
 	}
 
-	load(): void {
-		const query = this._buildQuery();
-		this._propertyrecordService
-			.get({ page: 1, query })
-			.subscribe((records) => {
-				this.propertyRecords = records;
-			});
+	private _buildQuery(): string {
+		const params: string[] = [];
+		if (this.property_id) params.push(`property_id=${this.property_id}`);
+		if (this.type) params.push(`type=${this.type}`);
+		if (this.dateStart) params.push(`dateStart=${this.dateStart}`);
+		if (this.dateEnd) params.push(`dateEnd=${this.dateEnd}`);
+		if (this.sort) params.push(`sort=${this.sort}`);
+		return params.join('&');
 	}
 
 	filteredRecords(): Propertyrecord[] {
@@ -113,21 +124,5 @@ export class PropertieshistoriesComponent {
 		}
 
 		return filtered;
-	}
-
-	private _buildQuery(): string {
-		const params: string[] = [];
-		if (this.property_id) params.push(`property_id=${this.property_id}`);
-		if (this.type) params.push(`type=${this.type}`);
-		if (this.dateStart) params.push(`dateStart=${this.dateStart}`);
-		if (this.dateEnd) params.push(`dateEnd=${this.dateEnd}`);
-		if (this.sort) params.push(`sort=${this.sort}`);
-		return params.join('&');
-	}
-
-	private _preCreate(record: Propertyrecord): void {
-		if (this.property_id) {
-			record.property_id = this.property_id;
-		}
 	}
 }
