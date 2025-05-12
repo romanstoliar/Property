@@ -6,6 +6,7 @@ import { propertyrecordFormComponents } from 'src/app/modules/propertyrecord/for
 import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { AlertService, CoreService } from 'wacom';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
 	selector: 'app-history',
@@ -26,26 +27,20 @@ export class HistoryComponent {
 		private _propertyrecordService: PropertyrecordService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService
+		private _translate: TranslateService,
+		private _cdr: ChangeDetectorRef
 	) {}
 
-	update(): void {
-		this._form.modal<Propertyrecord>(
-			this.form,
-			{
-				label: 'Update',
-				click: async (updated, close) => {
-					close();
-					Object.assign(this.record, updated);
-					this._propertyrecordService
-						.update(this.record)
-						.subscribe(() => {
-							this.load.emit();
-						});
-				}
-			},
-			this.record
-		);
+	update(record: Propertyrecord): void {
+		this._form
+			.modal<Propertyrecord>(this.form, [], record)
+			.then((updated: Propertyrecord) => {
+				if (!updated) return;
+
+				// Копіюємо все, але виправляємо типи
+				this._core.copy(updated, record);
+				this._propertyrecordService.update(record).subscribe();
+			});
 	}
 
 	delete(): void {

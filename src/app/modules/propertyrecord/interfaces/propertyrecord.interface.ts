@@ -1,9 +1,8 @@
 import { CrudDocument } from 'wacom';
 
-export interface Propertyrecord extends Omit<CrudDocument, '__created'> {
+export interface Propertyrecord extends CrudDocument {
 	name: string;
 	description: string;
-
 	type:
 		| 'sell / buy payment'
 		| 'service'
@@ -13,11 +12,12 @@ export interface Propertyrecord extends Omit<CrudDocument, '__created'> {
 		| 'cleaning'
 		| 'rent payment'
 		| 'incident';
-
-	property_id: string;
 	cost: number;
-	data?: {
-		type?: string;
-	};
-	createdAt: string | Date; // ✅ Додай це
+	date?: string | Date;
+	createdAt: string | Date;
+	status: 'planned' | 'in progress' | 'done';
+	duration?: number;
+	files?: string[];
+	worker_id?: string;
+	property_id: string;
 }

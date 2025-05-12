@@ -1,45 +1,69 @@
 <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
 	<div class="documents-container">
 		<div class="documents-list">
-			<div
-				class="burger-wrap"
-				(click)="isMenuOpen=!isMenuOpen"
-				[class.burger-wrap--open]="isMenuOpen"
-			>
+			<div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
 				<div class="burger" [class.burger--close]="isMenuOpen"></div>
 			</div>
-			<div
-				class="documents-sidebar"
-				[class.documents-sidebar--open]="isMenuOpen"
-			>
+
+			<div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
 				<div class="documents-sidebar-content">
 					<div class="documents-sidebar__img">
 						<img src="assets/default.png" alt="Property Image" />
 					</div>
 					<div class="documents-sidebar__title">
-						{{record.name}}
+						{{ record.name }}
 					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click)="update(record)">Update</wbutton>  
-					 	<wbutton (click)="delete(record)">Delete</wbutton>  
+						<wbutton (click)="update(record)">Update</wbutton>
+						<wbutton (click)="delete(record)">Delete</wbutton>
 					</div>
 				</div>
 			</div>
+
 			<div class="documents-main">
 				<div class="documents-main-content">
 					<div class="documents-main-row">
 						<div class="documents__name">
-							{{record.name}}
+							{{ record.name }}
 						</div>
+
 						<div class="documents__type">
-							{{record.description}}
+							<b>Description:</b> {{ record.description }}
 						</div>
-					<div class="documents__type">
-							{{record.cost}}
+
+						<div class="documents__type">
+							<b>Cost:</b> {{ record.cost }} $
 						</div>
+
+						<!-- 🔹 Додаткові поля -->
+						<div class="documents__type" *ngIf="record.date">
+							<b>Event Date:</b> {{ record.date | date:"mediumDate" }}
 						</div>
+
+						<div class="documents__type" *ngIf="record.status">
+							<b>Status:</b> {{ record.status }}
+						</div>
+
+						<div class="documents__type" *ngIf="record.duration">
+							<b>Duration:</b> {{ record.duration }} minutes
+						</div>
+
+						<div class="documents__type" *ngIf="record.createdAt">
+							<b>Created:</b> {{ record.createdAt | date:'medium' }}
+						</div>
+
+						<div class="documents__type" *ngIf="record.files?.length">
+							<b>Files:</b>
+							<ul>
+								<li *ngFor="let file of record.files">
+									<a [href]="file" target="_blank">📎 {{ file }}</a>
+								</li>
+							</ul>
+						</div>
+						<!-- 🔹 /кінець додаткових -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>

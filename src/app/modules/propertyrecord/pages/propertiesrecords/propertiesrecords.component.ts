@@ -16,7 +16,16 @@ import { log } from 'console';
 	standalone: false
 })
 export class PropertiesrecordsComponent {
-	columns = ['name', 'description'];
+	columns = [
+		'name',
+		'description',
+		'type',
+		'cost',
+		'date',
+		'status',
+		'duration',
+		'files'
+	];
 
 	form: FormInterface = this._form.getForm(
 		'propertyrecord',
@@ -51,14 +60,37 @@ export class PropertiesrecordsComponent {
 			  }
 			: null,
 		update: (doc: Propertyrecord): void => {
-			this._form
-				.modal<Propertyrecord>(this.form, [], doc)
-				.then((updated: Propertyrecord) => {
-					this._core.copy(updated, doc);
+			this._form.modal<Propertyrecord>(
+				this.form,
+				{
+					label: 'Update',
+					click: async (updated: unknown, close: () => void) => {
+						close();
 
-					this._propertyrecordService.update(doc);
-				});
+						const upd = updated as Propertyrecord;
+
+						// Явне копіювання з корекцією типів
+						doc.name = upd.name;
+						doc.description = upd.description;
+						doc.type = upd.type;
+						doc.cost = Number(upd.cost); // ✅ виправлено
+						doc.date = upd.date ? new Date(upd.date) : undefined; // ✅ виправлено
+						doc.status = upd.status;
+						doc.duration = upd.duration;
+						doc.files = upd.files;
+						doc.worker_id = upd.worker_id;
+
+						await firstValueFrom(
+							this._propertyrecordService.update(doc)
+						);
+
+						this.setRows();
+					}
+				},
+				doc
+			);
 		},
+
 		delete: (doc: Propertyrecord): void => {
 			this._alert.question({
 				text: this._translate.translate(
@@ -110,7 +142,7 @@ export class PropertiesrecordsComponent {
 	rows: Propertyrecord[] = [];
 
 	property_id = '';
-
+	record_id = '';
 	constructor(
 		private _translate: TranslateService,
 		private _propertyrecordService: PropertyrecordService,

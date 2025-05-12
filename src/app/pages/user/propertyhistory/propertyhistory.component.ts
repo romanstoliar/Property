@@ -34,12 +34,29 @@ export class PropertyhistoryComponent {
 	);
 
 	update(record: Propertyrecord): void {
-		this._form
-			.modal<Propertyrecord>(this.form, [], record)
-			.then((updated: Propertyrecord) => {
-				this._core.copy(updated, record);
-				this._propertyrecordService.update(record);
-			});
+		this._form.modal<Propertyrecord>(
+			this.form,
+			{
+				label: 'Update',
+				click: async (updated: unknown, close: () => void) => {
+					close();
+					this._core.copy(updated as Propertyrecord, record);
+					this._propertyrecordService.update(record).subscribe({
+						next: (res: Propertyrecord) => {
+							this.record = { ...res };
+							this._alert.success({
+								text: 'Record updated successfully'
+							});
+						},
+						error: (err) => {
+							console.error('❌ Update failed:', err);
+							this._alert.error({ text: 'Update failed' });
+						}
+					});
+				}
+			},
+			record
+		);
 	}
 
 	delete(record: Propertyrecord): void {

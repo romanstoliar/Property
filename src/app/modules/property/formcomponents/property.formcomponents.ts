@@ -158,7 +158,7 @@ export const propertyFormComponents = {
 				}
 			]
 		},
-		{
+		/*{
 			name: 'Text',
 			key: 'appliances',
 			fields: [
@@ -171,8 +171,8 @@ export const propertyFormComponents = {
 					value: 'Appliances'
 				}
 			]
-		},
-		{
+		},*/
+		/*{
 			name: 'Text',
 			key: 'utilities',
 			fields: [
@@ -185,8 +185,8 @@ export const propertyFormComponents = {
 					value: 'Utilities'
 				}
 			]
-		},
-		{
+		},*/
+		/*{
 			name: 'Text',
 			key: 'nearby',
 			fields: [
@@ -199,7 +199,7 @@ export const propertyFormComponents = {
 					value: 'Nearby'
 				}
 			]
-		},
+		},*/
 		{
 			name: 'Number',
 			key: 'price',

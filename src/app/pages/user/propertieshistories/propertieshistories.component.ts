@@ -6,6 +6,9 @@ import { propertyrecordFormComponents } from 'src/app/modules/propertyrecord/for
 import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { PropertyworkerService } from 'src/app/modules/propertyworker/services/propertyworker.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { CoreService } from 'wacom';
+import { AlertService } from 'wacom';
 
 @Component({
 	templateUrl: './propertieshistories.component.html',
@@ -30,9 +33,11 @@ export class PropertieshistoriesComponent {
 
 	constructor(
 		private _propertyrecordService: PropertyrecordService,
-		private _propertyworkerService: PropertyworkerService,
+		private _form: FormService,
 		private _route: ActivatedRoute,
-		private _form: FormService
+		private _core: CoreService,
+		private _alert: AlertService,
+		private _cdr: ChangeDetectorRef
 	) {
 		this._route.paramMap.subscribe((params) => {
 			this.property_id = params.get('property_id') || '';
@@ -41,58 +46,19 @@ export class PropertieshistoriesComponent {
 	}
 
 	create(): void {
-		this._propertyworkerService.get().subscribe((workers) => {
-			const formWithWorkers = {
-				...this.form,
-				components: [
-					...this.form.components,
-					{
-						name: 'Select',
-						key: 'worker_id',
-						fields: [
-							{ name: 'Label', value: 'Worker' },
-							{
-								name: 'Items',
-								value: workers.map((w) => ({
-									label: `${w.name} (${w.position})`,
-									value: w._id
-								}))
-							}
-						]
-					}
-				]
-			};
+		this._form.modal<Propertyrecord>(this.form, {
+			label: 'Create Record',
+			click: async (created: unknown, close: () => void) => {
+				close();
+				this._preCreate(created as Propertyrecord);
 
-			this._form.modal<Propertyrecord>(formWithWorkers, {
-				label: 'Create',
-				click: async (created, close) => {
-					close();
-					this._preCreate(created as Propertyrecord);
-					this._propertyrecordService
-						.create(created as Propertyrecord)
-						.subscribe(() => {
-							this.load();
-						});
-				}
-			});
-		});
-	}
-
-	update(record: Propertyrecord): void {
-		this._form.modal<Propertyrecord>(
-			this.form,
-			{
-				label: 'Update',
-				click: async (updated, close) => {
-					close();
-					Object.assign(record, updated);
-					this._propertyrecordService.update(record).subscribe(() => {
+				this._propertyrecordService
+					.create(created as Propertyrecord)
+					.subscribe(() => {
 						this.load();
 					});
-				}
-			},
-			record
-		);
+			}
+		});
 	}
 
 	delete(record: Propertyrecord): void {
@@ -131,7 +97,7 @@ export class PropertieshistoriesComponent {
 			return nameMatch && typeMatch && dateMatch;
 		});
 
-		// ✅ Default = "по спаданні дати" (останній перший)
+		// Default: по спаданні дати
 		if (this.sort === 'asc') {
 			filtered = filtered.sort(
 				(a, b) =>
@@ -139,7 +105,6 @@ export class PropertieshistoriesComponent {
 					new Date(b['createdAt']).getTime()
 			);
 		} else {
-			// Includes both 'desc' and '' (default)
 			filtered = filtered.sort(
 				(a, b) =>
 					new Date(b['createdAt']).getTime() -
@@ -163,9 +128,6 @@ export class PropertieshistoriesComponent {
 	private _preCreate(record: Propertyrecord): void {
 		if (this.property_id) {
 			record.property_id = this.property_id;
-		}
-		if (this.type) {
-			record.type = this.type as Propertyrecord['type'];
 		}
 	}
 }

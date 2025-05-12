@@ -11,10 +11,31 @@ export const propertyrecordFormComponents = {
 			]
 		},
 		{
+			name: 'Text',
+			key: 'description',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'fill record description'
+				},
+				{
+					name: 'Label',
+					value: 'Description'
+				}
+			]
+		},
+		{
 			name: 'Select',
 			key: 'type',
 			fields: [
-				{ name: 'Label', value: 'Enter type of record' },
+				{
+					name: 'Placeholder',
+					value: 'Choose type of record'
+				},
+				{
+					name: 'Label',
+					value: 'Type'
+				},
 				{
 					name: 'Items',
 					value: [
@@ -31,19 +52,49 @@ export const propertyrecordFormComponents = {
 			]
 		},
 		{
-			name: 'Textarea',
-			key: 'description',
-			fields: [
-				{ name: 'Label', value: 'Description' },
-				{ name: 'Placeholder', value: 'Enter description' }
-			]
-		},
-		{
 			name: 'Number',
 			key: 'cost',
 			fields: [
-				{ name: 'Label', value: 'Cost' },
-				{ name: 'Placeholder', value: 'Enter cost' }
+				{
+					name: 'Placeholder',
+					value: 'Enter cost'
+				},
+				{
+					name: 'Label',
+					value: 'Cost'
+				}
+			]
+		},
+		{
+			name: 'Date',
+			key: 'date',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Event Date'
+				},
+				{
+					name: 'Label',
+					value: 'Select event date'
+				}
+			]
+		},
+		{
+			name: 'Select',
+			key: 'status',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Choose status'
+				},
+				{
+					name: 'Label',
+					value: 'Status'
+				},
+				{
+					name: 'Items',
+					value: ['planned', 'in progress', 'done']
+				}
 			]
 		}
 	]
