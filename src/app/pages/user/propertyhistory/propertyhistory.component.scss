@@ -1,0 +1,22 @@
+.documents-wrapper {
+	background-color: var(--c-bg-primary);
+	color: var(--c-text-primary);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.documents__name,
+.documents__type {
+	color: var(--c-text-primary);
+	b {
+		color: var(--c-text-primary);
+	}
+}
+
+a {
+	color: var(--c-text-primary);
+	&:hover {
+		color: var(--c-text-primary);
+	}
+}

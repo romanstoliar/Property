@@ -11,12 +11,10 @@
       <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
         <div class="documents-sidebar-content">
           <div class="documents-sidebar__img">
-            <img src="assets/default.png" alt="">
+            <img src="assets/default.png" alt="Sidebar image" />
           </div>
 
-          <div class="documents-sidebar__title">
-            Property Records
-          </div>
+          <div class="documents-sidebar__title">Property Records</div>
 
           <!-- Пошук -->
           <div class="documents-sidebar__search">
@@ -40,22 +38,12 @@
             </select>
           </div>
 
-          <!-- Початкова дата -->
+          <!-- Діапазон дат -->
           <div class="documents-sidebar__filter">
-            <input
-              type="date"
-              [(ngModel)]="dateStart"
-              (ngModelChange)="load()"
-            />
+            <input type="date" [(ngModel)]="dateStart" (ngModelChange)="load()" placeholder="Date from" />
           </div>
-
-          <!-- Кінцева дата -->
           <div class="documents-sidebar__filter">
-            <input
-              type="date"
-              [(ngModel)]="dateEnd"
-              (ngModelChange)="load()"
-            />
+            <input type="date" [(ngModel)]="dateEnd" (ngModelChange)="load()" placeholder="Date to" />
           </div>
 
           <!-- Сортування -->
@@ -63,30 +51,35 @@
             <select [(ngModel)]="sort" (ngModelChange)="load()">
               <option value="">Date ↓</option>
               <option value="asc">Date ↑</option>
-              
             </select>
           </div>
 
-          <!-- Створення -->
+          <!-- Додати запис -->
           <div class="documents-sidebar__create">
             <wbutton (click)="create()">➕ Add</wbutton>
           </div>
-        </div>
-        
-      </div>
 
+          <!-- Аналітика -->
+          <div class="documents-sidebar__summary" *ngIf="propertyRecords.length">
+            <p><strong>Total cost:</strong> {{ totalCost }} $</p>
+            <div *ngFor="let typeKey of (costByType | keyvalue)">
+              <p><strong>{{ typeKey.key }}:</strong> {{ typeKey.value }} $</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Основна частина -->
       <div class="documents-main">
         <div class="documents-main-content">
-
-
-
-          <!-- Список записів -->
-          <div *ngFor="let record of filteredRecords()" class="documents-main-row">
-            <app-history [record]="record" (load)="load()"></app-history>
+          <div *ngIf="propertyRecords.length; else noResults">
+            <div *ngFor="let record of propertyRecords" class="documents-main-row">
+              <app-history [record]="record" (load)="load()"></app-history>
+            </div>
           </div>
-          
+          <ng-template #noResults>
+            <p class="record-no">No records found for selected filters.</p>
+          </ng-template>
         </div>
       </div>
 

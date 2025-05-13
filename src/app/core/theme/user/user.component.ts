@@ -24,16 +24,14 @@ export class UserComponent {
 		private _platform: Platform,
 		private router: Router
 	) {
-		// ❗ Закриває сайдбар при кожному переході по маршрутах
-		this.router.events
+		/*this.router.events
 			.pipe(filter((event) => event instanceof NavigationEnd))
 			.subscribe(() => {
 				this.hideSidebar();
-			});
+			});*/
 	}
 
 	hideSidebar(): void {
-		// ❗ Працює і на десктопі, і на мобільному — можна прибрати обмеження
 		this.showSidebar = false;
 	}
 }

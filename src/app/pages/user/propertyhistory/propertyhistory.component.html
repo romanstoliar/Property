@@ -24,43 +24,45 @@
 				<div class="documents-main-content">
 					<div class="documents-main-row">
 						<div class="documents__name">
-							{{ record.name }}
+						<strong>{{ record.name }}</strong>	
 						</div>
 
-						<div class="documents__type">
-							<b>Description:</b> {{ record.description }}
-						</div>
+				<div class="documents__type" *ngIf="record.description">
+					<strong>Description:</strong> {{ record.description }}
+				</div>
 
-						<div class="documents__type">
-							<b>Cost:</b> {{ record.cost }} $
-						</div>
+				<div class="documents__type" *ngIf="record.cost">
+					<strong>Cost:</strong> {{ record.cost }} $
+				</div>
 
-						<!-- 🔹 Додаткові поля -->
-						<div class="documents__type" *ngIf="record.date">
-							<b>Event Date:</b> {{ record.date | date:"mediumDate" }}
-						</div>
+				<div class="documents__type" *ngIf="record.type">
+					<strong>Type:</strong> {{ record.type }}
+				</div>
 
-						<div class="documents__type" *ngIf="record.status">
-							<b>Status:</b> {{ record.status }}
-						</div>
+				<div class="documents__type" *ngIf="record.date">
+					<strong>Event Date:</strong> {{ record.date | date:"mediumDate" }}
+				</div>
 
-						<div class="documents__type" *ngIf="record.duration">
-							<b>Duration:</b> {{ record.duration }} minutes
-						</div>
+				<div class="documents__type" *ngIf="record.status">
+					<strong>Status:</strong> {{ record.status }}
+				</div>
 
-						<div class="documents__type" *ngIf="record.createdAt">
-							<b>Created:</b> {{ record.createdAt | date:'medium' }}
-						</div>
+				<div class="documents__type" *ngIf="record.duration">
+					<strong>Duration:</strong> {{ record.duration }} minutes
+				</div>
 
-						<div class="documents__type" *ngIf="record.files?.length">
-							<b>Files:</b>
-							<ul>
-								<li *ngFor="let file of record.files">
-									<a [href]="file" target="_blank">📎 {{ file }}</a>
-								</li>
-							</ul>
-						</div>
-						<!-- 🔹 /кінець додаткових -->
+				<div class="documents__type">
+					<strong>Created:</strong> {{ record.createdAt | date:'medium' }}
+				</div>
+
+				<div class="documents__type" *ngIf="record.files?.length">
+					<strong>Files:</strong>
+					<ul>
+						<li *ngFor="let file of record.files">
+							<a [href]="file" target="_blank">📎 {{ file }}</a>
+						</li>
+					</ul>
+				</div>
 					</div>
 				</div>
 			</div>

@@ -491,6 +491,7 @@ wform {
         }
         &__title{
             font-weight: 600;
+            font-size: larger;
             padding: 15px 0 5px 0;
             color: var(--c-text-primary);
         }
@@ -594,7 +595,7 @@ wform {
 
 @media screen and (max-width: 1199px) {
     .documents-sidebar{
-        flex: 0 0 240px;
+        flex: 0 0 auto;
         max-width: 240px;
     }
     .documents-main {

@@ -5,8 +5,6 @@ import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interfa
 import { propertyrecordFormComponents } from 'src/app/modules/propertyrecord/formcomponents/propertyrecord.formcomponents';
 import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
-import { PropertyworkerService } from 'src/app/modules/propertyworker/services/propertyworker.service';
-import { ChangeDetectorRef } from '@angular/core';
 import { CoreService } from 'wacom';
 import { AlertService } from 'wacom';
 
@@ -26,7 +24,6 @@ export class PropertieshistoriesComponent {
 	dateEnd = '';
 	sort = '';
 
-	// 🔽 аналітика
 	totalCost = 0;
 	costByType: { [key: string]: number } = {};
 
@@ -43,16 +40,6 @@ export class PropertieshistoriesComponent {
 		});
 	}
 
-	load(): void {
-		const query = this._buildQuery();
-		this._propertyrecordService
-			.get({ page: 1, query })
-			.subscribe((records) => {
-				this.propertyRecords = records;
-				this.calculateAnalytics(); // <== виклик після завантаження
-			});
-	}
-
 	form: FormInterface = this._form.getForm(
 		'propertyrecord',
 		propertyrecordFormComponents
@@ -64,7 +51,6 @@ export class PropertieshistoriesComponent {
 			click: async (created: unknown, close: () => void) => {
 				close();
 				this._preCreate(created as Propertyrecord);
-
 				this._propertyrecordService
 					.create(created as Propertyrecord)
 					.subscribe(() => {
@@ -84,6 +70,63 @@ export class PropertieshistoriesComponent {
 		this._propertyrecordService.delete(record).subscribe(() => this.load());
 	}
 
+	load(): void {
+		const query = this._buildQuery();
+		this._propertyrecordService
+			.get({ page: 1, query })
+			.subscribe((records) => {
+				const search = this.searchTerm.toLowerCase().trim();
+				const type = this.type.toLowerCase().trim();
+				const start = this.dateStart
+					? new Date(this.dateStart + 'T00:00:00')
+					: null;
+				const end = this.dateEnd
+					? new Date(this.dateEnd + 'T23:59:59')
+					: null;
+
+				let filtered = records.filter((r) => {
+					const nameMatch =
+						!search ||
+						(r.name && r.name.toLowerCase().includes(search)) ||
+						(r.description &&
+							r.description.toLowerCase().includes(search));
+
+					const typeMatch =
+						!type || (r.type && r.type.toLowerCase() === type);
+
+					const createdAt = r.createdAt
+						? new Date(r.createdAt)
+						: null;
+					const validDate =
+						createdAt instanceof Date &&
+						!isNaN(createdAt.getTime());
+
+					const dateMatch =
+						(!start || (validDate && createdAt >= start)) &&
+						(!end || (validDate && createdAt <= end));
+
+					return nameMatch && typeMatch && dateMatch;
+				});
+
+				if (this.sort === 'asc') {
+					filtered = filtered.sort(
+						(a, b) =>
+							new Date(a.createdAt).getTime() -
+							new Date(b.createdAt).getTime()
+					);
+				} else {
+					filtered = filtered.sort(
+						(a, b) =>
+							new Date(b.createdAt).getTime() -
+							new Date(a.createdAt).getTime()
+					);
+				}
+
+				this.propertyRecords = filtered;
+				this.calculateAnalytics();
+			});
+	}
+
 	private _buildQuery(): string {
 		const params: string[] = [];
 		if (this.property_id) params.push(`property_id=${this.property_id}`);
@@ -94,47 +137,6 @@ export class PropertieshistoriesComponent {
 		return params.join('&');
 	}
 
-	filteredRecords(): Propertyrecord[] {
-		const search = this.searchTerm.toLowerCase().trim();
-		const type = this.type.toLowerCase().trim();
-		const start = this.dateStart ? new Date(this.dateStart) : null;
-		const end = this.dateEnd ? new Date(this.dateEnd) : null;
-
-		let filtered = this.propertyRecords.filter((r) => {
-			const nameMatch =
-				!search ||
-				(r.name && r.name.toLowerCase().includes(search)) ||
-				(r.description && r.description.toLowerCase().includes(search));
-
-			const typeMatch =
-				!type || (r.type && r.type.toLowerCase() === type);
-
-			const createdAt = r['createdAt'] ? new Date(r['createdAt']) : null;
-			const dateMatch =
-				(!start || (createdAt && createdAt >= start)) &&
-				(!end || (createdAt && createdAt <= end));
-
-			return nameMatch && typeMatch && dateMatch;
-		});
-
-		if (this.sort === 'asc') {
-			filtered = filtered.sort(
-				(a, b) =>
-					new Date(a['createdAt']).getTime() -
-					new Date(b['createdAt']).getTime()
-			);
-		} else {
-			filtered = filtered.sort(
-				(a, b) =>
-					new Date(b['createdAt']).getTime() -
-					new Date(a['createdAt']).getTime()
-			);
-		}
-
-		return filtered;
-	}
-
-	// ✅ АНАЛІТИКА
 	private calculateAnalytics(): void {
 		this.totalCost = this.propertyRecords.reduce(
 			(sum, r) => sum + (r.cost || 0),
