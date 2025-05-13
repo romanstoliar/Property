@@ -26,6 +26,10 @@ export class PropertieshistoriesComponent {
 	dateEnd = '';
 	sort = '';
 
+	// 🔽 аналітика
+	totalCost = 0;
+	costByType: { [key: string]: number } = {};
+
 	constructor(
 		private _propertyrecordService: PropertyrecordService,
 		private _form: FormService,
@@ -45,12 +49,15 @@ export class PropertieshistoriesComponent {
 			.get({ page: 1, query })
 			.subscribe((records) => {
 				this.propertyRecords = records;
+				this.calculateAnalytics(); // <== виклик після завантаження
 			});
 	}
+
 	form: FormInterface = this._form.getForm(
 		'propertyrecord',
 		propertyrecordFormComponents
 	);
+
 	create(): void {
 		this._form.modal<Propertyrecord>(this.form, {
 			label: 'Create Record',
@@ -66,11 +73,13 @@ export class PropertieshistoriesComponent {
 			}
 		});
 	}
+
 	private _preCreate(record: Propertyrecord): void {
 		if (this.property_id) {
 			record.property_id = this.property_id;
 		}
 	}
+
 	delete(record: Propertyrecord): void {
 		this._propertyrecordService.delete(record).subscribe(() => this.load());
 	}
@@ -108,7 +117,6 @@ export class PropertieshistoriesComponent {
 			return nameMatch && typeMatch && dateMatch;
 		});
 
-		// Default: по спаданні дати
 		if (this.sort === 'asc') {
 			filtered = filtered.sort(
 				(a, b) =>
@@ -124,5 +132,18 @@ export class PropertieshistoriesComponent {
 		}
 
 		return filtered;
+	}
+
+	// ✅ АНАЛІТИКА
+	private calculateAnalytics(): void {
+		this.totalCost = this.propertyRecords.reduce(
+			(sum, r) => sum + (r.cost || 0),
+			0
+		);
+
+		this.costByType = this.propertyRecords.reduce((acc, r) => {
+			acc[r.type] = (acc[r.type] || 0) + (r.cost || 0);
+			return acc;
+		}, {} as { [key: string]: number });
 	}
 }

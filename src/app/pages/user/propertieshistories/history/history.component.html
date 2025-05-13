@@ -1,35 +1,43 @@
 <div class="documents-sidebar__img property__img">
-  <a class="documents" [routerLink]="['/propertyhistory', record._id]">
-    <!--<img class="documents__img" src="assets/default.png" alt="Record photo" />-->
+
+  <!-- Зображення -->
+  <a class="documents" [routerLink]="'/propertyhistory/' + record._id">
   </a>
 
-  <a [routerLink]="['/propertyhistory', record._id]" class="property__name">
+  <!-- Назва -->
+  <a [routerLink]="'/propertyhistory/' + record._id" class="property__name">
     <div class="documents__title">{{ record.name }}</div>
   </a>
 
-  <div class="property-loc">
+  <!-- Тип запису -->
+  <a [routerLink]="'/propertyhistory/' + record._id" class="property-loc">
     <div class="property-loc__img">
       <span class="material-icons">category</span>
     </div>
     <div class="documents__title property-loc__title">{{ record.type }}</div>
-  </div>
+  </a>
 
-  <div class="property-loc">
+  <!-- Вартість -->
+  <a [routerLink]="'/propertyhistory/' + record._id" class="property-loc">
     <div class="property-loc__img">
       <span class="material-icons">payments</span>
     </div>
     <div class="documents__title property-loc__title">{{ record.cost }} $</div>
-  </div>
+  </a>
 
-  <div class="property-loc">
+  <!-- Дата -->
+  <a [routerLink]="'/propertyhistory/' + record._id" class="property-loc">
     <div class="property-loc__img">
-      <span class="material-icons">calendar_month</span>
+      <span class="material-icons">event</span>
     </div>
     <div class="documents__title property-loc__title">
-      {{ record._id| mongodate | date: 'd MMMM y' }}
+      {{ record.createdAt | mongodate | date: 'd MMMM y' }}
     </div>
-  </div>
+  </a>
 
+  <!-- Виконавець (якщо є) -->
+
+  <!-- Дії -->
   <div class="property-links">
     <div class="property-links__wrap">
       <span class="material-icons" (click)="update(record)">edit</span>
@@ -38,4 +46,5 @@
       <span class="material-icons" (click)="delete()">delete</span>
     </div>
   </div>
+
 </div>

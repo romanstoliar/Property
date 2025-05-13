@@ -1,0 +1,23 @@
+.prop-image {
+  float: right;
+  width: 300px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+
+  img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--c-border, #ccc);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: 1120px) {
+    text-align: center;
+    float: none;
+    width: auto;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+}

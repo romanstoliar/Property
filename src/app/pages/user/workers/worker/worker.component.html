@@ -5,9 +5,13 @@
     </a>
   </div>
 
-  <a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
+<a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
+  <div class="worker__name-row">
+    <span class="material-icons">person</span>
     <div class="documents__title">{{ worker.name }}</div>
-  </a>
+  </div>
+</a>
+
 
   <div class="worker-details">
 

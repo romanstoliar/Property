@@ -74,7 +74,7 @@ hr {
 		@include mixins.flexBox(flex, null, null, center, null);
 		width: 100%;
 		@media screen and (max-width: 767px) {
-			justify-content: end !important;
+			justify-content: space-between;
 		}
 	}
 	&__li {

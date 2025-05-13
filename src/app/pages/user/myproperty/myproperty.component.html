@@ -1,6 +1,12 @@
 <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
   <div class="documents-container">
     <div class="documents-list">
+
+      <!-- Бургер -->
+      <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+        <div class="burger" [class.burger--close]="isMenuOpen"></div>
+      </div>
+
       <!-- Sidebar -->
       <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
         <div class="documents-sidebar-content">
@@ -21,88 +27,92 @@
 
       <!-- Main content -->
       <div class="documents-main">
+        <!-- Контейнер з контентом та зображенням -->
+        <div class="prop-wrap">
+          <div class="prop-details">
+            
+          <div class="prop-image">
+            <img src="assets/property.jpg" alt="Property image" />
+          </div>
+            <!-- General -->
+            <div class="prop-section" *ngIf="property.description || property.status || property.price">
+              <h3><span class="material-icons">info</span> General</h3>
+              <div *ngIf="property.description" class="prop-row">
+                <strong>Description:</strong> {{ property.description }}
+              </div>
+              <div *ngIf="property.status" class="prop-row">
+                <strong>Status:</strong> {{ property.status }}
+              </div>
+              <div *ngIf="property.price" class="prop-row">
+                <strong>Price:</strong> {{ property.price }} $
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="prop-section" *ngIf="property.region || property.city || property.address">
+              <h3><span class="material-icons">location_on</span> Location</h3>
+              <div *ngIf="property.region" class="prop-row">
+                <strong>Region:</strong> {{ property.region }}
+              </div>
+              <div *ngIf="property.city" class="prop-row">
+                <strong>City:</strong> {{ property.city }}
+              </div>
+              <div *ngIf="property.address" class="prop-row">
+                <strong>Address:</strong> {{ property.address }}
+              </div>
+            </div>
+
+            <!-- Type -->
+            <div class="prop-section" *ngIf="property.type || property.buildingtype">
+              <h3><span class="material-icons">home</span> Type</h3>
+              <div *ngIf="property.type" class="prop-row">
+                <strong>Type:</strong> {{ property.type }}
+              </div>
+              <div *ngIf="property.buildingtype" class="prop-row">
+                <strong>Building type:</strong> {{ property.buildingtype }}
+              </div>
+            </div>
+
+            <!-- Specs -->
+            <div class="prop-section" *ngIf="property.area || property.rooms || property.floor">
+              <h3><span class="material-icons">domain</span> Specs</h3>
+              <div *ngIf="property.area" class="prop-row">
+                <strong>Area:</strong> {{ property.area }} m²
+              </div>
+              <div *ngIf="property.rooms" class="prop-row">
+                <strong>Rooms:</strong> {{ property.rooms }}
+              </div>
+              <div *ngIf="property.floor" class="prop-row">
+                <strong>Floor:</strong> {{ property.floor }}
+              </div>
+            </div>
+
+            <!-- Other -->
+            <div class="prop-section" *ngIf="property.renovation || property.appliances || property.utilities || property.nearby">
+              <h3><span class="material-icons">construction</span> Other</h3>
+              <div *ngIf="property.renovation" class="prop-row">
+                <strong>Renovation:</strong> {{ property.renovation }}
+              </div>
+              <div *ngIf="property.appliances" class="prop-row">
+                <strong>Appliances:</strong> {{ property.appliances }}
+              </div>
+              <div *ngIf="property.utilities" class="prop-row">
+                <strong>Utilities:</strong> {{ property.utilities }}
+              </div>
+              <div *ngIf="property.nearby" class="prop-row">
+                <strong>Nearby:</strong> {{ property.nearby }}
+              </div>
+            </div>
+            
+          </div>
+
+
+        <!-- Records -->
         <div class="prop-details">
-          <!-- General -->
-          <div class="prop-section" *ngIf="property.description || property.status || property.price">
-            <h3><span class="material-icons">info</span> General</h3>
-            <div *ngIf="property.description" class="prop-row">
-              <strong>Description:</strong> {{ property.description }}
-            </div>
-            <div *ngIf="property.status" class="prop-row">
-              <strong>Status:</strong> {{ property.status }}
-            </div>
-            <div *ngIf="property.price" class="prop-row">
-              <strong>Price:</strong> {{ property.price }} $
-            </div>
-          </div>
-
-          <!-- Location -->
-          <div class="prop-section" *ngIf="property.region || property.city || property.address">
-            <h3><span class="material-icons">location_on</span> Location</h3>
-            <div *ngIf="property.region" class="prop-row">
-              <strong>Region:</strong> {{ property.region }}
-            </div>
-            <div *ngIf="property.city" class="prop-row">
-              <strong>City:</strong> {{ property.city }}
-            </div>
-            <div *ngIf="property.address" class="prop-row">
-              <strong>Address:</strong> {{ property.address }}
-            </div>
-          </div>
-
-          <!-- Type -->
-          <div class="prop-section" *ngIf="property.type || property.buildingtype">
-            <h3><span class="material-icons">home</span> Type</h3>
-            <div *ngIf="property.type" class="prop-row">
-              <strong>Type:</strong> {{ property.type }}
-            </div>
-            <div *ngIf="property.buildingtype" class="prop-row">
-              <strong>Building type:</strong> {{ property.buildingtype }}
-            </div>
-          </div>
-
-          <!-- Specs -->
-          <div class="prop-section" *ngIf="property.area || property.rooms || property.floor">
-            <h3><span class="material-icons">domain</span> Specs</h3>
-            <div *ngIf="property.area" class="prop-row">
-              <strong>Area:</strong> {{ property.area }} m²
-            </div>
-            <div *ngIf="property.rooms" class="prop-row">
-              <strong>Rooms:</strong> {{ property.rooms }}
-            </div>
-            <div *ngIf="property.floor" class="prop-row">
-              <strong>Floor:</strong> {{ property.floor }}
-            </div>
-          </div>
-
-          <!-- Other -->
-          <div class="prop-section" *ngIf="property.renovation || property.appliances || property.utilities || property.nearby">
-            <h3><span class="material-icons">construction</span> Other</h3>
-            <div *ngIf="property.renovation" class="prop-row">
-              <strong>Renovation:</strong> {{ property.renovation }}
-            </div>
-            <div *ngIf="property.appliances" class="prop-row">
-              <strong>Appliances:</strong> {{ property.appliances }}
-            </div>
-            <div *ngIf="property.utilities" class="prop-row">
-              <strong>Utilities:</strong> {{ property.utilities }}
-            </div>
-            <div *ngIf="property.nearby" class="prop-row">
-              <strong>Nearby:</strong> {{ property.nearby }}
-            </div>
-          </div>
-        </div>
-
-        <div class="prop-details">
-          <!-- Records -->
           <div class="prop-section">
             <h3><span class="material-icons">history</span> Records</h3>
             <div *ngIf="records.length > 0; else noRecords">
-              <div
-                *ngFor="let record of records.slice(0, 3)"
-                class="record-preview"
-                (click)="goToRecord(record._id)"
-              >
+              <div *ngFor="let record of records.slice(0, 3)" class="record-preview" (click)="goToRecord(record._id)">
                 <div class="record-preview__title">{{ record.name }}</div>
                 <div class="record-preview__date">
                   {{ record._id | mongodate | date: 'd MMMM y, HH:mm' }}

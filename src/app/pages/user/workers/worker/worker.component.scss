@@ -14,6 +14,22 @@
       color: #2563eb;
     }
   }
+.worker__name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .material-icons {
+    font-size: 22px;
+    color: #528df4;
+  }
+
+  .documents__title {
+    font-size: 20px;
+    font-weight: 600;
+      color: #588df4;
+  }
+}
 
   &__img {
     img {

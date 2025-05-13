@@ -9,7 +9,7 @@ import { PropertyService } from 'src/app/modules/property/services/property.serv
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { CoreService, AlertService } from 'wacom';
-
+import { Location } from '@angular/common';
 @Component({
 	templateUrl: './myproperty.component.html',
 	styleUrls: ['./myproperty.component.scss'],
@@ -28,7 +28,8 @@ export class MypropertyComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService
+		private _translate: TranslateService,
+		private location: Location
 	) {}
 
 	isMenuOpen = false;
@@ -37,7 +38,9 @@ export class MypropertyComponent {
 		'property',
 		propertyFormComponents
 	);
-
+	goBack(): void {
+		this.location.back();
+	}
 	ngOnInit(): void {
 		this.loadRecords();
 	}

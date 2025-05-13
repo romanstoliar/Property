@@ -387,6 +387,7 @@ wform {
     width: 36px;
     height: 27px;
     position: relative;
+    cursor: pointer;
 }
 .burger {
     height: 5px;
@@ -476,8 +477,8 @@ wform {
             overflow-y: scroll;
             scrollbar-width: none;
             &::-webkit-scrollbar{
-                width: 0px; /* Для вертикальной полосы прокрутки */
-                height: 0px; /* Для горизонтальной полосы прокрутки */
+                width: 0px;
+                height: 0px;
             }
         }
         &__img{
