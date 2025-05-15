@@ -1,6 +1,6 @@
 .documents-sidebar__search,
 .documents-sidebar__filter,
-.documents-sidebar__create {
+.documents-sidebar__create{
   
   
   margin-bottom: 1rem;
@@ -16,6 +16,7 @@
     color: #111;
   }
 }
+
 .record-analytics {
   margin-top: 8px;
 
@@ -35,10 +36,22 @@
       margin-left: auto;
       font-weight: 600;
     }
+  }
+}
+.record-analytics-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--c-bg-secondary);
+  border: 1px solid var(--c-border);
+  color: var(--c-text-primary);
 
-    .material-icons {
-      font-size: 18px;
-      color: #528df4;
+  p {
+    margin-bottom: 6px;
+
+    strong {
+      color: var(--c-text-primary);
+      font-weight: 600;
     }
   }
 }

@@ -60,12 +60,15 @@
           </div>
 
           <!-- Аналітика -->
-          <div class="documents-sidebar__summary" *ngIf="propertyRecords.length">
-            <p><strong>Total cost:</strong> {{ totalCost }} $</p>
-            <div *ngFor="let typeKey of (costByType | keyvalue)">
-              <p><strong>{{ typeKey.key }}:</strong> {{ typeKey.value }} $</p>
-            </div>
-          </div>
+          <div class="documents-sidebar__description" *ngIf="propertyRecords.length">
+  <div class="record-analytics-box">
+    <p><strong>Total cost:</strong> {{ totalCost }} $</p>
+    <div *ngFor="let typeKey of (costByType | keyvalue)">
+      <p><strong>{{ typeKey.key }}:</strong> {{ typeKey.value }} $</p>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
 

@@ -64,7 +64,7 @@
 
 	<div class="main" [class.showTable]="showSidebar">
 		<div class="fade" [@showInOut]="showSidebar" *ngIf="showSidebar"></div>
-		<div class="nav__burger _active" [class._active]="showSidebar">
+		<div class="nav__burger" [class._active]="showSidebar">
 			<div class="nav__burger-list">
 				<div class="theme-switch">
 					<span
@@ -87,8 +87,8 @@
 					routerLink="/profile"
 				>
 					<img
-						[src]="forceAvatarUrl || us.user.thumb ? url + us.user.thumb : 'assets/default.png'"
-						(error)="forceAvatarUrl = 'assets/default.png'"
+						[src]="forceAvatarUrl || us.user.thumb ? url + us.user.thumb : 'assets/user.png'"
+						(error)="forceAvatarUrl = 'assets/user.png'"
 						alt="Profile Picture"
 						class="avatar__img"
 						height="50"

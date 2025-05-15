@@ -14,22 +14,23 @@
       color: #2563eb;
     }
   }
-.worker__name-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 
-  .material-icons {
-    font-size: 22px;
-    color: #528df4;
-  }
+  .worker__name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-  .documents__title {
-    font-size: 20px;
-    font-weight: 600;
+    .material-icons {
+      font-size: 22px;
+      color: #528df4;
+    }
+
+    .documents__title {
+      font-size: 20px;
+      font-weight: 600;
       color: #588df4;
+    }
   }
-}
 
   &__img {
     img {
@@ -63,19 +64,14 @@
     margin-bottom: 10px;
     font-size: 16px;
 
-  strong {
-      color: var(--c-text-primary); // або --c-text-secondary, якщо хочеш слабший відтінок
+    strong {
+      color: var(--c-text-primary);
       font-weight: 600;
     }
 
     &__value {
-      color: var(--c-text-primary); // значення: звичайний текст
+      color: var(--c-text-primary);
       font-weight: 500;
-    }
-
-    .material-icons,
-    .material-symbols-outlined {
-      min-width: 22px;
     }
   }
 
@@ -110,11 +106,26 @@
       }
     }
   }
-     .worker-loc__title {
-      color: var(--c-text-primary);
-    }
-}
 
+  &-loc__img {
+    width: 38px;
+    height: 38px;
+    background: rgba(88, 141, 244, 0.21);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      color: #528df4;
+      font-size: 22px;
+    }
+  }
+
+  .worker-loc__title {
+    color: var(--c-text-primary);
+  }
+}
 
 .main-thumb {
   margin-bottom: 1rem;

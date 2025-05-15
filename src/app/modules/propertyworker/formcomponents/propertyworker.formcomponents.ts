@@ -93,6 +93,36 @@ export const propertyworkerFormComponents = {
 					value: 'Status'
 				}
 			]
+		},
+		{
+			name: 'Text',
+			key: 'phone_number',
+			focused: true,
+			fields: [
+				{
+					name: 'Placeholder',
+					value: '+380 XX XXX XX XX'
+				},
+				{
+					name: 'Label',
+					value: 'Phone Number'
+				}
+			]
+		},
+		{
+			name: 'Text',
+			key: 'email',
+			focused: true,
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'example@email.com'
+				},
+				{
+					name: 'Label',
+					value: 'Email'
+				}
+			]
 		}
 	]
 };

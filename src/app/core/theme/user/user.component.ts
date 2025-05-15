@@ -3,8 +3,6 @@ import { coreAnimation } from '../../animations/core.animations';
 import { environment } from 'src/environments/environment';
 import { Platform } from '@angular/cdk/platform';
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-user',
@@ -14,24 +12,14 @@ import { filter } from 'rxjs/operators';
 	standalone: false
 })
 export class UserComponent {
-	isMenuOpen = false;
 	readonly url = environment.url;
 	forceAvatarUrl = '';
 	showSidebar = false;
-
-	constructor(
-		public us: UserService,
-		private _platform: Platform,
-		private router: Router
-	) {
-		/*this.router.events
-			.pipe(filter((event) => event instanceof NavigationEnd))
-			.subscribe(() => {
-				this.hideSidebar();
-			});*/
-	}
-
 	hideSidebar(): void {
-		this.showSidebar = false;
+		if (!this._platform.ANDROID && !this._platform.IOS) {
+			this.showSidebar = false;
+		}
 	}
+
+	constructor(public us: UserService, private _platform: Platform) {}
 }

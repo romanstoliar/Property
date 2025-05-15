@@ -8,4 +8,6 @@ export interface Propertyworker extends CrudDocument {
 	status: string;
 	region: string;
 	city: string;
+	phone_number: string;
+	email: string;
 }

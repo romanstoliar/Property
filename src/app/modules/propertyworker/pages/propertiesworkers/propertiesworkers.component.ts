@@ -15,7 +15,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 	standalone: false
 })
 export class PropertiesworkersComponent {
-	columns = ['name', 'description', 'experience', 'task', 'status'];
+	columns = [
+		'name',
+		'description',
+		'region',
+		'city',
+		'position',
+		'experience',
+		'task',
+		'status',
+		'phone_number',
+		'email'
+	];
 
 	form: FormInterface = this._form.getForm(
 		'propertyworker',

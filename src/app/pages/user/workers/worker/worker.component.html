@@ -5,51 +5,76 @@
     </a>
   </div>
 
-<a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
-  <div class="worker__name-row">
-    <span class="material-icons">person</span>
-    <div class="documents__title">{{ worker.name }}</div>
-  </div>
-</a>
-
+  <a [routerLink]="['/workerprofile', worker._id]" class="worker__name">
+    <div class="worker__name-row">
+      <div class="documents__title">{{ worker.name }}</div>
+    </div>
+  </a>
 
   <div class="worker-details">
 
     <div class="worker-detail">
-      <span class="material-icons">location_on</span>
+      <div class="worker-loc__img">
+        <span class="material-icons">location_on</span>
+      </div>
       <strong>Region:</strong>
       <span class="worker-loc__title">{{ worker.region }}</span>
     </div>
 
     <div class="worker-detail">
-      <span class="material-icons">location_city</span>
+      <div class="worker-loc__img">
+        <span class="material-icons">location_city</span>
+      </div>
       <strong>City:</strong>
       <span class="worker-loc__title">{{ worker.city }}</span>
     </div>
 
     <div class="worker-detail">
-      <span class="material-icons">build</span> <!-- заміна engineering -->
+      <div class="worker-loc__img">
+        <span class="material-icons">build</span>
+      </div>
       <strong>Position:</strong>
       <span class="worker-loc__title">{{ worker.position }}</span>
     </div>
 
-<div class="worker-detail">
-  <span class="material-icons">work</span>
-  <strong>Experience:</strong>
-  <span class="worker-loc__title">{{ worker.experience }} years</span>
-</div>
-
+    <div class="worker-detail">
+      <div class="worker-loc__img">
+        <span class="material-icons">work</span>
+      </div>
+      <strong>Experience:</strong>
+      <span class="worker-loc__title">{{ worker.experience }} years</span>
+    </div>
 
     <div class="worker-detail">
-      <span class="material-icons">task</span>
+      <div class="worker-loc__img">
+        <span class="material-icons">task</span>
+      </div>
       <strong>Task:</strong>
       <span class="worker-loc__title">{{ worker.task }}</span>
     </div>
 
     <div class="worker-detail">
-      <span class="material-icons">check_circle</span> <!-- або 'pending', 'block' -->
+      <div class="worker-loc__img">
+        <span class="material-icons">check_circle</span>
+      </div>
       <strong>Status:</strong>
       <span class="worker-loc__title">{{ worker.status }}</span>
+    </div>
+
+    <!-- Обʼєднаний блок для телефону та email -->
+    <div class="worker-detail" *ngIf="worker.phone_number || worker.email">
+      <div class="worker-loc__img">
+        <span class="material-icons">contact_phone</span>
+      </div>
+      <strong>Contacts:</strong>
+      <span class="worker-loc__title">
+        <ng-container *ngIf="worker.phone_number">
+          <span>{{ worker.phone_number }}</span><br />
+        </ng-container>
+        <ng-container *ngIf="worker.email">
+          <span>{{ worker.email }}</span>
+        </ng-container>
+      </span>
     </div>
 
   </div>
