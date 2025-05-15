@@ -125,6 +125,22 @@
   .worker-loc__title {
     color: var(--c-text-primary);
   }
+
+  // 📞✉️ телефон + email — один рядок
+  .contact-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .inner-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    color: var(--c-text-primary);
+  }
 }
 
 .main-thumb {

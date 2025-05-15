@@ -115,7 +115,7 @@
               <div *ngFor="let record of records.slice(0, 3)" class="record-preview" (click)="goToRecord(record._id)">
                 <div class="record-preview__title">{{ record.name }}</div>
                 <div class="record-preview__date">
-                  {{ record.createdAt | mongodate | date: 'd MMMM y, HH:mm' }}
+                  {{ record.createdAt | date | date: 'd MMMM y' }}
                 </div>
                 <div class="record-preview__desc">{{ record.description }}</div>
               </div>

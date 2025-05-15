@@ -62,20 +62,31 @@
     </div>
 
     <!-- Обʼєднаний блок для телефону та email -->
-    <div class="worker-detail" *ngIf="worker.phone_number || worker.email">
-      <div class="worker-loc__img">
-        <span class="material-icons">contact_phone</span>
-      </div>
-      <strong>Contacts:</strong>
-      <span class="worker-loc__title">
-        <ng-container *ngIf="worker.phone_number">
-          <span>{{ worker.phone_number }}</span><br />
-        </ng-container>
-        <ng-container *ngIf="worker.email">
-          <span>{{ worker.email }}</span>
-        </ng-container>
+     
+<div class="worker-detail" *ngIf="worker.phone_number || worker.email">
+  <span class="worker-loc__title contact-inline">
+    <ng-container *ngIf="worker.phone_number">
+      <span class="inner-contact">
+        <div class="worker-loc__img">
+          <span class="material-icons contact-icon">call</span>
+        </div>
+       <strong>{{ worker.phone_number }}</strong> 
       </span>
-    </div>
+    </ng-container>
+
+    <ng-container *ngIf="worker.email">
+      <span class="inner-contact">
+        <div class="worker-loc__img">
+          <span class="material-icons contact-icon">mail</span>
+        </div>
+         <strong>{{ worker.email }}</strong>
+      </span>
+    </ng-container>
+  </span>
+</div>
+
+
+
 
   </div>
 </div>
