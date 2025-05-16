@@ -380,6 +380,27 @@ wform {
   margin-top: 1rem;
   font-size: 0.95rem;
 }
+/*  header  */
+
+
+.burger-wrap {
+  margin-left: auto;
+  margin-right: 18px;
+  cursor: pointer;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .documents-header__title {
+    font-size: 1rem;
+  }
+  .documents-header-left__avatar {
+    margin-left: 8px;
+    img { width: 28px; height: 28px; }
+  }
+}
 
 /*  burger  */
 .burger-wrap {
@@ -607,6 +628,7 @@ wform {
     .documents-sidebar {
         flex: 0 0 100%;
         max-width: 100%;
+        width: 100%;
         height: 0;
         border-radius: 12px;
         position: fixed;

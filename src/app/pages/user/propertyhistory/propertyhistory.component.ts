@@ -7,7 +7,7 @@ import { propertyrecordFormComponents } from 'src/app/modules/propertyrecord/for
 import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { CoreService, AlertService } from 'wacom';
-
+import { Location } from '@angular/common';
 @Component({
 	templateUrl: './propertyhistory.component.html',
 	styleUrls: ['./propertyhistory.component.scss'],
@@ -23,7 +23,8 @@ export class PropertyhistoryComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService
+		private _translate: TranslateService,
+		private location: Location
 	) {}
 
 	isMenuOpen = false;
@@ -32,7 +33,9 @@ export class PropertyhistoryComponent {
 		'propertyrecord',
 		propertyrecordFormComponents
 	);
-
+	goBack() {
+		this.location.back();
+	}
 	update(record: Propertyrecord): void {
 		this._form.modal<Propertyrecord>(
 			this.form,

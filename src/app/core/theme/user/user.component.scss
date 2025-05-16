@@ -240,7 +240,7 @@ hr {
 		
 		&._active {
 			transform: translateX(120%) !important;
-			z-index: 0;
+			z-index: 5;
 			@media screen and (max-width: 767px) {
 				transform: translateX(0) !important;
 				z-index: 10;

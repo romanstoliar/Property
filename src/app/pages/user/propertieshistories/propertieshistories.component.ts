@@ -7,7 +7,7 @@ import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/proper
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { CoreService } from 'wacom';
 import { AlertService } from 'wacom';
-
+import { Location } from '@angular/common';
 @Component({
 	templateUrl: './propertieshistories.component.html',
 	styleUrls: ['./propertieshistories.component.scss'],
@@ -32,7 +32,8 @@ export class PropertieshistoriesComponent {
 		private _form: FormService,
 		private _route: ActivatedRoute,
 		private _core: CoreService,
-		private _alert: AlertService
+		private _alert: AlertService,
+		private location: Location
 	) {
 		this._route.paramMap.subscribe((params) => {
 			this.property_id = params.get('property_id') || '';
@@ -44,7 +45,9 @@ export class PropertieshistoriesComponent {
 		'propertyrecord',
 		propertyrecordFormComponents
 	);
-
+	goBack() {
+		this.location.back();
+	}
 	create(): void {
 		this._form.modal<Propertyrecord>(this.form, {
 			label: 'Create Record',

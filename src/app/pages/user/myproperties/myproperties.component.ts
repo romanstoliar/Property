@@ -5,7 +5,7 @@ import { propertyFormComponents } from 'src/app/modules/property/formcomponents/
 import { Property } from 'src/app/modules/property/interfaces/property.interface';
 import { PropertyService } from 'src/app/modules/property/services/property.service';
 import { environment } from 'src/environments/environment.prod';
-
+import { Location } from '@angular/common';
 @Component({
 	templateUrl: './myproperties.component.html',
 	styleUrls: ['./myproperties.component.scss'],
@@ -22,8 +22,13 @@ export class MypropertiesComponent {
 
 	constructor(
 		private _propertyService: PropertyService,
-		private _form: FormService
+		private _form: FormService,
+		private location: Location
 	) {}
+
+	goBack() {
+		this.location.back();
+	}
 
 	ngOnInit(): void {
 		this.load();

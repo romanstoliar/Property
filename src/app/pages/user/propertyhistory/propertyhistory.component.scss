@@ -1,22 +1,162 @@
 .documents-wrapper {
-	background-color: var(--c-bg-primary);
-	color: var(--c-text-primary);
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+  min-height: 100vh;
+  background: var(--c-bg-secondary, #f6f8fb);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.documents__name,
+.documents-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 36px auto;
+  display: flex;
+  gap: 36px;
+}
+
+.documents-list {
+  display: flex;
+  width: 100%;
+}
+
+.documents-sidebar {
+  width: 320px;
+  background: var(--c-bg-primary, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 26px 18px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.documents-sidebar__img {
+  width: 96px;
+  height: 96px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #eaf2fb;
+  margin-bottom: 18px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.documents-sidebar__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--c-text-primary, #223a5f);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.documents-sidebar__description {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  wbutton {
+    background: #528df4;
+    color: #fff;
+    border-radius: 6px;
+    padding: 7px 20px;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.18s;
+    &:hover {
+      background: #345fd6;
+    }
+  }
+}
+
+.documents-main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.documents-main-content {
+  width: 100%;
+  background: var(--c-bg-primary, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 32px 34px 30px 34px;
+}
+
+.documents-main-row {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.documents__name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2e4a7b;
+}
+
 .documents__type {
-	color: var(--c-text-primary);
-	b {
-		color: var(--c-text-primary);
-	}
+  font-size: 1.05rem;
+  color: var(--c-text-primary, #2e4057);
+
+  strong {
+    color: #528df4;
+    margin-right: 4px;
+    font-weight: 500;
+  }
+  ul {
+    margin: 2px 0 0 18px;
+    padding: 0;
+  }
+  li {
+    font-size: 0.99rem;
+    margin: 2px 0;
+    a {
+      color: #528df4;
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
 }
 
-a {
-	color: var(--c-text-primary);
-	&:hover {
-		color: var(--c-text-primary);
-	}
+// Бургер-меню для мобільної версії (можеш розширити)
+.burger-wrap {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .documents-container {
+    flex-direction: column;
+    max-width: 100vw;
+    gap: 18px;
+    margin: 12px auto;
+  }
+  .documents-sidebar {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+  .documents-main-content {
+    padding: 18px 8px 18px 8px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .documents-main-content, .documents-sidebar {
+    padding: 10px 4px 12px 4px;
+  }
+  .documents-sidebar__img {
+    width: 68px;
+    height: 68px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .documents-sidebar__title {
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+  }
 }
