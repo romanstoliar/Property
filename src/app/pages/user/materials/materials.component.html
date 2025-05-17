@@ -1,40 +1,52 @@
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+  <div class="documents-container">
+    <div class="documents-list">
+      <!-- Burger Menu -->
+      <div class="burger-wrap" (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+        <div class="burger" [class.burger--close]="isMenuOpen"></div>
+      </div>
 
-
-
-<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
-    <div class="documents-container">
-        <div class="documents-list">
-            <div class="burger-wrap" class="burger-wrap"  (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-                <div class="burger" [class.burger--close]="isMenuOpen"></div>
-            </div> 
-            <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
-                <div class="documents-sidebar-content">
-                    <div class="documents-sidebar__img">
-                        <img src="assets/default.png" alt="">
-                    </div>
-                    <div class="documents-sidebar__title">
-                        Title of sidebar...
-                    </div>
-                    <div class="documents-sidebar__description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint molestiae consequatur quae. Modi corporis rem amet tempore debitis assumenda minima repellat labore expedita quam. Itaque accusamus culpa ullam necessitatibus nisi.
-                    </div>
-                </div>
+      <!-- Sidebar -->
+      <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+        <div class="documents-sidebar-content">
+          <div class="documents-sidebar__img">
+            <img src="assets/default.png" alt="Materials image" />
+          </div>
+          <div class="documents-sidebar__title">
+            Матеріали для обслуговування
+          </div>
+          <div class="documents-sidebar__description">
+            Оберіть категорію матеріалів, щоб швидко перейти до потрібного розділу на Епіцентрі.
+          </div>
+          <!-- Категорії матеріалів (Епіцентр) -->
+          <div class="documents-sidebar__categories mt-4">
+            <label class="documents-sidebar__categories-label">
+              Оберіть категорію для переходу на Епіцентр:
+            </label>
+            <select [(ngModel)]="selectedCategory" class="documents-sidebar__select">
+              <option [ngValue]="null" disabled selected>— Категорія —</option>
+              <option *ngFor="let c of materialCategories" [ngValue]="c">{{c.label}}</option>
+            </select>
+            <div *ngIf="selectedCategory" class="epicentr-link mt-2">
+              <a [href]="selectedCategory.link" target="_blank" rel="noopener noreferrer">
+                Переглянути на Епіцентрі
+              </a>
             </div>
-            <div class="documents-main">
-                <div class="documents-main-content">
-                    <div  class="documents-main-row">
-                        <p>Page Materials is connected</p>
-
-                        <section>title: Materials</section>
-                        <section>Каталог матеріалів для обслуговування нерухомості.</section>
-                        <section>material list with prices and descriptions</section>
-                        <section>search bar and filters (category, price range)</section>
-                        <section>for user: button to add to cart and view orders</section>
-                    </div>
-                </div>
-            </div>
-  
+          </div>
         </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="documents-main">
+        <div class="documents-main-content">
+          <div class="documents-main-row">
+            <h1>Каталог матеріалів</h1>
+            <p>Це сторінка для керування матеріалами, потрібними для обслуговування нерухомості.</p>
+            <p>Виберіть категорію зліва, щоб перейти до відповідного розділу на сайті Епіцентру.</p>
+            <!-- Місце для майбутнього: список матеріалів, пошук, фільтри -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
+</div>

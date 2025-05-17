@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
 import { PropertiesmaterialsComponent } from './propertiesmaterials.component';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Додаємо для ngModel у select
 
 const routes: Routes = [
 	{
@@ -11,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(routes), CoreModule],
+	imports: [RouterModule.forChild(routes), CoreModule, FormsModule],
 	declarations: [PropertiesmaterialsComponent],
 	providers: []
 })
