@@ -13,7 +13,7 @@
 
   <div class="worker-details">
 
-    <div class="worker-detail">
+    <div class="worker-detail" *ngIf="worker.region">
       <div class="worker-loc__img">
         <span class="material-icons">location_on</span>
       </div>
@@ -21,7 +21,7 @@
       <span class="worker-loc__title">{{ worker.region }}</span>
     </div>
 
-    <div class="worker-detail">
+    <div class="worker-detail" *ngIf="worker.city">
       <div class="worker-loc__img">
         <span class="material-icons">location_city</span>
       </div>
@@ -29,7 +29,7 @@
       <span class="worker-loc__title">{{ worker.city }}</span>
     </div>
 
-    <div class="worker-detail">
+    <div class="worker-detail" *ngIf="worker.position">
       <div class="worker-loc__img">
         <span class="material-icons">build</span>
       </div>
@@ -37,7 +37,7 @@
       <span class="worker-loc__title">{{ worker.position }}</span>
     </div>
 
-    <div class="worker-detail">
+    <div class="worker-detail" *ngIf="worker.experience">
       <div class="worker-loc__img">
         <span class="material-icons">work</span>
       </div>
@@ -45,7 +45,7 @@
       <span class="worker-loc__title">{{ worker.experience }} years</span>
     </div>
 
-    <div class="worker-detail">
+    <div class="worker-detail" *ngIf="worker.task">
       <div class="worker-loc__img">
         <span class="material-icons">task</span>
       </div>
@@ -53,7 +53,7 @@
       <span class="worker-loc__title">{{ worker.task }}</span>
     </div>
 
-    <div class="worker-detail">
+    <div class="worker-detail" *ngIf="worker.status">
       <div class="worker-loc__img">
         <span class="material-icons">check_circle</span>
       </div>
@@ -61,32 +61,27 @@
       <span class="worker-loc__title">{{ worker.status }}</span>
     </div>
 
-    <!-- Обʼєднаний блок для телефону та email -->
-     
-<div class="worker-detail" *ngIf="worker.phone_number || worker.email">
-  <span class="worker-loc__title contact-inline">
-    <ng-container *ngIf="worker.phone_number">
-      <span class="inner-contact">
-        <div class="worker-loc__img">
-          <span class="material-icons contact-icon">call</span>
-        </div>
-       <strong>{{ worker.phone_number }}</strong> 
+    <!-- Телефон та email, якщо хоча б одне поле є -->
+    <div class="worker-detail" *ngIf="worker.phone_number || worker.email">
+      <span class="worker-loc__title contact-inline">
+        <ng-container *ngIf="worker.phone_number">
+          <span class="inner-contact">
+            <div class="worker-loc__img">
+              <span class="material-icons contact-icon">call</span>
+            </div>
+            <strong>{{ worker.phone_number }}</strong>
+          </span>
+        </ng-container>
+        <ng-container *ngIf="worker.email">
+          <span class="inner-contact">
+            <div class="worker-loc__img">
+              <span class="material-icons contact-icon">mail</span>
+            </div>
+            <strong>{{ worker.email }}</strong>
+          </span>
+        </ng-container>
       </span>
-    </ng-container>
-
-    <ng-container *ngIf="worker.email">
-      <span class="inner-contact">
-        <div class="worker-loc__img">
-          <span class="material-icons contact-icon">mail</span>
-        </div>
-         <strong>{{ worker.email }}</strong>
-      </span>
-    </ng-container>
-  </span>
-</div>
-
-
-
+    </div>
 
   </div>
 </div>

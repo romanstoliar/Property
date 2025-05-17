@@ -32,47 +32,66 @@
 
       <!-- Main Content -->
       <div class="documents-main">
-    	<div class="prop-details">
+        <div class="prop-details">
 
-          <div class="worker__name">
+          <div class="worker__name" *ngIf="worker.name">
             <h2>{{ worker.name }}</h2>
           </div>
 
-          <div class="worker-detail">
+          <div class="worker-detail" *ngIf="worker.region">
             <span class="material-icons">location_on</span>
             <strong>Region:</strong>
             <span class="worker-loc__title">{{ worker.region }}</span>
           </div>
 
-          <div class="worker-detail">
+          <div class="worker-detail" *ngIf="worker.city">
             <span class="material-icons">location_city</span>
             <strong>City:</strong>
             <span class="worker-loc__title">{{ worker.city }}</span>
           </div>
 
-          <div class="worker-detail">
+          <div class="worker-detail" *ngIf="worker.position">
             <span class="material-icons">build</span>
             <strong>Position:</strong>
             <span class="worker-loc__title">{{ worker.position }}</span>
           </div>
 
-          <div class="worker-detail">
+          <div class="worker-detail" *ngIf="worker.experience">
             <span class="material-icons">work</span>
             <strong>Experience:</strong>
             <span class="worker-loc__title">{{ worker.experience }} years</span>
           </div>
 
-          <div class="worker-detail">
+          <div class="worker-detail" *ngIf="worker.task">
             <span class="material-icons">task</span>
             <strong>Task:</strong>
             <span class="worker-loc__title">{{ worker.task }}</span>
           </div>
 
-          <div class="worker-detail">
+          <div class="worker-detail" *ngIf="worker.status">
             <span class="material-icons">check_circle</span>
             <strong>Status:</strong>
             <span class="worker-loc__title">{{ worker.status }}</span>
           </div>
+
+          <!-- Контакти -->
+          <div class="worker-detail" *ngIf="worker.phone_number || worker.email">
+            <span class="worker-loc__title contact-inline">
+              <ng-container *ngIf="worker.phone_number">
+                <span class="inner-contact">
+                  <span class="material-icons contact-icon">call</span>
+                  <strong>{{ worker.phone_number }}</strong>
+                </span>
+              </ng-container>
+              <ng-container *ngIf="worker.email">
+                <span class="inner-contact">
+                  <span class="material-icons contact-icon">mail</span>
+                  <strong>{{ worker.email }}</strong>
+                </span>
+              </ng-container>
+            </span>
+          </div>
+          <!-- Кінець блоку контактів -->
 
         </div>
       </div>
