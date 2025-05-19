@@ -1,1 +1,19 @@
-<p>material works!</p>
+<div class="documents-main">
+  <div class="documents-main-content">
+    <ng-container *ngIf="category; else notfound">
+      <h2>{{ category.label }}</h2>
+      <p>
+        Перейти до розділу цієї категорії на сайті Епіцентр:
+      </p>
+      <a [href]="category.link" target="_blank" rel="noopener noreferrer">
+        Відкрити на Епіцентрі
+      </a>
+      <br>
+      <a routerLink="/propertiesmaterials">← Назад до списку категорій</a>
+    </ng-container>
+    <ng-template #notfound>
+      <p>Категорія не знайдена</p>
+      <a routerLink="/propertiesmaterials">← Назад</a>
+    </ng-template>
+  </div>
+</div>

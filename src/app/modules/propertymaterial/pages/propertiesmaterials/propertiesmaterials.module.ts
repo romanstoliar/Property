@@ -8,6 +8,10 @@ const routes: Routes = [
 	{
 		path: '',
 		component: PropertiesmaterialsComponent
+	},
+	{
+		path: 'material/:category',
+		component: PropertiesmaterialsComponent
 	}
 ];
 

@@ -1,49 +1,47 @@
 <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
   <div class="documents-container">
     <div class="documents-list">
-      <!-- Burger Menu -->
-      <div class="burger-wrap" (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+      <!-- Burger -->
+      <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
         <div class="burger" [class.burger--close]="isMenuOpen"></div>
       </div>
-
       <!-- Sidebar -->
       <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
         <div class="documents-sidebar-content">
           <div class="documents-sidebar__img">
-            <img src="assets/default.png" alt="Materials image" />
+            <img src="assets/default.png" alt="Materials" />
           </div>
           <div class="documents-sidebar__title">
-            Матеріали для обслуговування
+            Категорії матеріалів
           </div>
-          <div class="documents-sidebar__description">
-            Оберіть категорію матеріалів, щоб швидко перейти до потрібного розділу на Епіцентрі.
-          </div>
-          <!-- Категорії матеріалів (Епіцентр) -->
-          <div class="documents-sidebar__categories mt-4">
-            <label class="documents-sidebar__categories-label">
-              Оберіть категорію для переходу на Епіцентр:
-            </label>
-            <select [(ngModel)]="selectedCategory" class="documents-sidebar__select">
-              <option [ngValue]="null" disabled selected>— Категорія —</option>
-              <option *ngFor="let c of materialCategories" [ngValue]="c">{{c.label}}</option>
-            </select>
-            <div *ngIf="selectedCategory" class="epicentr-link mt-2">
-              <a [href]="selectedCategory.link" target="_blank" rel="noopener noreferrer">
-                Переглянути на Епіцентрі
-              </a>
-            </div>
+          <!-- Фільтр по назві -->
+          <div class="documents-sidebar__search">
+            <input
+              type="text"
+              placeholder="🔍 Пошук категорії"
+              [(ngModel)]="searchTerm"
+            />
           </div>
         </div>
       </div>
-
       <!-- Main Content -->
       <div class="documents-main">
         <div class="documents-main-content">
-          <div class="documents-main-row">
-            <h1>Каталог матеріалів</h1>
-            <p>Це сторінка для керування матеріалами, потрібними для обслуговування нерухомості.</p>
-            <p>Виберіть категорію зліва, щоб перейти до відповідного розділу на сайті Епіцентру.</p>
-            <!-- Місце для майбутнього: список матеріалів, пошук, фільтри -->
+          <div *ngFor="let category of filteredCategories" class="documents-main-row">
+            <a 
+              [href]="category.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="material-card"
+            >
+              <div class="documents-sidebar__img property__img">
+                <img [src]="category.image || 'assets/default.png'" alt="{{category.label}}">
+              </div>
+              <div class="documents__title">{{ category.label }}</div>
+            </a>
+          </div>
+          <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
+            <div class="documents__title">Нічого не знайдено</div>
           </div>
         </div>
       </div>

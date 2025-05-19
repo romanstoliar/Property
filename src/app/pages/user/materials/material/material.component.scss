@@ -1,0 +1,29 @@
+.material-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--c-bg-primary);
+  border-radius: 1rem;
+  transition: box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    background: var(--c-bg-secondary, #f6f6f8);
+  }
+
+  .documents__title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .documents-sidebar__img img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+}

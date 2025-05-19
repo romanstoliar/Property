@@ -110,7 +110,7 @@
         <!-- Records -->
         <div class="prop-details">
           <div class="prop-section">
-            <h3><span class="material-icons">history</span> Records</h3>
+            <h3><span class="material-icons">history</span>Records</h3>
             <div *ngIf="records.length > 0; else noRecords">
               <div *ngFor="let record of records.slice(0, 3)" class="record-preview" (click)="goToRecord(record._id)">
                 <div class="record-preview__title">{{ record.name }}</div>
