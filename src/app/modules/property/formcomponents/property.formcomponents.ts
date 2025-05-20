@@ -235,7 +235,7 @@ export const propertyFormComponents = {
 		},
 		{
 			name: 'Photo',
-			key: 'thumb',
+			key: 'photo',
 			fields: [
 				{
 					name: 'Photo',
