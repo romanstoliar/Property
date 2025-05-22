@@ -18,34 +18,70 @@ export class MaterialsComponent {
 
 	materialCategories: MaterialCategory[] = [
 		{
-			key: 'smesi',
-			label: 'Суміші та розчини',
-			link: 'https://epicentrk.ua/ua/shop/smesi.html',
-			image: 'assets/smesi.jpg'
+			key: 'budrem',
+			label: 'Будівництво та ремонт',
+			link: 'https://epicentrk.ua/ua/shop/stroitelstvo-i-remont/',
+			image: 'assets/materials/budmat.png'
 		},
 		{
-			key: 'laki-i-kraski',
-			label: 'Фарби та лаки',
-			link: 'https://epicentrk.ua/ua/shop/laki-i-kraski.html',
-			image: 'assets/laki.jpg'
+			key: 'porkyttia',
+			label: 'Покриття для підлоги',
+			link: 'https://epicentrk.ua/ua/shop/poly/',
+			image: 'assets/materials/bloki.jpg'
 		},
 		{
-			key: 'santehnika',
+			key: 'santechnika',
 			label: 'Сантехніка',
-			link: 'https://epicentrk.ua/ua/shop/santehnika.html',
-			image: 'assets/santehnika.jpg'
+			link: 'https://epicentrk.ua/ua/shop/santekhnika/',
+			image: 'assets/materials/cegla.jpeg'
 		},
 		{
-			key: 'elektro',
-			label: 'Електрика',
-			link: 'https://epicentrk.ua/ua/shop/elektrotovary.html',
-			image: 'assets/elektro.jpg'
+			key: 'mebli',
+			label: 'Меблі',
+			link: 'https://epicentrk.ua/ua/shop/mebel/',
+			image: 'assets/materials/budsumish.jpg'
 		},
 		{
-			key: 'budmaterialy',
-			label: 'Будматеріали',
-			link: 'https://epicentrk.ua/ua/shop/budivelnye-materialy/',
-			image: 'assets/budmaterialy.jpg'
+			key: 'dacha',
+			label: 'Дача, сад та город',
+			link: 'https://epicentrk.ua/ua/shop/dacha-sad-i-ogorod/',
+			image: 'assets/materials/electro.jpg'
+		},
+		{
+			key: 'diminter',
+			label: "Дім та інтер'єр",
+			link: 'https://epicentrk.ua/ua/shop/dom-i-interer/',
+			image: 'assets/materials/budhimiya.png'
+		},
+		{
+			key: 'instruments',
+			label: 'Інструменти та обладнання',
+			link: 'https://epicentrk.ua/ua/shop/instrumenty-i-oborudovanie/',
+			image: 'assets/materials/kley.png'
+		},
+		{
+			key: 'pobuttech',
+			label: 'Побутова техніка',
+			link: 'https://epicentrk.ua/ua/shop/bytovaya-tekhnika/',
+			image: 'assets/materials/shpalery.jpg'
+		},
+		{
+			key: 'sitka',
+			label: 'Освітлення',
+			link: 'https://epicentrk.ua/ua/shop/osveshcheniye/',
+			image: 'assets/materials/sitka.jpeg'
+		},
+		{
+			key: 'secsys',
+			label: 'Система безпеки та відеоспостереження',
+			link: 'https://epicentrk.ua/ua/shop/sistemy-bezopasnosti-i-videonablyudeniya/',
+			image: 'assets/materials/videocamera.jpg'
+		},
+		{
+			key: 'secsys',
+			label: 'Побутова хімія',
+			link: 'https://epicentrk.ua/ua/shop/bytovaya-khimiya/',
+			image: 'assets/materials/.jpg'
 		}
 	];
 

@@ -14,6 +14,10 @@ export const propertyFormComponents = {
 				{
 					name: 'Label',
 					value: 'Title'
+				},
+				{
+					name: 'Required',
+					value: true
 				}
 			]
 		},

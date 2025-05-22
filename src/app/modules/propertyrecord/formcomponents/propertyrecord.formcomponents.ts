@@ -7,7 +7,8 @@ export const propertyrecordFormComponents = {
 			key: 'name',
 			fields: [
 				{ name: 'Label', value: 'Event Name' },
-				{ name: 'Placeholder', value: 'Enter event name' }
+				{ name: 'Placeholder', value: 'Enter event name' },
+				{ name: 'Required', value: true }
 			]
 		},
 		{

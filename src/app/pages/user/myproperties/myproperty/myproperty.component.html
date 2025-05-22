@@ -3,32 +3,32 @@
      <img src="assets/property.jpg" alt="">
   </a>
 
-  <a [routerLink]="'/myproperty/' + property._id" class="property__name">
+  <a *ngIf="property.name" [routerLink]="'/myproperty/' + property._id" class="property__name">
     <div class="documents__title">{{ property.name }}</div>
   </a>
 
-  <a [routerLink]="'/myproperty/' + property._id" class="property-loc">
+  <a *ngIf="property.region" [routerLink]="'/myproperty/' + property._id" class="property-loc">
     <div class="property-loc__img">
       <span class="material-icons">location_on</span>
     </div>
     <div class="documents__title property-loc__title">{{ property.region }}</div>
   </a>
 
-  <a [routerLink]="'/myproperty/' + property._id" class="property-loc">
+  <a *ngIf="property.city" [routerLink]="'/myproperty/' + property._id" class="property-loc">
     <div class="property-loc__img">
       <span class="material-icons">location_on</span>
     </div>
     <div class="documents__title property-loc__title">{{ property.city }}</div>
   </a>
 
-  <a [routerLink]="'/myproperty/' + property._id" class="property-loc">
+  <a *ngIf="property.address" [routerLink]="'/myproperty/' + property._id" class="property-loc">
     <div class="property-loc__img">
       <span class="material-icons">location_on</span>
     </div>
     <div class="documents__title property-loc__title">{{ property.address }}</div>
   </a>
 
-  <a [routerLink]="'/myproperty/' + property._id" class="property-loc">
+  <a *ngIf="property.type" [routerLink]="'/myproperty/' + property._id" class="property-loc">
     <div class="property-loc__img">
       <span class="material-icons">holiday_village</span>
     </div>

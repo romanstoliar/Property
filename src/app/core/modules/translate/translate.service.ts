@@ -52,25 +52,31 @@ export class TranslateService {
 			}
 		});
 
-		this.http.get('/api/translate/get' + (this.appId ? '/' + this.appId : ''), (obj) => {
-			if (obj) {
-				this.translates = obj;
-				this.store.setJson('translates', this.translates);
-			}
-		});
-
-		this.http.get('/api/word/get' + (this.appId ? '/' + this.appId : ''), (arr) => {
-			if (arr) {
-				this.words = arr;
-				this.store.setJson('words', this.words);
-				for (let i = 0; i < arr.length; i++) {
-					if (this.pages.indexOf(arr[i].page) < 0) {
-						this.pages.push(arr[i].page);
-					}
+		this.http.get(
+			'/api/translate/get' + (this.appId ? '/' + this.appId : ''),
+			(obj) => {
+				if (obj) {
+					this.translates = obj;
+					this.store.setJson('translates', this.translates);
 				}
-				this._wordsLoaded = true;
 			}
-		});
+		);
+
+		this.http.get(
+			'/api/word/get' + (this.appId ? '/' + this.appId : ''),
+			(arr) => {
+				if (arr) {
+					this.words = arr;
+					this.store.setJson('words', this.words);
+					for (let i = 0; i < arr.length; i++) {
+						if (this.pages.indexOf(arr[i].page) < 0) {
+							this.pages.push(arr[i].page);
+						}
+					}
+					this._wordsLoaded = true;
+				}
+			}
+		);
 	}
 
 	// Array of all words for translation
@@ -88,13 +94,19 @@ export class TranslateService {
 			if (this.words[i]._id == word._id) this.words.splice(i, 1);
 		}
 
-		this.http.post('/api/word/delete' + (this.appId ? '/' + this.appId : ''), {
-			_id: word._id
-		});
+		this.http.post(
+			'/api/word/delete' + (this.appId ? '/' + this.appId : ''),
+			{
+				_id: word._id
+			}
+		);
 
-		this.http.post('/api/translate/delete' + (this.appId ? '/' + this.appId : ''), {
-			slug: word.slug
-		});
+		this.http.post(
+			'/api/translate/delete' + (this.appId ? '/' + this.appId : ''),
+			{
+				slug: word.slug
+			}
+		);
 	}
 
 	/* Translate Use */
@@ -105,21 +117,26 @@ export class TranslateService {
 	).languages
 		? (environment as unknown as { languages: Language[] }).languages
 		: [
-			{
-				code: 'en',
-				name: 'English',
-				origin: 'English'
-			}
-		];
+				{
+					code: 'en',
+					name: 'English',
+					origin: 'English'
+				},
+				{
+					code: 'uk',
+					name: 'Ukrainian',
+					origin: 'Ukrainian'
+				}
+		  ];
 
 	// Currently selected language
 	language: Language = this.languages.length
 		? this.languages[0]
 		: {
-			code: 'en',
-			name: 'English',
-			origin: 'English'
-		};
+				code: 'en',
+				name: 'English',
+				origin: 'English'
+		  };
 
 	/**
 	 * Sets the current language and updates the translations.

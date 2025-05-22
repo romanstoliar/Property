@@ -21,7 +21,7 @@
 					<span class="material-icons">group</span>
 				</a>
 			</li>
-			<li class="nav__li">
+			<!--<li class="nav__li">
 				<a
 					routerLinkActive="_activeLink"
 					(click)="showSidebar = false"
@@ -30,7 +30,7 @@
 				>
 					<span class="material-icons">business</span>
 				</a>
-			</li>
+			</li>-->
 			<li class="nav__li">
 				<a
 					routerLinkActive="_activeLink"
@@ -41,7 +41,7 @@
 					<span class="material-icons">inventory</span>
 				</a>
 			</li>
-			<li class="nav__li">
+			<!--<li class="nav__li">
 				<a
 					routerLinkActive="_activeLink"
 					(click)="showSidebar = false"
@@ -50,7 +50,7 @@
 				>
 					<span class="material-icons">storefront</span>
 				</a>
-			</li>
+			</li>-->
 			<li class="nav__li _burger" (click)="showSidebar = !showSidebar">
 				<a class="nav__toggle" [class._active]="showSidebar">
 					<span class="nav__toggle-line"></span>
@@ -163,7 +163,7 @@
 					<span class="material-icons">build</span>
 					<span translate>Theme.Materials</span>
 				</a>
-				<hr *ngIf="us.role('admin')" />
+				<!--<hr *ngIf="us.role('admin')" />
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
@@ -173,7 +173,7 @@
 				>
 					<span class="material-icons">business</span>
 					<span translate>Theme.Business</span>
-				</a>
+				</a>-->
 				<hr *ngIf="us.role('admin')" />
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
@@ -185,7 +185,7 @@
 					<span class="material-icons">group</span>
 					<span translate>Theme.Workers</span>
 				</a>
-				<hr *ngIf="us.role('admin')" />
+				<!--<hr *ngIf="us.role('admin')" />
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
@@ -195,8 +195,8 @@
 				>
 					<span class="material-icons">assignment</span>
 					<span translate>Theme.Services</span>
-				</a>
-				<hr *ngIf="us.role('admin')" />
+				</a>-->
+				<!--app-provider *ngIf="us.role('admin')" />
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
@@ -206,7 +206,7 @@
 				>
 					<span class="material-icons">attach_money</span>
 					<span translate>Theme.Trades</span>
-				</a>
+				</a>-->
 			</div>
 		</div>
 		<router-outlet></router-outlet>

@@ -1,41 +1,85 @@
 <div class="documents-sidebar__img property__img">
 
-  <!-- Зображення -->
-  <a class="documents" [routerLink]="'/propertyhistory/' + record._id">
-  </a>
+  <!-- Зображення (наприклад, якщо у запису може бути фото) -->
+<!--  <a
+    *ngIf="record.photo"
+    class="documents"
+    [routerLink]="'/propertyhistory/' + record._id"
+  >
+    <img [src]="record.photo" alt="">
+  </a>-->
 
   <!-- Назва -->
-  <a [routerLink]="'/propertyhistory/' + record._id" class="property__name">
+  <a
+    *ngIf="record.name"
+    [routerLink]="'/propertyhistory/' + record._id"
+    class="property__name"
+  >
     <div class="documents__title">{{ record.name }}</div>
   </a>
 
   <!-- Тип запису -->
-  <a [routerLink]="'/propertyhistory/' + record._id" class="property-loc">
+  <a
+    *ngIf="record.type"
+    [routerLink]="'/propertyhistory/' + record._id"
+    class="property-loc"
+  >
     <div class="property-loc__img">
       <span class="material-icons">category</span>
     </div>
     <div class="documents__title property-loc__title">{{ record.type }}</div>
   </a>
 
-  <!-- Вартість -->
-  <a [routerLink]="'/propertyhistory/' + record._id" class="property-loc">
+   <!-- Опис -->
+  <a
+    *ngIf="record.description"
+    [routerLink]="'/propertyhistory/' + record._id"
+    class="property-loc"
+  >
     <div class="property-loc__img">
-      <span class="material-icons">payments</span>
+      <span class="material-icons">description</span>
     </div>
-    <div class="documents__title property-loc__title">{{ record.cost }} $</div>
+    <div class="documents__title property-loc__title">{{ record.description }}</div>
   </a>
 
+  <!-- Вартість -->
+ <a
+  *ngIf="record.cost != null && record.cost !== 0"
+  [routerLink]="'/propertyhistory/' + record._id"
+  class="property-loc"
+>
+  <div class="property-loc__img">
+    <span class="material-icons">payments</span>
+  </div>
+  <div class="documents__title property-loc__title">{{ record.cost }} $</div>
+</a>
+
+
   <!-- Дата -->
-  <a [routerLink]="'/propertyhistory/' + record._id" class="property-loc">
+  <a
+    *ngIf="record.createdAt"
+    [routerLink]="'/propertyhistory/' + record._id"
+    class="property-loc"
+  >
     <div class="property-loc__img">
       <span class="material-icons">event</span>
     </div>
     <div class="documents__title property-loc__title">
-    {{ record.createdAt | date: 'd MMMM y' }}
+      {{ record.createdAt | date: 'd MMMM y' }}
     </div>
   </a>
 
-  <!-- Виконавець (якщо є) -->
+  <!-- Виконавець -->
+  <!--<a
+    *ngIf="record.worker"
+    [routerLink]="'/propertyhistory/' + record._id"
+    class="property-loc"
+  >
+    <div class="property-loc__img">
+      <span class="material-icons">person</span>
+    </div>
+    <div class="documents__title property-loc__title">{{ record.worker }}</div>
+  </a>-->
 
   <!-- Дії -->
   <div class="property-links">
@@ -46,5 +90,4 @@
       <span class="material-icons" (click)="delete()">delete</span>
     </div>
   </div>
-
 </div>
