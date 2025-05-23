@@ -14,7 +14,7 @@
     gap: 32px;
     align-items: flex-start;
 
-    @media (max-width: 991px) {
+    @media (max-width: 779px) {
       flex-direction: column;
       gap: 20px;
       align-items: stretch;
@@ -23,29 +23,31 @@
 
   .worker-image {
     float: right;
-    width: 300px;
+    width: 250px;
     margin-left: 20px;
     margin-bottom: 10px;
 
     img {
       width: 100%;
-      max-width: 300px;
+      max-width: 250px;
       height: auto;
       border-radius: 10px;
       object-fit: cover;
       border: 1px solid var(--c-border, #ccc);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: max-width 0.3s, width 0.3s;
     }
 
-    @media screen and (max-width: 1120px) {
+    @media screen and (max-width: 779px) {
       float: none;
-      width: 100%;
-      text-align: center;
+      width: 100%; // Менше зображення для мобільних
+      max-width: 200 px;
       margin-left: 0;
       margin-bottom: 20px;
+      text-align: center;
 
       img {
-        max-width: 100%;
+       // max-width: 120px; // Менше зображення для мобільних
       }
     }
   }
@@ -93,8 +95,55 @@
       justify-content: center;
       font-size: 22px;
       color: #528df4;
+      transition: width 0.3s, font-size 0.3s;
+    }
+
+    // Додано для контактів, щоб переносити на мобільному
+    &.contacts-detail {
+      flex-wrap: wrap;
+      gap: 0;
+      .inner-contact {
+        margin-right: 24px;
+        @media (max-width: 600px) {
+          margin-right: 0;
+          margin-bottom: 6px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-start;
+        .inner-contact {
+          width: 100%;
+          flex-direction: row;
+          align-items: center;
+        }
+      }
     }
   }
+  .worker-detail.contacts-detail {
+  flex-wrap: wrap;
+  gap: 24px; // більший відступ між телефон/емейл на десктопі
+
+  .inner-contact {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    // Без margin-right, бо gap працює як міжрядковий відступ!
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .inner-contact {
+      width: 100%;
+      // Всі елементи кожен на своєму рядку
+    }
+  }
+}
+
 
   .worker-loc__title {
     padding-left: 12px;
@@ -119,6 +168,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    word-break: break-all; // Довгі email/телефон автоматично переносяться
   }
 
   .contact-icon {

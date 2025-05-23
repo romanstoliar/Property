@@ -78,24 +78,20 @@
                 <strong>Status:</strong>
                 <span class="worker-loc__title">{{ worker.status }}</span>
               </div>
+<!-- Контакти -->
+<div class="worker-detail contacts-detail" *ngIf="worker.phone_number || worker.email">
+  <span *ngIf="worker.phone_number" class="inner-contact">
+    <span class="material-icons contact-icon">call</span>
 
-              <!-- Контакти -->
-              <div class="worker-detail" *ngIf="worker.phone_number || worker.email">
-                <div class="worker-loc__title contact-inline">
-                  <ng-container *ngIf="worker.phone_number">
-                    <span class="inner-contact">
-                      <span class="material-icons contact-icon">call</span>
-                      <strong>{{ worker.phone_number }}</strong>
-                    </span>
-                  </ng-container>
-                  <ng-container *ngIf="worker.email">
-                    <span class="inner-contact">
-                      <span class="material-icons contact-icon">mail</span>
-                      <strong>{{ worker.email }}</strong>
-                    </span>
-                  </ng-container>
-                </div>
-              </div>
+    <span class="contact-value"><strong>{{ worker.phone_number }}</strong></span>
+  </span>
+  <span *ngIf="worker.email" class="inner-contact">
+    <span class="material-icons contact-icon">mail</span>
+
+    <span class="contact-value"><strong>{{ worker.email }}</strong></span>
+  </span>
+</div>
+
               <!-- Кінець блоку контактів -->
             </div>
           </div>
