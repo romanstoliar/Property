@@ -1,51 +1,53 @@
-<div class="documents-sidebar__img property__img">
-  <a class="documents" [routerLink]="'/myproperty/' + property._id">
-     <img src="assets/property.jpg" alt="">
-  </a>
+<div class="property__img-row">
+  <!-- Фото + іконки під ним -->
+  <div class="property__img property__img--left">
+    <a class="documents" [routerLink]="'/myproperty/' + property._id">
+      <img src="assets/property.jpg" alt="">
+    </a>
 
-  <a *ngIf="property.name" [routerLink]="'/myproperty/' + property._id" class="property__name">
-    <div class="documents__title">{{ property.name }}</div>
-  </a>
-
-  <a *ngIf="property.region" [routerLink]="'/myproperty/' + property._id" class="property-loc">
-    <div class="property-loc__img">
-      <span class="material-icons">location_on</span>
+    <!-- Іконки під фото -->
+    <div class="property-links">
+      <div class="property-links__wrap">
+        <a [routerLink]="'/propertieshistories/' + property._id">
+          <span class="material-icons">history</span>
+        </a>
+      </div>
+      <div class="property-links__wrap">
+        <span class="material-icons" (click)="update(property)">edit</span>
+      </div>
+      <div class="property-links__wrap">
+        <span class="material-icons" (click)="delete()">delete</span>
+      </div>
     </div>
-    <div class="documents__title property-loc__title">{{ property.region }}</div>
-  </a>
-
-  <a *ngIf="property.city" [routerLink]="'/myproperty/' + property._id" class="property-loc">
-    <div class="property-loc__img">
-      <span class="material-icons">location_on</span>
-    </div>
-    <div class="documents__title property-loc__title">{{ property.city }}</div>
-  </a>
-
-  <a *ngIf="property.address" [routerLink]="'/myproperty/' + property._id" class="property-loc">
-    <div class="property-loc__img">
-      <span class="material-icons">location_on</span>
-    </div>
-    <div class="documents__title property-loc__title">{{ property.address }}</div>
-  </a>
-
-  <a *ngIf="property.type" [routerLink]="'/myproperty/' + property._id" class="property-loc">
-    <div class="property-loc__img">
-      <span class="material-icons">holiday_village</span>
-    </div>
-    <div class="documents__title property-loc__title">{{ property.type }}</div>
-  </a>
-
-  <div class="property-links">
-    <div class="property-links__wrap">
-      <a [routerLink]="'/propertieshistories/' + property._id">
-        <span class="material-icons">history</span>
-      </a>
-    </div>
-    <div class="property-links__wrap">
-      <span class="material-icons" (click)="update(property)">edit</span>
-    </div>
-    <div class="property-links__wrap">
-      <span class="material-icons" (click)="delete()">delete</span>
-    </div>
+  </div>
+  <!-- Вся інфа справа -->
+  <div class="property__info">
+    <a *ngIf="property.name" [routerLink]="'/myproperty/' + property._id" class="property__name">
+      <div class="documents__title">{{ property.name }}</div>
+    </a>
+    <a *ngIf="property.region" [routerLink]="'/myproperty/' + property._id" class="property-loc">
+      <div class="property-loc__img">
+        <span class="material-icons">location_on</span>
+      </div>
+      <div class="documents__title property-loc__title">{{ property.region }}</div>
+    </a>
+    <a *ngIf="property.city" [routerLink]="'/myproperty/' + property._id" class="property-loc">
+      <div class="property-loc__img">
+        <span class="material-icons">location_on</span>
+      </div>
+      <div class="documents__title property-loc__title">{{ property.city }}</div>
+    </a>
+    <a *ngIf="property.address" [routerLink]="'/myproperty/' + property._id" class="property-loc">
+      <div class="property-loc__img">
+        <span class="material-icons">location_on</span>
+      </div>
+      <div class="documents__title property-loc__title">{{ property.address }}</div>
+    </a>
+    <a *ngIf="property.type" [routerLink]="'/myproperty/' + property._id" class="property-loc">
+      <div class="property-loc__img">
+        <span class="material-icons">holiday_village</span>
+      </div>
+      <div class="documents__title property-loc__title">{{ property.type }}</div>
+    </a>
   </div>
 </div>

@@ -17,9 +17,7 @@
       font-weight: 600;
       margin-top: 0.5rem;
     }
-
     text-decoration: none;
-
     &:hover .documents__title {
       text-decoration: underline;
     }
@@ -49,9 +47,8 @@
     &__title {
       padding-left: 12px;
       font-size: 16px;
-      color: var(--c-text-primary); // динамічне перемикання теми
+      color: var(--c-text-primary);
     }
-
     &:hover .documents__title {
       text-decoration: underline;
     }
@@ -77,7 +74,6 @@
         color: var(--c-text-primary);
         cursor: pointer;
         transition: color 0.2s ease;
-
         &:hover {
           color: #0353ff;
         }
@@ -90,18 +86,77 @@
   }
 }
 
-.main-thumb {
-  margin-bottom: 1rem;
+/* FLEX-контейнер для фото і інформації */
+.property__img-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 18px;
+  width: 100%;
+
+  @media screen and (max-width: 479px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+/* Зображення зліва + кнопки під ним */
+.property__img--left {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 
   img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    border-radius: 6px;
     object-fit: cover;
     border: 1px solid var(--c-border, #ccc);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
   }
+
+  .property-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: auto;
+
+    wbutton {
+      margin: 0;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 100%;
+    align-items: center;
+    img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+    .property-buttons {
+      justify-content: center;
+    }
+  }
+}
+
+/* Інформація справа */
+.property__info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+  min-width: 0;
 }
 
 @media screen and (max-width: 479px) {
@@ -111,6 +166,10 @@
     text-align: center;
     margin-left: 0;
     margin-bottom: 20px;
+  }
+
+  .property-buttons wbutton {
+    font-size: 14px;
   }
 
   .property-links__wrap span {
