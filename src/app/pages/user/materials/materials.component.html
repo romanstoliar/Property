@@ -12,39 +12,49 @@
             <img src="assets/default.png" alt="Materials" />
           </div>
           <div class="documents-sidebar__title">
-            Категорії матеріалів
+            Materials category
           </div>
           <!-- Фільтр по назві -->
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 Пошук категорії"
+              placeholder="🔍 Search category"
               [(ngModel)]="searchTerm"
             />
           </div>
         </div>
       </div>
       <!-- Main Content -->
-      <div class="documents-main">
-        <div class="documents-main-content">
-          <div *ngFor="let category of filteredCategories" class="documents-main-row">
-            <a 
-              [href]="category.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="material-card"
-            >
-              <div class="documents-sidebar__img property__img">
-                <img [src]="category.image || 'assets/default.png'" alt="{{category.label}}">
-              </div>
-              <div class="documents__title">{{ category.label }}</div>
-            </a>
-          </div>
-          <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
-            <div class="documents__title">Нічого не знайдено</div>
-          </div>
-        </div>
+<div class="documents-main">
+  <div class="documents-main-content materials-grid">
+    <div 
+      *ngFor="let category of filteredCategories"
+      class="material-card"
+    >
+      <div class="material-card__img">
+        <img [src]="category.image || 'assets/default.png'" [alt]="category.label">
       </div>
+      <div class="material-card__title">
+        {{ category.label }}
+      </div>
+      <a
+        class="material-card__btn"
+        [href]="category.link"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="$event.stopPropagation()"
+        tabindex="-1"
+      >
+        <span class="material-icons">open_in_new</span>
+        Переглянути на Епіцентрі
+      </a>
+    </div>
+    <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
+      <div class="documents__title">Нічого не знайдено</div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 </div>

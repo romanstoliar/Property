@@ -21,55 +21,55 @@ export class MaterialsComponent {
 			key: 'budrem',
 			label: 'Будівництво та ремонт',
 			link: 'https://epicentrk.ua/ua/shop/stroitelstvo-i-remont/',
-			image: 'assets/materials/budmat.png'
+			image: 'assets/materials/budivnytstvo.jpg'
 		},
 		{
 			key: 'porkyttia',
 			label: 'Покриття для підлоги',
 			link: 'https://epicentrk.ua/ua/shop/poly/',
-			image: 'assets/materials/bloki.jpg'
+			image: 'assets/materials/pidloga.png'
 		},
 		{
 			key: 'santechnika',
 			label: 'Сантехніка',
 			link: 'https://epicentrk.ua/ua/shop/santekhnika/',
-			image: 'assets/materials/cegla.jpeg'
+			image: 'assets/materials/santechnika.jpg'
 		},
 		{
 			key: 'mebli',
 			label: 'Меблі',
 			link: 'https://epicentrk.ua/ua/shop/mebel/',
-			image: 'assets/materials/budsumish.jpg'
+			image: 'assets/materials/mebli.png'
 		},
 		{
 			key: 'dacha',
 			label: 'Дача, сад та город',
 			link: 'https://epicentrk.ua/ua/shop/dacha-sad-i-ogorod/',
-			image: 'assets/materials/electro.jpg'
+			image: 'assets/materials/dacha.png'
 		},
 		{
 			key: 'diminter',
 			label: "Дім та інтер'єр",
 			link: 'https://epicentrk.ua/ua/shop/dom-i-interer/',
-			image: 'assets/materials/budhimiya.png'
+			image: 'assets/materials/diminterer.png'
 		},
 		{
 			key: 'instruments',
 			label: 'Інструменти та обладнання',
 			link: 'https://epicentrk.ua/ua/shop/instrumenty-i-oborudovanie/',
-			image: 'assets/materials/kley.png'
+			image: 'assets/materials/tools.png'
 		},
 		{
 			key: 'pobuttech',
 			label: 'Побутова техніка',
 			link: 'https://epicentrk.ua/ua/shop/bytovaya-tekhnika/',
-			image: 'assets/materials/shpalery.jpg'
+			image: 'assets/materials/technika.png'
 		},
 		{
 			key: 'sitka',
 			label: 'Освітлення',
 			link: 'https://epicentrk.ua/ua/shop/osveshcheniye/',
-			image: 'assets/materials/sitka.jpeg'
+			image: 'assets/materials/svitlo.png'
 		},
 		{
 			key: 'secsys',
@@ -81,7 +81,7 @@ export class MaterialsComponent {
 			key: 'secsys',
 			label: 'Побутова хімія',
 			link: 'https://epicentrk.ua/ua/shop/bytovaya-khimiya/',
-			image: 'assets/materials/.jpg'
+			image: 'assets/materials/pobutkhimia.png'
 		}
 	];
 
