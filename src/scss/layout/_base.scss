@@ -606,6 +606,7 @@ wform {
 
 @media screen and (max-width: 1199px) {
     .documents-sidebar{
+        z-index: 2;
         flex: 0 0 auto;
         max-width: 240px;
     }

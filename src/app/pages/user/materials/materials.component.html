@@ -18,7 +18,7 @@
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 Search category"
+              placeholder="🔍 Search by category"
               [(ngModel)]="searchTerm"
             />
           </div>
@@ -46,11 +46,11 @@
         tabindex="-1"
       >
         <span class="material-icons">open_in_new</span>
-        Переглянути на Епіцентрі
+        View on "Epicenter"
       </a>
     </div>
     <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
-      <div class="documents__title">Нічого не знайдено</div>
+      <div class="documents__title">Nothing found</div>
     </div>
   </div>
 </div>
