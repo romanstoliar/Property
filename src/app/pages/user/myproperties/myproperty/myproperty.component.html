@@ -2,7 +2,10 @@
   <!-- Фото + іконки під ним -->
   <div class="property__img property__img--left">
     <a class="documents" [routerLink]="'/myproperty/' + property._id">
-      <img src="assets/property.jpg" alt="">
+      <img [src]="apiUrl + property.thumb"
+								alt="Photo"
+								(error)="onImageError($event)"
+							/>
     </a>
 
     <!-- Іконки під фото -->

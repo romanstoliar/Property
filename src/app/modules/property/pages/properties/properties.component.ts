@@ -23,7 +23,7 @@ export class PropertiesComponent {
 		'type',
 		'area',
 		'price',
-		'photo'
+		'thumb'
 	];
 
 	form: FormInterface = this._form.getForm(

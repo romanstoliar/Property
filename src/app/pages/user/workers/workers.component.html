@@ -26,8 +26,7 @@
                 [(ngModel)]="searchTerm"
               />
             </div>
-  
-            <!-- Фільтр -->
+
             <!-- Фільтр -->
 <div class="documents-sidebar__filter">
   <select [(ngModel)]="filterStatus">
@@ -55,6 +54,10 @@
     [(ngModel)]="selectedCity"
   />
 </div>
+          <!-- Створення -->
+          <div class="documents-sidebar__create">
+            <wbutton (click)="create()">➕ Add</wbutton>
+          </div>
 
           </div>
         </div>

@@ -10,4 +10,5 @@ export interface Propertyworker extends CrudDocument {
 	city: string;
 	phone_number: string;
 	email: string;
+	thumb: string;
 }

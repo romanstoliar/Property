@@ -32,7 +32,10 @@
           <div class="prop-details">
             
           <div class="prop-image">
-            <img src="assets/property.jpg" alt="Property image" />
+          <img [src]="apiUrl + property.thumb"
+								alt="Photo"
+								(error)="onImageError($event)"
+							/>
           </div>
             <!-- General -->
             <div class="prop-section" *ngIf="property.description || property.status || property.price">

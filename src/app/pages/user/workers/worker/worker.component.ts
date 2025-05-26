@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/propertyworker.interface';
-
+import { environment } from 'src/environments/environment.prod';
 @Component({
 	selector: 'app-worker',
 	standalone: false,
@@ -11,4 +11,10 @@ import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/proper
 export class WorkerComponent {
 	@Input() worker: Propertyworker;
 	@Input() provider: Propertyworker;
+	apiUrl = environment.url;
+
+	onImageError(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.src = 'assets/user.png';
+	}
 }

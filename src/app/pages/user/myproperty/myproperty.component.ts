@@ -10,6 +10,7 @@ import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/p
 import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/propertyrecord.interface';
 import { CoreService, AlertService } from 'wacom';
 import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment.prod';
 @Component({
 	templateUrl: './myproperty.component.html',
 	styleUrls: ['./myproperty.component.scss'],
@@ -20,6 +21,7 @@ export class MypropertyComponent {
 		this._router.url.replace('/myproperty/', '')
 	);
 	records: Propertyrecord[] = [];
+	apiUrl = environment.url;
 
 	constructor(
 		private _propertyService: PropertyService,
@@ -103,5 +105,9 @@ export class MypropertyComponent {
 				}
 			]
 		});
+	}
+	onImageError(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.src = 'assets/default.png';
 	}
 }

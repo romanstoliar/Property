@@ -99,4 +99,8 @@ export class WorkersComponent {
 			return matchSearch && matchRegion && matchCity && matchStatus;
 		});
 	}
+	onImageError(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.src = 'assets/user.png';
+	}
 }

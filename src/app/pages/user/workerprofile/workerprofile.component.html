@@ -36,7 +36,10 @@
           <!-- FLEX Рядок: Фото + Текст -->
           <div class="workerprofile-inner">
             <div class="worker-image">
-              <img src="assets/worker.jpg" alt="Worker image" />
+                    <img [src]="apiUrl + worker.thumb"
+								alt="Photo"
+								(error)="onImageError($event)"
+							/>
             </div>
             <div class="workerprofile-info">
               <div class="worker__name" *ngIf="worker.name">

@@ -123,6 +123,17 @@ export const propertyworkerFormComponents = {
 					value: 'Email'
 				}
 			]
+		},
+		{
+			name: 'Photo',
+			key: 'thumb',
+			focused: true,
+			fields: [
+				{
+					name: 'Photo',
+					value: 'Upload a worker photo'
+				}
+			]
 		}
 	]
 };

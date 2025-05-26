@@ -239,7 +239,7 @@ export const propertyFormComponents = {
 		},
 		{
 			name: 'Photo',
-			key: 'photo',
+			key: 'thumb',
 			fields: [
 				{
 					name: 'Photo',

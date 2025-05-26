@@ -64,4 +64,8 @@ export class MypropertyComponent {
 			]
 		});
 	}
+	onImageError(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.src = 'assets/default.png';
+	}
 }

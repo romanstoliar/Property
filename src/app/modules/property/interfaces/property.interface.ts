@@ -10,13 +10,13 @@ export interface Property extends CrudDocument {
 	area: number;
 	price: number;
 	status: 'active' | 'rent' | 'sale' | 'archived';
-	photo: string;
 	rooms: string;
 	floor: string;
 	renovation: string;
 	appliances: string;
 	utilities: string;
 	nearby: string;
+	thumb: string;
 
 	buildingtype: 'new building' | 'old stock';
 }

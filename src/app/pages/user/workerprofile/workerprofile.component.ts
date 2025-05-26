@@ -7,6 +7,7 @@ import { propertyworkerFormComponents } from 'src/app/modules/propertyworker/for
 import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/propertyworker.interface';
 import { PropertyworkerService } from 'src/app/modules/propertyworker/services/propertyworker.service';
 import { CoreService, AlertService } from 'wacom';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
 	templateUrl: './workerprofile.component.html',
@@ -17,6 +18,7 @@ export class WorkerprofileComponent {
 	worker = this._propertyworkerService.doc(
 		this._router.url.replace('/workerprofile/', '')
 	);
+	apiUrl = environment.url;
 
 	constructor(
 		private _propertyworkerService: PropertyworkerService,
@@ -84,5 +86,9 @@ export class WorkerprofileComponent {
 				}
 			]
 		});
+	}
+	onImageError(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.src = 'assets/default.png';
 	}
 }

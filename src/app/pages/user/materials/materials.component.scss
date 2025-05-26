@@ -48,52 +48,48 @@
   border: 1.5px solid var(--c-border, #e0e0e0);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   min-height: 220px;
-  min-width: 0;
-  padding: 1.4rem 0.7rem 1rem 0.7rem;
-  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  padding: 1.4rem 0.7rem 1rem;
   text-align: center;
   position: relative;
 
   &:hover {
-    border-color: var(--c-text-secondary, #588df4); /* Підсвічування бордера */
+    border-color: var(--c-text-secondary, #588df4);
     background: var(--c-bg-secondary, #f6f6f8);
-    /* transform: translateY(-1px) scale(1.01); // Легка підсвітка */
   }
 
-.documents-sidebar__img {
-    z-index: 1000;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    aspect-ratio: 1/1; // завжди квадратний контейнер
-    margin-left: auto;
-    margin-right: auto;
-
+  .material-card__img {
+    width: 150px;
+    height: 150px;
+    aspect-ratio: 1/1;
+    margin: 0 auto 1rem auto;
+    
     img {
       width: 100%;
       height: 100%;
-      aspect-ratio: 1/1; // квадратна сама картинка
-      object-fit: cover; // обрізає по квадрату, заповнює весь контейнер
+      object-fit: contain;
       border-radius: 13px;
       background: var(--c-bg-secondary, #f5f8fa);
-      border: 1px solid var(--c-border, #e0e0e0);
-      display: block;
     }
   }
 
-  .documents__title,
+  .material-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+  }
+
   .material-card__title {
     font-weight: 700;
     font-size: 1.09rem;
     color: var(--c-text-primary, #223);
-    margin-bottom: 1rem;
     min-height: 36px;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +98,7 @@
   }
 
   .material-card__btn {
+    margin-top: auto;
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -112,10 +109,8 @@
     font-size: 0.98rem;
     font-weight: 600;
     padding: 0.46rem 1rem;
-    text-decoration: none;
     cursor: pointer;
     transition: background 0.13s, box-shadow 0.13s;
-    margin-top: auto;
 
     .material-icons {
       font-size: 1.12rem;
@@ -124,8 +119,6 @@
     &:hover,
     &:focus {
       background: #084fc9;
-      color: #fff;
-      text-decoration: none;
     }
   }
 }
