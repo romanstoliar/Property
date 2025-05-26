@@ -8,6 +8,7 @@ import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/proper
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { CoreService, AlertService } from 'wacom';
 import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment.prod';
 @Component({
 	templateUrl: './propertyhistory.component.html',
 	styleUrls: ['./propertyhistory.component.scss'],
@@ -17,6 +18,7 @@ export class PropertyhistoryComponent {
 	record = this._propertyrecordService.doc(
 		this._router.url.replace('/propertyhistory/', '')
 	);
+	apiUrl = environment.url;
 	constructor(
 		private _propertyrecordService: PropertyrecordService,
 		private _router: Router,

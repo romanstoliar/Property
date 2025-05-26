@@ -20,4 +20,5 @@ export interface Propertyrecord extends CrudDocument {
 	files?: string[];
 	worker_id?: string;
 	property_id: string;
+	thumb: string;
 }

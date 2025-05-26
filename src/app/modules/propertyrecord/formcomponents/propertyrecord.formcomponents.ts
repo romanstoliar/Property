@@ -97,6 +97,16 @@ export const propertyrecordFormComponents = {
 					value: ['planned', 'in progress', 'done']
 				}
 			]
+		},
+		{
+			name: 'Photo',
+			key: 'thumb',
+			fields: [
+				{
+					name: 'Photo',
+					value: 'Upload a record photo'
+				}
+			]
 		}
 	]
 };
