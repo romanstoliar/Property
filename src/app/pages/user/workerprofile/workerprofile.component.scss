@@ -21,36 +21,23 @@
     }
   }
 
-  .worker-image {
-    float: right;
-    width: 250px;
-    margin-left: 20px;
-    margin-bottom: 10px;
+.worker-image {
+  width: 250px;
+  height: 300px;
+  position: relative;
 
-    img {
-      width: 100%;
-      max-width: 250px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 1px solid var(--c-border, #ccc);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      transition: max-width 0.3s, width 0.3s;
-    }
-
-    @media screen and (max-width: 779px) {
-      float: none;
-      width: 100%; // Менше зображення для мобільних
-      max-width: 200 px;
-      margin-left: 0;
-      margin-bottom: 20px;
-      text-align: center;
-
-      img {
-       // max-width: 120px; // Менше зображення для мобільних
-      }
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    max-width: unset;
+    max-height: unset;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid var(--c-border, #ccc);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
+}
 
   .workerprofile-info {
     flex: 1 1 auto;
