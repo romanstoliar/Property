@@ -35,7 +35,7 @@
         <div class="workerprofile-details">
           <!-- FLEX Рядок: Фото + Текст -->
           <div class="workerprofile-inner">
-            <div class="worker-image">
+            <div class="worker-image" *ngIf="worker.thumb">
                     <img [src]="apiUrl + worker.thumb"
 								alt="Photo"
 								(error)="onImageError($event)"

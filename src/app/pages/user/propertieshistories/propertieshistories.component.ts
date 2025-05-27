@@ -8,6 +8,7 @@ import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/p
 import { CoreService } from 'wacom';
 import { AlertService } from 'wacom';
 import { Location } from '@angular/common';
+import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/propertyworker.interface';
 @Component({
 	templateUrl: './propertieshistories.component.html',
 	styleUrls: ['./propertieshistories.component.scss'],

@@ -70,16 +70,20 @@
   </a>
 
   <!-- Виконавець -->
-  <!--<a
-    *ngIf="record.worker"
-    [routerLink]="'/propertyhistory/' + record._id"
-    class="property-loc"
-  >
-    <div class="property-loc__img">
-      <span class="material-icons">person</span>
-    </div>
-    <div class="documents__title property-loc__title">{{ record.worker }}</div>
-  </a>-->
+<!-- Виконавець -->
+<a
+  *ngIf="record.worker_id"
+  [routerLink]="['/workerprofile', record.worker_id]"
+  class="property-loc"
+>
+  <div class="property-loc__img">
+    <span class="material-icons">person</span>
+  </div>
+  <div class="documents__title property-loc__title">
+    {{ getWorkerName(record.worker_id) }}
+  </div>
+</a>
+
 
   <!-- Дії -->
   <div class="property-links">

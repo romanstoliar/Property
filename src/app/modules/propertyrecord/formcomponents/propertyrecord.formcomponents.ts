@@ -98,6 +98,16 @@ export const propertyrecordFormComponents = {
 				}
 			]
 		},
+		/*{
+			name: 'Select',
+			key: 'worker_id',
+			fields: [
+				{ name: 'Label', value: 'Performer' },
+				{ name: 'Placeholder', value: 'Choose performer' },
+				{ name: 'Source', value: '/propertyworker' },
+				{ name: 'LabelKey', value: 'name' }
+			]
+		},*/
 		{
 			name: 'Photo',
 			key: 'thumb',

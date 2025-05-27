@@ -7,6 +7,8 @@ import { Propertyrecord } from 'src/app/modules/propertyrecord/interfaces/proper
 import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/propertyrecord.service';
 import { AlertService, CoreService } from 'wacom';
 import { ChangeDetectorRef } from '@angular/core';
+import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/propertyworker.interface';
+import { PropertyworkerService } from 'src/app/modules/propertyworker/services/propertyworker.service';
 
 @Component({
 	selector: 'app-history',
@@ -16,20 +18,31 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class HistoryComponent {
 	@Input() record: Propertyrecord;
+	@Output() load = new EventEmitter();
+
 	form: FormInterface = this._form.getForm(
 		'propertyrecord',
 		propertyrecordFormComponents
 	);
 
-	@Output() load = new EventEmitter();
+	workers: Propertyworker[] = [];
+
 	constructor(
 		private _form: FormService,
 		private _propertyrecordService: PropertyrecordService,
+		private _propertyworkerService: PropertyworkerService,
 		private _core: CoreService,
 		private _alert: AlertService,
 		private _translate: TranslateService,
 		private _cdr: ChangeDetectorRef
-	) {}
+	) {
+		// Завантаження працівників через .get()
+		this._propertyworkerService
+			.get({})
+			.subscribe((list: Propertyworker[]) => {
+				this.workers = list;
+			});
+	}
 
 	update(record: Propertyrecord): void {
 		this._form
@@ -37,7 +50,6 @@ export class HistoryComponent {
 			.then((updated: Propertyrecord) => {
 				if (!updated) return;
 
-				// Копіюємо все, але виправляємо типи
 				this._core.copy(updated, record);
 				this._propertyrecordService.update(record).subscribe();
 			});
@@ -49,9 +61,7 @@ export class HistoryComponent {
 				'Common.Are you sure you want to delete this record?'
 			),
 			buttons: [
-				{
-					text: this._translate.translate('Common.No')
-				},
+				{ text: this._translate.translate('Common.No') },
 				{
 					text: this._translate.translate('Common.Yes'),
 					callback: async (): Promise<void> => {
@@ -64,5 +74,10 @@ export class HistoryComponent {
 				}
 			]
 		});
+	}
+
+	getWorkerName(id: string): string {
+		const worker = this.workers.find((w) => w._id === id);
+		return worker?.name || '—';
 	}
 }
