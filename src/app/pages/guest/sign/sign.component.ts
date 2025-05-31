@@ -73,7 +73,7 @@ export class SignComponent {
 				fields: [
 					{
 						name: 'Label',
-						value: "Let's go"
+						value: 'Sign'
 					},
 					{
 						name: 'Submit',
