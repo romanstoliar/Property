@@ -110,50 +110,73 @@
 					<span class="material-icons">translate</span>
 					<span translate>Theme.Translates</span>
 				</a>
-				<hr *ngIf="us.role('admin')" />
+				
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
-					routerLink="/admin/properties"
+					routerLink="/properties"
 					class="nav__burger-link"
+					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">home</span>
 					<span translate>Theme.Properties</span>
 				</a>
-				<hr *ngIf="us.role('admin')" />
+				
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
-					routerLink="/admin/propertiesrecords"
+					routerLink="/propertiesrecords"
 					class="nav__burger-link"
+					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">note_add</span>
 					<span translate>Theme.Records</span>
 				</a>
-				<hr *ngIf="us.role('admin')" />
+				
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
-					routerLink="/admin/propertiesmaterials"
+					routerLink="/propertiesmaterials"
 					class="nav__burger-link"
+					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">build</span>
 					<span translate>Theme.Materials</span>
 				</a>
-				<hr *ngIf="us.role('admin')" />
+				
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
-					routerLink="/admin/propertiesworkers"
+					routerLink="/propertiesworkers"
 					class="nav__burger-link"
+					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">group</span>
 					<span translate>Theme.Workers</span>
 				</a>
+			<div class="page__language">
+					<div class="lang-switch">
+						<ng-container *ngFor="let lang of _translate.languages">
+							<span
+								class="lang"
+								[class.active]="lang.code === _translate.language.code"
+								(click)="set_language(lang.code)"
+							>
+								{{ lang.code }}
+							</span>
+							<span
+								*ngIf="lang !== _translate.languages[_translate.languages.length - 1]"
+							>
+								|
+							</span>
+						</ng-container>
+					</div>
+					<strong><span translate>Profile.Set Language</span></strong>
+				</div>
 			</div>
 		</div>
 		<router-outlet></router-outlet>

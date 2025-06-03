@@ -695,3 +695,72 @@ wform {
         max-width: 100%;
     }
 }
+.page__language {
+	margin-top: auto; // завжди опускається вниз у флекс-контейнері
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 1rem;
+
+	span {
+		margin-bottom: 0.5rem;
+		color: var(--c-text-primary);
+		font-size: 1rem;
+	}
+
+	.lang-switch {
+		display: flex;
+		gap: 0.5rem;
+
+		.lang {
+			cursor: pointer;
+			color: var(--c-text-primary);
+			font-weight: bold;
+			text-transform: uppercase;
+			transition: var(--transition);
+
+			&.active {
+				color: var(--c-secondary);
+				text-decoration: underline;
+			}
+
+			&:hover {
+				color: var(--c-primary-hover);
+			}
+		}
+	}
+}
+.auth__language {
+	margin-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	.lang-switch {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 0.3rem;
+
+		.lang {
+			cursor: pointer;
+			color: var(--c-text-primary);
+			font-weight: bold;
+			text-transform: uppercase;
+			transition: var(--transition);
+
+			&.active {
+				color: var(--c-secondary);
+				text-decoration: underline;
+			}
+
+			&:hover {
+				color: var(--c-primary-hover);
+			}
+		}
+	}
+}

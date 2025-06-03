@@ -19,7 +19,24 @@
 				</span>
 				<wform (wSubmit)="submit()" [submition]="user" [config]="form">
 				</wform>
+				<div class="auth__language">
+	<div class="lang-switch">
+		<ng-container *ngFor="let lang of _translate.languages">
+			<span
+				class="lang"
+				[class.active]="lang.code === _translate.language.code"
+				(click)="set_language(lang.code)"
+			>
+				{{ lang.code }}
+			</span>
+			<span *ngIf="lang !== _translate.languages[_translate.languages.length - 1]">|</span>
+		</ng-container>
+	</div>
+	<strong><span translate>Sign.Set Language</span></strong>
+</div>
+
 			</div>
+			
 		</div>
 	</div>
 </div>

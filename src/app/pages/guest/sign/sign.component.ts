@@ -3,7 +3,10 @@ import { AlertService, HashService, HttpService, UiService } from 'wacom';
 import { Router } from '@angular/router';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { FormService } from 'src/app/core/modules/form/form.service';
-import { TranslateService } from 'src/app/core/modules/translate/translate.service';
+import {
+	TranslateService,
+	Language
+} from 'src/app/core/modules/translate/translate.service';
 import { UserService } from 'src/app/modules/user/services/user.service';
 import { User } from 'src/app/modules/user/interfaces/user.interface';
 
@@ -104,7 +107,7 @@ export class SignComponent {
 		private _hash: HashService,
 		private _router: Router,
 		private _form: FormService,
-		private _translate: TranslateService
+		public _translate: TranslateService
 	) {}
 
 	submit(): void {
@@ -198,4 +201,12 @@ export class SignComponent {
 			});
 		}
 	};
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
+	set_language(code: string) {
+		this._translate.set_language(
+			this._translate.languages.find((l) => l.code === code) as Language
+		);
+	}
 }
