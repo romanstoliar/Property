@@ -18,7 +18,7 @@ import { Propertyrecord } from '../../interfaces/propertyrecord.interface';
 })
 export class SelectUserComponent implements OnChanges {
 	@Input() value: string;
-
+	@Input() placeholder: string = '';
 	@Output() wChange = new EventEmitter();
 
 	get items(): Propertyrecord[] {

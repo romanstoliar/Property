@@ -157,4 +157,5 @@ export class PropertieshistoriesComponent {
 			return acc;
 		}, {} as { [key: string]: number });
 	}
+	
 }

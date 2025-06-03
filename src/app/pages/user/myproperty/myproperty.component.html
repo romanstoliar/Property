@@ -73,45 +73,45 @@
             <!-- Type -->
             <div class="prop-section" *ngIf="property.type || property.buildingtype">
               <h3><span class="material-icons">home</span> 
-                <span translate>Type</span></h3>
+                <span translate>Property.Type</span></h3>
               <div *ngIf="property.type" class="prop-row">
-                <strong><span translate>Type:</span></strong> {{ property.type }}
+                <strong><span translate>Property.Type:</span></strong> {{ property.type }}
               </div>
               <div *ngIf="property.buildingtype" class="prop-row">
-                <strong><span translate>Building type:</span></strong> {{ property.buildingtype }}
+                <strong><span translate>Property.Building type:</span></strong> {{ property.buildingtype }}
               </div>
             </div>
 
             <!-- Specs -->
             <div class="prop-section" *ngIf="property.area || property.rooms || property.floor">
               <h3><span class="material-icons">domain</span>
-              <span translate>Specs</span></h3>
+              <span translate>Property.Specs</span></h3>
               <div *ngIf="property.area" class="prop-row">
-                <strong><span translate>Area:</span></strong> {{ property.area }} m²
+                <strong><span translate>Property.Area:</span></strong> {{ property.area }} m²
               </div>
               <div *ngIf="property.rooms" class="prop-row">
-                <strong><span translate>Rooms:</span></strong> {{ property.rooms }}
+                <strong><span translate>Property.Rooms:</span></strong> {{ property.rooms }}
               </div>
               <div *ngIf="property.floor" class="prop-row">
-                <strong><span translate>Floor:</span></strong> {{ property.floor }}
+                <strong><span translate>Property.Floor:</span></strong> {{ property.floor }}
               </div>
             </div>
 
             <!-- Other -->
             <div class="prop-section" *ngIf="property.renovation || property.appliances || property.utilities || property.nearby">
               <h3><span class="material-icons">construction</span>
-                <span translate>Other</span></h3>
+                <span translate>Property.Other</span></h3>
               <div *ngIf="property.renovation" class="prop-row">
-                <strong><span translate>Renovation:</span></strong> {{ property.renovation }}
+                <strong><span translate>Property.Renovation:</span></strong> {{ property.renovation }}
               </div>
               <div *ngIf="property.appliances" class="prop-row">
-                <strong><span translate>Appliances:</span></strong> {{ property.appliances }}
+                <strong><span translate>Property.Appliances:</span></strong> {{ property.appliances }}
               </div>
               <div *ngIf="property.utilities" class="prop-row">
-                <strong><span translate>Utilities:</span></strong> {{ property.utilities }}
+                <strong><span translate>Property.Utilities:</span></strong> {{ property.utilities }}
               </div>
               <div *ngIf="property.nearby" class="prop-row">
-                <strong><span translate>Nearby:</span></strong> {{ property.nearby }}
+                <strong><span translate>Property.Nearby:</span></strong> {{ property.nearby }}
               </div>
             </div>
             
@@ -122,7 +122,7 @@
         <div class="prop-details">
           <div class="prop-section">
             <h3><span class="material-icons">history</span>
-              <span translate>Records</span></h3>
+              <span translate>Property.Records</span></h3>
             <div *ngIf="records.length > 0; else noRecords">
               <div *ngFor="let record of records.slice(0, 3)" class="record-preview" (click)="goToRecord(record._id)">
                 <div class="record-preview__title">{{ record.name }}</div>
@@ -133,12 +133,12 @@
               </div>
               <a class="record-see-all" [routerLink]="['/propertieshistories', property._id]">
                 <span class="material-icons">chevron_right</span> 
-                <span tranlsate>See full history</span>
+                <span translate>Property.See full history</span>
               </a>
             </div>
             <ng-template #noRecords>
               <p class="record-no">
-                <span translate>No records available.</span> </p>
+                <span translate>Property.No records available.</span> </p>
             </ng-template>
           </div>
         </div>

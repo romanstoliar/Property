@@ -14,13 +14,14 @@
             <img src="assets/default.png" alt="Sidebar image" />
           </div>
 
-          <div class="documents-sidebar__title">Property Records</div>
+          <div class="documents-sidebar__title">
+            <span translate>Record.Property Records</span></div>
 
           <!-- Пошук -->
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 Search"
+              placeholder="🔍 {{'Common.Search' | translate}}"
               [(ngModel)]="searchTerm"
               (ngModelChange)="load()"
             />
@@ -29,12 +30,17 @@
           <!-- Тип запису -->
           <div class="documents-sidebar__filter">
             <select [(ngModel)]="type" (ngModelChange)="load()">
-              <option value="">All types</option>
-              <option value="sell / buy payment">sell / buy payment</option>
-              <option value="service">service</option>
-              <option value="materials">materials</option>
-              <option value="rent payment">rent payment</option>
-              <option value="incident">incident</option>
+              <option value="">Record.All types</option>
+              <option value="{{'Common.sell / buy payment' | translate}}">
+                <span translate>Record.sell / buy payment</span></option>
+              <option value="{{'Common.service'| translate}}">
+                <span translate></span>service</option>
+              <option value="{{'Common.materials' |translate}}">
+               <span translate>Record.materials </span></option>
+              <option value="{{'Common.rent payment' | translate}}">
+                <span translate>Record.rent</span></option>
+              <option value="{{'Common.incident' | translate}}">
+                <span translate>Record.incident</span></option>
             </select>
           </div>
 
@@ -49,20 +55,24 @@
           <!-- Сортування -->
           <div class="documents-sidebar__filter">
             <select [(ngModel)]="sort" (ngModelChange)="load()">
-              <option value="">Date ↓</option>
-              <option value="asc">Date ↑</option>
+              <option value="">
+                <span translate>Record.Date ↓</span></option>
+              <option value="asc">
+                <span translate>Record.Date ↑</span></option>
             </select>
           </div>
 
           <!-- Додати запис -->
           <div class="documents-sidebar__create">
-            <wbutton (click)="create()">➕ Add</wbutton>
+            <wbutton (click)="create()">➕ 
+              <span translate>Button.Add</span>
+            </wbutton>
           </div>
 
           <!-- Аналітика -->
           <div class="documents-sidebar__description" *ngIf="propertyRecords.length">
   <div class="record-analytics-box">
-    <p><strong>Total cost:</strong> {{ totalCost }} $</p>
+    <p><strong><span translate>Record.Total cost:</span></strong> {{ totalCost }} $</p>
     <div *ngFor="let typeKey of (costByType | keyvalue)">
       <p><strong>{{ typeKey.key }}:</strong> {{ typeKey.value }} $</p>
     </div>
@@ -81,7 +91,8 @@
             </div>
           </div>
           <ng-template #noResults>
-            <p class="record-no">No records found for selected filters.</p>
+            <p class="record-no"><span translate>
+              Record.No records found for selected filters.</span></p>
           </ng-template>
         </div>
       </div>

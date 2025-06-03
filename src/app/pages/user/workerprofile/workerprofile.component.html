@@ -24,8 +24,14 @@
             {{ worker.name }}
           </div>
           <div class="documents-sidebar__description">
-            <wbutton (click)="update(worker)">Edit</wbutton>
-            <wbutton (click)="delete(worker)">Delete</wbutton>
+          <wbutton (click)="update(worker)">
+              <span class="material-icons">edit</span> 
+              <span translate>Button.Edit</span>
+            </wbutton>
+            <wbutton (click)="delete(worker)">
+              <span class="material-icons">delete</span>
+              <span translate>Button.Delete</span>
+            </wbutton>
           </div>
         </div>
       </div>
@@ -43,42 +49,42 @@
             </div>
             <div class="workerprofile-info">
               <div class="worker__name" *ngIf="worker.name">
-                <h2>{{ worker.name }}</h2>
+                <h2> {{ worker.name }}</h2>
               </div>
 
               <div class="worker-detail" *ngIf="worker.region">
                 <span class="material-icons">location_on</span>
-                <strong>Region:</strong>
+                <strong><span translate>Worker.Region:</span></strong>
                 <span class="worker-loc__title">{{ worker.region }}</span>
               </div>
 
               <div class="worker-detail" *ngIf="worker.city">
                 <span class="material-icons">location_city</span>
-                <strong>City:</strong>
+                <strong><span translate>Worker.City:</span></strong>
                 <span class="worker-loc__title">{{ worker.city }}</span>
               </div>
 
               <div class="worker-detail" *ngIf="worker.position">
                 <span class="material-icons">build</span>
-                <strong>Position:</strong>
+                <strong><span translate>Worker.Position:</span></strong>
                 <span class="worker-loc__title">{{ worker.position }}</span>
               </div>
 
               <div class="worker-detail" *ngIf="worker.experience">
                 <span class="material-icons">work</span>
-                <strong>Experience:</strong>
+                <strong><span translate>Worker.Experience:</span></strong>
                 <span class="worker-loc__title">{{ worker.experience }} years</span>
               </div>
 
               <div class="worker-detail" *ngIf="worker.task">
                 <span class="material-icons">task</span>
-                <strong>Task:</strong>
+                <strong><span translate>Worker.Task:</span></strong>
                 <span class="worker-loc__title">{{ worker.task }}</span>
               </div>
 
               <div class="worker-detail" *ngIf="worker.status">
                 <span class="material-icons">check_circle</span>
-                <strong>Status:</strong>
+                <strong><span translate>Worker.Status:</span></strong>
                 <span class="worker-loc__title">{{ worker.status }}</span>
               </div>
 <!-- Контакти -->

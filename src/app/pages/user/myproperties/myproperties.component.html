@@ -22,7 +22,7 @@
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 Search"
+              placeholder="🔍 {{'Common.Search' | translate}}"
               [(ngModel)]="searchTerm"
             />
           </div>
@@ -42,7 +42,8 @@
           <div class="documents-sidebar__filter">
             <input
               type="text"
-              placeholder="Region"
+              placeholder="{{'Common.Region'|translate}}"
+
               [(ngModel)]="selectedRegion"
             />
           </div>
@@ -51,7 +52,7 @@
           <div class="documents-sidebar__filter">
             <input
               type="text"
-              placeholder="City"
+              placeholder="{{'Common.City'|translate}}"
               [(ngModel)]="selectedCity"
             />
           </div>
@@ -59,7 +60,7 @@
           <!-- Створення -->
           <div class="documents-sidebar__create">
             <wbutton (click)="create()"
-            ><span translate>Button.Add</span></wbutton>
+            >➕<span translate>Button.Add</span></wbutton>
           </div>
         </div>
       </div>

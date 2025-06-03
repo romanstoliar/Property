@@ -269,32 +269,7 @@ const routes: Routes = [
 						'./modules/propertymaterial/pages/propertiesmaterials/propertiesmaterials.module'
 					).then((m) => m.PropertiesmaterialsModule)
 			},
-			{
-				path: 'properties',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Properties'
-					}
-				},
-				loadChildren: () =>
-					import(
-						'./modules/property/pages/properties/properties.module'
-					).then((m) => m.PropertiesModule)
-			},
-			{
-				path: 'records',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Records'
-					}
-				},
-				loadChildren: () =>
-					import('./pages/user/records/records.module').then(
-						(m) => m.RecordsModule
-					)
-			},
+
 			{
 				path: 'profile',
 				canActivate: [MetaGuard],
@@ -354,7 +329,7 @@ const routes: Routes = [
 					import(
 						'./core/modules/translate/pages/translates/translates.module'
 					).then((m) => m.TranslatesModule)
-			}
+			},
 		]
 	},
 	{

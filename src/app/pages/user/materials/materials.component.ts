@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 interface MaterialCategory {
 	key: string;
 	label: string;
@@ -84,12 +84,15 @@ export class MaterialsComponent {
 			image: 'assets/materials/pobutkhimia.png'
 		}
 	];
-
+	constructor(private _translate: TranslateService) {}
 	get filteredCategories(): MaterialCategory[] {
 		const term = this.searchTerm.toLowerCase().trim();
 		if (!term) return this.materialCategories;
 		return this.materialCategories.filter((cat) =>
 			cat.label.toLowerCase().includes(term)
 		);
+	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
 	}
 }

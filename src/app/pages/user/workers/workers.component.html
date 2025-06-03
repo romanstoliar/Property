@@ -15,33 +15,34 @@
             </div>
   
             <div class="documents-sidebar__title">
-              Workers
+              <span translate>Worker.Workers</span>
             </div>
   
             <!-- Пошук -->
             <div class="documents-sidebar__search">
               <input
                 type="text"
-                placeholder="🔍 Search by name or position"
+                placeholder="🔍 {{'Common.Search by name or position' | translate}}"
                 [(ngModel)]="searchTerm"
               />
             </div>
 
             <!-- Фільтр -->
-<div class="documents-sidebar__filter">
+<!--div class="documents-sidebar__filter">
   <select [(ngModel)]="filterStatus">
-    <option value="">All statuses</option>
-    <option value="Available">Available</option>
-    <option value="On-site">On-site</option>
-    <option value="Busy">Busy</option>
+    <option value="">
+      <span translate>All statuses</span></option>
+    <option value="Available"><span translate>Available</span></option>
+    <option value="On-site"><span translate>On-site</span></option>
+    <option value="Busy"><span translate>Busy</span></option>
   </select>
-</div>
+</-->
 
 <!-- Область -->
 <div class="documents-sidebar__filter">
   <input
     type="text"
-    placeholder="Region"
+    placeholder="{{'Common.Region'|translate}}"
     [(ngModel)]="selectedRegion"
   />
 </div>
@@ -50,13 +51,14 @@
 <div class="documents-sidebar__filter">
   <input
     type="text"
-    placeholder="City"
+    placeholder="{{'Common.City'|translate}}"
     [(ngModel)]="selectedCity"
   />
 </div>
           <!-- Створення -->
           <div class="documents-sidebar__create">
-            <wbutton (click)="create()">➕ Add</wbutton>
+            <wbutton (click)="create()">
+              ➕<span translate>Button.Add</span></wbutton>
           </div>
 
           </div>

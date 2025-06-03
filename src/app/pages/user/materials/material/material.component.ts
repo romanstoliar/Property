@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 
 interface MaterialCategory {
 	key: string;
@@ -44,8 +45,13 @@ export class MaterialComponent implements OnInit {
 		}
 	];
 
-	constructor(private route: ActivatedRoute) {}
-
+	constructor(
+		private route: ActivatedRoute,
+		private _translate: TranslateService
+	) {}
+	getTranslatedText(key: string): string {
+		return this._translate.translate(key);
+	}
 	ngOnInit() {
 		const key = this.route.snapshot.paramMap.get('category');
 		this.category = this.categories.find((c) => c.key === key);

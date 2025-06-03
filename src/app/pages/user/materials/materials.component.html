@@ -12,13 +12,13 @@
             <img src="assets/default.png" alt="Materials" />
           </div>
           <div class="documents-sidebar__title">
-            Materials category
+            <span translate>Materials.Materials category</span>
           </div>
           <!-- Фільтр по назві -->
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 Search by category"
+              placeholder="🔍 {{'Common.Search by category' | translate}}"
               [(ngModel)]="searchTerm"
             />
           </div>
@@ -46,11 +46,12 @@
         tabindex="-1"
       >
         <span class="material-icons">open_in_new</span>
-        View on "Epicentr"
+        <span translate>Materials.View on "Epicentr"</span> 
       </a>
     </div>
     <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
-      <div class="documents__title">Nothing found</div>
+      <div class="documents__title">
+        <span translate>Materials.Nothing found</span></div>
     </div>
   </div>
 </div>

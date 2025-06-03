@@ -18,7 +18,7 @@ import { Property } from '../../interfaces/property.interface';
 })
 export class SelectUserComponent implements OnChanges {
 	@Input() value: string;
-
+	@Input() placeholder: string = '';
 	@Output() wChange = new EventEmitter();
 
 	get items(): Property[] {
