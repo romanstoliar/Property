@@ -9,11 +9,11 @@ export const propertyFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Enter property title'
+					value: 'Enter the name of the property'
 				},
 				{
 					name: 'Label',
-					value: 'Title'
+					value: 'Name'
 				},
 				{
 					name: 'Required',
@@ -176,7 +176,7 @@ export const propertyFormComponents = {
 				}
 			]
 		},*/
-		/*{
+		{
 			name: 'Text',
 			key: 'utilities',
 			fields: [
@@ -189,21 +189,7 @@ export const propertyFormComponents = {
 					value: 'Utilities'
 				}
 			]
-		},*/
-		/*{
-			name: 'Text',
-			key: 'nearby',
-			fields: [
-				{
-					name: 'Placeholder',
-					value: 'List nearby infrastructure (shops, schools, transport)'
-				},
-				{
-					name: 'Label',
-					value: 'Nearby'
-				}
-			]
-		},*/
+		},
 		{
 			name: 'Number',
 			key: 'price',
@@ -218,7 +204,6 @@ export const propertyFormComponents = {
 				}
 			]
 		},
-
 		{
 			name: 'Select',
 			key: 'status',

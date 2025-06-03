@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Language, TranslateService, Word } from '../../translate.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { FormService } from 'src/app/core/modules/form/form.service';
-import { HttpService } from 'wacom';
+import { AlertService, HttpService } from 'wacom';
 
 interface Translate {
 	translate: string;
 	slug: string;
 	lang: string;
+	word: string;
 }
 
 interface TranslateAll {
@@ -16,9 +17,9 @@ interface TranslateAll {
 }
 
 @Component({
-    templateUrl: './translates.component.html',
-    styleUrls: ['./translates.component.scss'],
-    standalone: false
+	templateUrl: './translates.component.html',
+	styleUrls: ['./translates.component.scss'],
+	standalone: false
 })
 export class TranslatesComponent {
 	columns = ['page', 'word', 'translation'];
@@ -139,14 +140,18 @@ export class TranslatesComponent {
 	constructor(
 		public ts: TranslateService,
 		private _form: FormService,
-		private _http: HttpService
+		private _http: HttpService,
+
+		private _alert: AlertService,
+
+		private _translate: TranslateService
 	) {}
 
 	translateAll(missed = false): void {
 		const rows = missed
 			? this.rows.filter(
-				(r) => !this.ts.translates[this.ts.language.code][r.slug]
-			)
+					(r) => !this.ts.translates[this.ts.language.code][r.slug]
+			  )
 			: this.rows;
 		const words = JSON.stringify(rows.map((r) => r.word));
 		const slugs = rows.map((r) => r.slug);

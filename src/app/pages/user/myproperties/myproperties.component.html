@@ -15,7 +15,7 @@
           </div>
 
           <div class="documents-sidebar__title">
-            My properties
+            <span translate>Property.My properties</span>
           </div>
 
           <!-- Пошук -->
@@ -28,15 +28,15 @@
           </div>
 
           <!-- Фільтр за статусом -->
-          <div class="documents-sidebar__filter">
-            <select [(ngModel)]="filterStatus">
-              <option value="">All statuses</option>
-              <option value="active">active</option>
-              <option value="rent">rent</option>
-              <option value="sale">sale</option>
-              <option value="archived">archived</option>
-            </select>
-          </div>
+<div class="documents-sidebar__filter">
+  <select [(ngModel)]="filterStatus">
+    <option value="">{{ 'Property.All statuses' | translate }}</option>
+    <option *ngFor="let status of statusOptions" [value]="status">
+      {{ 'Property.' + status | translate }}
+    </option>
+  </select>
+</div>
+
 
           <!-- Область -->
           <div class="documents-sidebar__filter">
@@ -58,7 +58,8 @@
 
           <!-- Створення -->
           <div class="documents-sidebar__create">
-            <wbutton (click)="create()">➕ Add</wbutton>
+            <wbutton (click)="create()"
+            ><span translate>Button.Add</span></wbutton>
           </div>
         </div>
       </div>

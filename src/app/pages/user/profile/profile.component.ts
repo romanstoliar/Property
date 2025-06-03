@@ -5,6 +5,7 @@ import { FormService } from 'src/app/core/modules/form/form.service';
 import { environment } from 'src/environments/environment';
 import { Component } from '@angular/core';
 import { CoreService } from 'wacom';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 
 interface ChangePassword {
 	oldPass: string;
@@ -12,10 +13,10 @@ interface ChangePassword {
 }
 
 @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss'],
-    standalone: false
+	selector: 'app-profile',
+	templateUrl: './profile.component.html',
+	styleUrls: ['./profile.component.scss'],
+	standalone: false
 })
 export class ProfileComponent {
 	readonly url = environment.url;
@@ -23,6 +24,7 @@ export class ProfileComponent {
 	constructor(
 		private _form: FormService,
 		private _core: CoreService,
+		private _translate: TranslateService,
 		public us: UserService
 	) {
 		this._core.onComplete('us.user').then(() => {
@@ -156,5 +158,8 @@ export class ProfileComponent {
 		this.us.user.thumb = Array.isArray(thumb) ? thumb[0] : thumb;
 
 		this.us.updateMe();
+	}
+	getTranslatedText(key: string): string {
+		return this._translate.translate(key);
 	}
 }

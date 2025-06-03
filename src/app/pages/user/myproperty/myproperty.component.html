@@ -16,10 +16,12 @@
           <div class="documents-sidebar__title">{{ property.name }}</div>
           <div class="documents-sidebar__description">
             <wbutton (click)="update(property)">
-              <span class="material-icons">edit</span> Edit
+              <span class="material-icons">edit</span> 
+              <span translate>Button.Edit</span>
             </wbutton>
             <wbutton (click)="delete(property)">
-              <span class="material-icons">delete</span> Delete
+              <span class="material-icons">delete</span>
+              <span translate>Button.Delete</span>
             </wbutton>
           </div>
         </div>
@@ -39,71 +41,77 @@
           </div>
             <!-- General -->
             <div class="prop-section" *ngIf="property.description || property.status || property.price">
-              <h3><span class="material-icons">info</span> General</h3>
+              <h3><span class="material-icons">info</span> 
+                <span translate>Property.General</span> </h3>
               <div *ngIf="property.description" class="prop-row">
-                <strong>Description:</strong> {{ property.description }}
+                <strong>Property.Description:</strong> {{ property.description }}
               </div>
               <div *ngIf="property.status" class="prop-row">
-                <strong>Status:</strong> {{ property.status }}
+                <strong><span translate>Property.Status:</span></strong> {{ property.status }}
               </div>
               <div *ngIf="property.price" class="prop-row">
-                <strong>Price:</strong> {{ property.price }} $
+                <strong><span translate>Property.Price:</span></strong> {{ property.price }} ₴
               </div>
             </div>
 
             <!-- Location -->
             <div class="prop-section" *ngIf="property.region || property.city || property.address">
-              <h3><span class="material-icons">location_on</span> Location</h3>
+              <h3><span class="material-icons">location_on</span><span translate>Location</span></h3>
               <div *ngIf="property.region" class="prop-row">
-                <strong>Region:</strong> {{ property.region }}
+                <strong>
+                  <span translate>Property.Region:</span></strong> 
+                {{ property.region }}
               </div>
               <div *ngIf="property.city" class="prop-row">
-                <strong>City:</strong> {{ property.city }}
+                <strong><span translate>Property.City:</span></strong> {{ property.city }}
               </div>
               <div *ngIf="property.address" class="prop-row">
-                <strong>Address:</strong> {{ property.address }}
+                <strong><span translate>Property.Address:</span></strong> {{ property.address }}
               </div>
             </div>
 
             <!-- Type -->
             <div class="prop-section" *ngIf="property.type || property.buildingtype">
-              <h3><span class="material-icons">home</span> Type</h3>
+              <h3><span class="material-icons">home</span> 
+                <span translate>Type</span></h3>
               <div *ngIf="property.type" class="prop-row">
-                <strong>Type:</strong> {{ property.type }}
+                <strong><span translate>Type:</span></strong> {{ property.type }}
               </div>
               <div *ngIf="property.buildingtype" class="prop-row">
-                <strong>Building type:</strong> {{ property.buildingtype }}
+                <strong><span translate>Building type:</span></strong> {{ property.buildingtype }}
               </div>
             </div>
 
             <!-- Specs -->
             <div class="prop-section" *ngIf="property.area || property.rooms || property.floor">
-              <h3><span class="material-icons">domain</span> Specs</h3>
+              <h3><span class="material-icons">domain</span>
+              <span translate>Specs</span></h3>
               <div *ngIf="property.area" class="prop-row">
-                <strong>Area:</strong> {{ property.area }} m²
+                <strong><span translate>Area:</span></strong> {{ property.area }} m²
               </div>
               <div *ngIf="property.rooms" class="prop-row">
-                <strong>Rooms:</strong> {{ property.rooms }}
+                <strong><span translate>Rooms:</span></strong> {{ property.rooms }}
               </div>
               <div *ngIf="property.floor" class="prop-row">
-                <strong>Floor:</strong> {{ property.floor }}
+                <strong><span translate>Floor:</span></strong> {{ property.floor }}
               </div>
             </div>
 
             <!-- Other -->
             <div class="prop-section" *ngIf="property.renovation || property.appliances || property.utilities || property.nearby">
-              <h3><span class="material-icons">construction</span> Other</h3>
+              <h3><span class="material-icons">construction</span>
+                <span translate>Other</span></h3>
               <div *ngIf="property.renovation" class="prop-row">
-                <strong>Renovation:</strong> {{ property.renovation }}
+                <strong><span translate>Renovation:</span></strong> {{ property.renovation }}
               </div>
               <div *ngIf="property.appliances" class="prop-row">
-                <strong>Appliances:</strong> {{ property.appliances }}
+                <strong><span translate>Appliances:</span></strong> {{ property.appliances }}
               </div>
               <div *ngIf="property.utilities" class="prop-row">
-                <strong>Utilities:</strong> {{ property.utilities }}
+                <strong><span translate>Utilities:</span></strong> {{ property.utilities }}
               </div>
               <div *ngIf="property.nearby" class="prop-row">
-                <strong>Nearby:</strong> {{ property.nearby }}
+                <strong><span translate>Nearby:</span></strong> {{ property.nearby }}
               </div>
             </div>
             
@@ -113,7 +121,8 @@
         <!-- Records -->
         <div class="prop-details">
           <div class="prop-section">
-            <h3><span class="material-icons">history</span>Records</h3>
+            <h3><span class="material-icons">history</span>
+              <span translate>Records</span></h3>
             <div *ngIf="records.length > 0; else noRecords">
               <div *ngFor="let record of records.slice(0, 3)" class="record-preview" (click)="goToRecord(record._id)">
                 <div class="record-preview__title">{{ record.name }}</div>
@@ -123,11 +132,13 @@
                 <div class="record-preview__desc">{{ record.description }}</div>
               </div>
               <a class="record-see-all" [routerLink]="['/propertieshistories', property._id]">
-                <span class="material-icons">chevron_right</span> See full history
+                <span class="material-icons">chevron_right</span> 
+                <span tranlsate>See full history</span>
               </a>
             </div>
             <ng-template #noRecords>
-              <p class="record-no">No records available.</p>
+              <p class="record-no">
+                <span translate>No records available.</span> </p>
             </ng-template>
           </div>
         </div>

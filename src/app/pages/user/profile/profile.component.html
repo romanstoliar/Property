@@ -21,6 +21,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="profile__body">
 			<wform
 				[config]="formProfile"
@@ -33,13 +34,13 @@
 				<div class="profile__logout">
 					<wbutton (click)="us.logout()" type="danger">
 						<span class="material-icons">logout</span>
-						<span translate>Profile.Logout</span>
+						<span>{{ 'profile.logout' | translate }}</span>
 					</wbutton>
 				</div>
 
 				<div class="profile__password">
-					<wbutton (click)="changePassword()" type="link" translate>
-						Profile.Change Password
+					<wbutton (click)="changePassword()" type="link">
+						{{ 'profile.change_password' | translate }}
 					</wbutton>
 				</div>
 			</div>

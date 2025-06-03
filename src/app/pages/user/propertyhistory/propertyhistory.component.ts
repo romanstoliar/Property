@@ -85,4 +85,7 @@ export class PropertyhistoryComponent {
 			]
 		});
 	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

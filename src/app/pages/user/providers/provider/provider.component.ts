@@ -61,4 +61,7 @@ export class ProviderComponent {
 			]
 		});
 	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

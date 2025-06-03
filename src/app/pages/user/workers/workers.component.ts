@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormService } from 'src/app/core/modules/form/form.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { propertyworkerFormComponents } from 'src/app/modules/propertyworker/formcomponents/propertyworker.formcomponents';
 import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/propertyworker.interface';
 import { PropertyworkerService } from 'src/app/modules/propertyworker/services/propertyworker.service';
@@ -27,7 +28,8 @@ export class WorkersComponent {
 
 	constructor(
 		private _propertyworkerService: PropertyworkerService,
-		private _form: FormService
+		private _form: FormService,
+		private _translate: TranslateService
 	) {}
 
 	ngOnInit(): void {
@@ -102,5 +104,8 @@ export class WorkersComponent {
 	onImageError(event: Event) {
 		const target = event.target as HTMLImageElement;
 		target.src = 'assets/user.png';
+	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
 	}
 }

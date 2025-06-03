@@ -6,6 +6,7 @@ import { Property } from 'src/app/modules/property/interfaces/property.interface
 import { PropertyService } from 'src/app/modules/property/services/property.service';
 import { environment } from 'src/environments/environment.prod';
 import { Location } from '@angular/common';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 @Component({
 	templateUrl: './myproperties.component.html',
 	styleUrls: ['./myproperties.component.scss'],
@@ -23,15 +24,30 @@ export class MypropertiesComponent {
 	constructor(
 		private _propertyService: PropertyService,
 		private _form: FormService,
-		private location: Location
+		private location: Location,
+		private _translate: TranslateService
 	) {}
 
 	goBack() {
 		this.location.back();
 	}
 
+	statusOptions = ['active', 'rent', 'sale', 'archived'];
+
 	ngOnInit(): void {
 		this.load();
+
+		const statusKeys = [
+			'Property.All',
+			'Property.active',
+			'Property.rent',
+			'Property.sale',
+			'Property.archived',
+			'Region',
+			'City'
+		];
+
+		statusKeys.forEach((key) => this._translate.translate(key));
 	}
 
 	load(): void {
@@ -88,5 +104,8 @@ export class MypropertiesComponent {
 
 			return matchSearch && matchRegion && matchCity && matchStatus;
 		});
+	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
 	}
 }

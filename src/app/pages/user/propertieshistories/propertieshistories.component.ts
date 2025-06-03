@@ -8,6 +8,7 @@ import { PropertyrecordService } from 'src/app/modules/propertyrecord/services/p
 import { CoreService } from 'wacom';
 import { AlertService } from 'wacom';
 import { Location } from '@angular/common';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { Propertyworker } from 'src/app/modules/propertyworker/interfaces/propertyworker.interface';
 @Component({
 	templateUrl: './propertieshistories.component.html',
@@ -34,7 +35,8 @@ export class PropertieshistoriesComponent {
 		private _route: ActivatedRoute,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private location: Location
+		private location: Location,
+		private _translate: TranslateService
 	) {
 		this._route.paramMap.subscribe((params) => {
 			this.property_id = params.get('property_id') || '';
@@ -129,6 +131,9 @@ export class PropertieshistoriesComponent {
 				this.propertyRecords = filtered;
 				this.calculateAnalytics();
 			});
+	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
 	}
 
 	private _buildQuery(): string {

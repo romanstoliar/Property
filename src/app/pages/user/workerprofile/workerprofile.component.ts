@@ -91,4 +91,7 @@ export class WorkerprofileComponent {
 		const target = event.target as HTMLImageElement;
 		target.src = 'assets/default.png';
 	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

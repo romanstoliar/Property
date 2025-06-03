@@ -80,4 +80,7 @@ export class HistoryComponent {
 		const worker = this.workers.find((w) => w._id === id);
 		return worker?.name || '—';
 	}
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }
