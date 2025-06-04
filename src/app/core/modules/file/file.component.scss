@@ -2,9 +2,8 @@
 .file {
 	&__img {
 		display: block;
-		max-width: 100%;
+		max-width: 50%;
 		height: auto;
-		border-radius: var(--file-img-border-radius, 8px);
 		cursor: pointer;
 
 		&.round {
