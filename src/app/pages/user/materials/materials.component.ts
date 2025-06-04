@@ -19,71 +19,72 @@ export class MaterialsComponent {
 	materialCategories: MaterialCategory[] = [
 		{
 			key: 'budrem',
-			label: 'Будівництво та ремонт',
+			label: 'Construction and repair',
 			link: 'https://epicentrk.ua/ua/shop/stroitelstvo-i-remont/',
 			image: 'assets/materials/budivnytstvo.jpg'
 		},
 		{
 			key: 'porkyttia',
-			label: 'Покриття для підлоги',
+			label: 'Floor coverings',
 			link: 'https://epicentrk.ua/ua/shop/poly/',
 			image: 'assets/materials/pidloga.png'
 		},
 		{
 			key: 'santechnika',
-			label: 'Сантехніка',
+			label: 'Plumbing',
 			link: 'https://epicentrk.ua/ua/shop/santekhnika/',
 			image: 'assets/materials/santechnika.jpg'
 		},
 		{
 			key: 'mebli',
-			label: 'Меблі',
+			label: 'Furniture',
 			link: 'https://epicentrk.ua/ua/shop/mebel/',
 			image: 'assets/materials/mebli.png'
 		},
 		{
 			key: 'dacha',
-			label: 'Дача, сад та город',
+			label: 'Cottage and garden',
 			link: 'https://epicentrk.ua/ua/shop/dacha-sad-i-ogorod/',
 			image: 'assets/materials/dacha.png'
 		},
 		{
 			key: 'diminter',
-			label: "Дім та інтер'єр",
+			label: 'Home and interior',
 			link: 'https://epicentrk.ua/ua/shop/dom-i-interer/',
 			image: 'assets/materials/diminterer.png'
 		},
 		{
 			key: 'instruments',
-			label: 'Інструменти та обладнання',
+			label: 'Tools and equipment',
 			link: 'https://epicentrk.ua/ua/shop/instrumenty-i-oborudovanie/',
 			image: 'assets/materials/tools.png'
 		},
 		{
 			key: 'pobuttech',
-			label: 'Побутова техніка',
+			label: 'Home appliances',
 			link: 'https://epicentrk.ua/ua/shop/bytovaya-tekhnika/',
 			image: 'assets/materials/technika.png'
 		},
 		{
 			key: 'sitka',
-			label: 'Освітлення',
+			label: 'Lighting',
 			link: 'https://epicentrk.ua/ua/shop/osveshcheniye/',
 			image: 'assets/materials/svitlo.png'
 		},
 		{
 			key: 'secsys',
-			label: 'Система безпеки та відеоспостереження',
+			label: 'Security and surveillance',
 			link: 'https://epicentrk.ua/ua/shop/sistemy-bezopasnosti-i-videonablyudeniya/',
 			image: 'assets/materials/videocamera.jpg'
 		},
 		{
-			key: 'secsys',
-			label: 'Побутова хімія',
+			key: 'khimia',
+			label: 'Household chemicals',
 			link: 'https://epicentrk.ua/ua/shop/bytovaya-khimiya/',
 			image: 'assets/materials/pobutkhimia.png'
 		}
 	];
+
 	constructor(private _translate: TranslateService) {}
 	get filteredCategories(): MaterialCategory[] {
 		const term = this.searchTerm.toLowerCase().trim();
@@ -94,5 +95,8 @@ export class MaterialsComponent {
 	}
 	getTranslatedText(toTranslate: string) {
 		return this._translate.translate(toTranslate);
+	}
+	getTranslatedLabel(label: string): string {
+		return this._translate.translate(`Common.${label}`);
 	}
 }

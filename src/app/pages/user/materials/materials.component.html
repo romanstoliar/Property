@@ -5,6 +5,7 @@
       <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
         <div class="burger" [class.burger--close]="isMenuOpen"></div>
       </div>
+
       <!-- Sidebar -->
       <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
         <div class="documents-sidebar-content">
@@ -14,47 +15,52 @@
           <div class="documents-sidebar__title">
             <span translate>Materials.Materials category</span>
           </div>
+
           <!-- Фільтр по назві -->
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 {{'Common.Search by category' | translate}}"
+              placeholder="🔍 {{ 'Common.Search by category' | translate }}"
               [(ngModel)]="searchTerm"
             />
           </div>
         </div>
       </div>
+
       <!-- Main Content -->
-<div class="documents-main">
-  <div class="documents-main-content materials-grid">
-    <div 
-      *ngFor="let category of filteredCategories"
-      class="material-card"
-    >
-      <div class="material-card__img">
-        <img [src]="category.image || 'assets/default.png'" [alt]="category.label">
+      <div class="documents-main">
+        <div class="documents-main-content materials-grid">
+          <div 
+            *ngFor="let category of filteredCategories"
+            class="material-card"
+          >
+            <div class="material-card__img">
+              <img [src]="category.image || 'assets/default.png'" [alt]="'Common.' + category.label | translate">
+            </div>
+            <div class="material-card__title">
+             {{ getTranslatedLabel(category.label) }}
+
+            </div>
+            <a
+              class="material-card__btn"
+              [href]="category.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              (click)="$event.stopPropagation()"
+              tabindex="-1"
+            >
+              <span class="material-icons">open_in_new</span>
+              <span translate>Materials.View on "Epicentr"</span> 
+            </a>
+          </div>
+
+          <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
+            <div class="documents__title">
+              <span translate>Materials.Nothing found</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="material-card__title">
-        {{ category.label }}
-      </div>
-      <a
-        class="material-card__btn"
-        [href]="category.link"
-        target="_blank"
-        rel="noopener noreferrer"
-        (click)="$event.stopPropagation()"
-        tabindex="-1"
-      >
-        <span class="material-icons">open_in_new</span>
-        <span translate>Materials.View on "Epicentr"</span> 
-      </a>
-    </div>
-    <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
-      <div class="documents__title">
-        <span translate>Materials.Nothing found</span></div>
-    </div>
-  </div>
-</div>
 
     </div>
   </div>
