@@ -39,8 +39,9 @@
 				</div>
 
 				<div class="profile__password">
-					<wbutton (click)="changePassword()" type="link">
-						{{ 'profile.change_password' | translate }}
+					<wbutton (click)="changePassword()" type="success">
+						<span class="material-icons">lock_reset</span>
+						<span>{{ 'profile.Change password' | translate }}</span>
 					</wbutton>
 				</div>
 			</div>

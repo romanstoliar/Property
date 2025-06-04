@@ -212,7 +212,9 @@ export class PropertiesComponent {
 				});
 		};
 	}
-
+	getTranslated(text: string): string {
+		return this._translate.translate('Common.' + text);
+	}
 	private _preCreate(property: Property): void {
 		delete property.__created;
 	}
