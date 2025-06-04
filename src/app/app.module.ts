@@ -269,6 +269,19 @@ const routes: Routes = [
 						'./modules/propertymaterial/pages/propertiesmaterials/propertiesmaterials.module'
 					).then((m) => m.PropertiesmaterialsModule)
 			},
+			{
+				path: 'properties',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Properties'
+					}
+				},
+				loadChildren: () =>
+					import(
+						'./modules/property/pages/properties/properties.module'
+					).then((m) => m.PropertiesModule)
+			},
 
 			{
 				path: 'profile',
@@ -329,7 +342,7 @@ const routes: Routes = [
 					import(
 						'./core/modules/translate/pages/translates/translates.module'
 					).then((m) => m.TranslatesModule)
-			},
+			}
 		]
 	},
 	{

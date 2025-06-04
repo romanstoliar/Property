@@ -117,7 +117,6 @@
 					routerLinkActive="_activeLink"
 					routerLink="/properties"
 					class="nav__burger-link"
-					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">home</span>
@@ -129,7 +128,6 @@
 					routerLinkActive="_activeLink"
 					routerLink="/propertiesrecords"
 					class="nav__burger-link"
-					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">note_add</span>
@@ -141,7 +139,6 @@
 					routerLinkActive="_activeLink"
 					routerLink="/propertiesmaterials"
 					class="nav__burger-link"
-					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">build</span>
@@ -153,12 +150,13 @@
 					routerLinkActive="_activeLink"
 					routerLink="/propertiesworkers"
 					class="nav__burger-link"
-					*ngIf="us.role('admin')"
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">group</span>
 					<span translate>Theme.Workers</span>
 				</a>
+
+
 			<div class="page__language">
 					<div class="lang-switch">
 						<ng-container *ngFor="let lang of _translate.languages">
