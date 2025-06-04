@@ -99,4 +99,11 @@ export class MaterialsComponent {
 	getTranslatedLabel(label: string): string {
 		return this._translate.translate(`Common.${label}`);
 	}
+	getTranslated(text: string): string {
+		return this._translate.translate('Common.' + text);
+	}
+
+	getTranslatedWithNamespace(key: string, ns: string = 'Common'): string {
+		return this._translate.translate(`${ns}.${key}`);
+	}
 }

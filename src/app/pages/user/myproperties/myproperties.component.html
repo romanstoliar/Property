@@ -2,10 +2,9 @@
   <div class="documents-container">
     <div class="documents-list">
       <!-- Бургер -->
-<div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-  <div class="burger" [class.burger--close]="isMenuOpen"></div>
-</div>
-
+      <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+        <div class="burger" [class.burger--close]="isMenuOpen"></div>
+      </div>
 
       <!-- Сайдбар -->
       <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
@@ -15,35 +14,33 @@
           </div>
 
           <div class="documents-sidebar__title">
-            <span translate>Property.My properties</span>
+            <span>{{ getTranslatedWithNamespace('My properties', 'Property') }}</span>
           </div>
 
           <!-- Пошук -->
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 {{'Common.Search' | translate}}"
+              [placeholder]="'🔍 ' + getTranslated('Search')"
               [(ngModel)]="searchTerm"
             />
           </div>
 
           <!-- Фільтр за статусом -->
-<div class="documents-sidebar__filter">
-  <select [(ngModel)]="filterStatus">
-    <option value="">{{ 'Property.All statuses' | translate }}</option>
-    <option *ngFor="let status of statusOptions" [value]="status">
-      {{ 'Property.' + status | translate }}
-    </option>
-  </select>
-</div>
-
+          <div class="documents-sidebar__filter">
+            <select [(ngModel)]="filterStatus">
+              <option value="">{{ getTranslatedWithNamespace('All statuses', 'Property') }}</option>
+              <option *ngFor="let status of statusOptions" [value]="status">
+                {{ getTranslatedWithNamespace(status, 'Property') }}
+              </option>
+            </select>
+          </div>
 
           <!-- Область -->
           <div class="documents-sidebar__filter">
             <input
               type="text"
-              placeholder="{{'Common.Region'|translate}}"
-
+              [placeholder]="getTranslated('Region')"
               [(ngModel)]="selectedRegion"
             />
           </div>
@@ -52,15 +49,14 @@
           <div class="documents-sidebar__filter">
             <input
               type="text"
-              placeholder="{{'Common.City'|translate}}"
+              [placeholder]="getTranslated('City')"
               [(ngModel)]="selectedCity"
             />
           </div>
 
           <!-- Створення -->
           <div class="documents-sidebar__create">
-            <wbutton (click)="create()"
-            >➕<span translate>Button.Add</span></wbutton>
+            <wbutton (click)="create()">➕{{ getTranslatedWithNamespace('Add', 'Button') }}</wbutton>
           </div>
         </div>
       </div>

@@ -38,13 +38,13 @@ export class MypropertiesComponent {
 		this.load();
 
 		const statusKeys = [
-			'Property.All',
-			'Property.active',
-			'Property.rent',
-			'Property.sale',
-			'Property.archived',
-			'Region',
-			'City'
+			'Common.All',
+			'Common.active',
+			'Common.rent',
+			'Common.sale',
+			'Common.archived',
+			'Common.Region',
+			'Common.City'
 		];
 
 		statusKeys.forEach((key) => this._translate.translate(key));
@@ -107,5 +107,15 @@ export class MypropertiesComponent {
 	}
 	getTranslatedText(toTranslate: string) {
 		return this._translate.translate(toTranslate);
+	}
+	getTranslatedLabel(label: string): string {
+		return this._translate.translate(`Common.${label}`);
+	}
+	getTranslated(text: string): string {
+		return this._translate.translate('Common.' + text);
+	}
+
+	getTranslatedWithNamespace(key: string, ns: string = 'Common'): string {
+		return this._translate.translate(`${ns}.${key}`);
 	}
 }

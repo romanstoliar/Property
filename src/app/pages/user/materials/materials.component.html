@@ -12,15 +12,16 @@
           <div class="documents-sidebar__img">
             <img src="assets/default.png" alt="Materials" />
           </div>
+
           <div class="documents-sidebar__title">
-            <span translate>Materials.Materials category</span>
+            <span>{{ getTranslatedWithNamespace('Materials category', 'Materials') }}</span>
           </div>
 
           <!-- Фільтр по назві -->
           <div class="documents-sidebar__search">
             <input
               type="text"
-              placeholder="🔍 {{ 'Common.Search by category' | translate }}"
+              [placeholder]="'🔍 ' + getTranslated('Search by category')"
               [(ngModel)]="searchTerm"
             />
           </div>
@@ -35,11 +36,10 @@
             class="material-card"
           >
             <div class="material-card__img">
-              <img [src]="category.image || 'assets/default.png'" [alt]="'Common.' + category.label | translate">
+              <img [src]="category.image || 'assets/default.png'" [alt]="getTranslatedLabel(category.label)">
             </div>
             <div class="material-card__title">
-             {{ getTranslatedLabel(category.label) }}
-
+              {{ getTranslatedLabel(category.label) }}
             </div>
             <a
               class="material-card__btn"
@@ -50,18 +50,17 @@
               tabindex="-1"
             >
               <span class="material-icons">open_in_new</span>
-              <span translate>Materials.View on "Epicentr"</span> 
+              <span>{{ getTranslatedWithNamespace('View on \"Epicentr\"', 'Materials') }}</span>
             </a>
           </div>
 
           <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
             <div class="documents__title">
-              <span translate>Materials.Nothing found</span>
+              <span>{{ getTranslatedWithNamespace('Nothing found', 'Materials') }}</span>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

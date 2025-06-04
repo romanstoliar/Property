@@ -1,80 +1,68 @@
 <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
-    <div class="documents-container">
-      <div class="documents-list">
-  
-        <!-- Бургер -->
-        <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-          <div class="burger" [class.burger--close]="isMenuOpen"></div>
-        </div>
-  
-        <!-- Сайдбар -->
-        <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
-          <div class="documents-sidebar-content">
-            <div class="documents-sidebar__img">
-              <img src="assets/default.png" alt="">
-            </div>
-  
-            <div class="documents-sidebar__title">
-              <span translate>Worker.Workers</span>
-            </div>
-  
-            <!-- Пошук -->
-            <div class="documents-sidebar__search">
-              <input
-                type="text"
-                placeholder="🔍 {{'Common.Search by name or position' | translate}}"
-                [(ngModel)]="searchTerm"
-              />
-            </div>
+  <div class="documents-container">
+    <div class="documents-list">
 
-            <!-- Фільтр -->
-<!--div class="documents-sidebar__filter">
-  <select [(ngModel)]="filterStatus">
-    <option value="">
-      <span translate>All statuses</span></option>
-    <option value="Available"><span translate>Available</span></option>
-    <option value="On-site"><span translate>On-site</span></option>
-    <option value="Busy"><span translate>Busy</span></option>
-  </select>
-</-->
+      <!-- Бургер -->
+      <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+        <div class="burger" [class.burger--close]="isMenuOpen"></div>
+      </div>
 
-<!-- Область -->
-<div class="documents-sidebar__filter">
-  <input
-    type="text"
-    placeholder="{{'Common.Region'|translate}}"
-    [(ngModel)]="selectedRegion"
-  />
-</div>
+      <!-- Сайдбар -->
+      <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+        <div class="documents-sidebar-content">
+          <div class="documents-sidebar__img">
+            <img src="assets/default.png" alt="">
+          </div>
 
-<!-- Місто -->
-<div class="documents-sidebar__filter">
-  <input
-    type="text"
-    placeholder="{{'Common.City'|translate}}"
-    [(ngModel)]="selectedCity"
-  />
-</div>
+          <div class="documents-sidebar__title">
+            <span>{{ getTranslatedWithNamespace('Workers', 'Worker') }}</span>
+          </div>
+
+          <!-- Пошук -->
+          <div class="documents-sidebar__search">
+            <input
+              type="text"
+              [placeholder]="'🔍 ' + getTranslated('Search by name or position')"
+              [(ngModel)]="searchTerm"
+            />
+          </div>
+
+          <!-- Область -->
+          <div class="documents-sidebar__filter">
+            <input
+              type="text"
+              [placeholder]="getTranslated('Region')"
+              [(ngModel)]="selectedRegion"
+            />
+          </div>
+
+          <!-- Місто -->
+          <div class="documents-sidebar__filter">
+            <input
+              type="text"
+              [placeholder]="getTranslated('City')"
+              [(ngModel)]="selectedCity"
+            />
+          </div>
+
           <!-- Створення -->
           <div class="documents-sidebar__create">
             <wbutton (click)="create()">
-              ➕<span translate>Button.Add</span></wbutton>
-          </div>
-
-          </div>
-        </div>
-        
-  
-        <!-- Основна частина -->
-        <div class="documents-main">
-          <div class="documents-main-content">
-            <div *ngFor="let worker of filteredWorkers()" class="documents-main-row">
-              <app-worker [worker]="worker" (load)="load()"></app-worker>
-            </div>
+              ➕{{ getTranslatedWithNamespace('Add', 'Button') }}
+            </wbutton>
           </div>
         </div>
-  
       </div>
+
+      <!-- Основна частина -->
+      <div class="documents-main">
+        <div class="documents-main-content">
+          <div *ngFor="let worker of filteredWorkers()" class="documents-main-row">
+            <app-worker [worker]="worker" (load)="load()"></app-worker>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-  
+</div>

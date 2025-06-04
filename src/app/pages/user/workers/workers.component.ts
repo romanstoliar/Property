@@ -108,4 +108,11 @@ export class WorkersComponent {
 	getTranslatedText(toTranslate: string) {
 		return this._translate.translate(toTranslate);
 	}
+	getTranslated(text: string): string {
+		return this._translate.translate('Common.' + text);
+	}
+
+	getTranslatedWithNamespace(key: string, ns: string = 'Common'): string {
+		return this._translate.translate(`${ns}.${key}`);
+	}
 }
