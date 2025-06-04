@@ -18,23 +18,24 @@
             <span translate>Record.Property Records</span></div>
 
           <!-- Пошук -->
-          <div class="documents-sidebar__search">
-            <input
-              type="text"
-              placeholder="🔍 {{'Common.Search' | translate}}"
-              [(ngModel)]="searchTerm"
-              (ngModelChange)="load()"
-            />
-          </div>
+<div class="documents-sidebar__search">
+  <input
+    type="text"
+    [placeholder]="'🔍 ' + getTranslated('Search')"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="load()"
+  />
+</div>
+
 
           <!-- Тип запису -->
-          <div class="documents-sidebar__filter">
+            <div class="documents-sidebar__filter">
             <select [(ngModel)]="type" (ngModelChange)="load()">
-              <option value="">Record.All types</option>
+              <option value=""><span translate>Record.All types</span></option>
               <option value="{{'Common.sell / buy payment' | translate}}">
                 <span translate>Record.sell / buy payment</span></option>
               <option value="{{'Common.service'| translate}}">
-                <span translate></span>service</option>
+                <span translate>Record.service</span></option>
               <option value="{{'Common.materials' |translate}}">
                <span translate>Record.materials </span></option>
               <option value="{{'Common.rent payment' | translate}}">
@@ -43,6 +44,7 @@
                 <span translate>Record.incident</span></option>
             </select>
           </div>
+
 
           <!-- Діапазон дат -->
           <div class="documents-sidebar__filter">

@@ -4,6 +4,8 @@ export const environment = {
 	appId: 'test',
 	//url: 'https://webart.work',
 	url: '',
+	//url: 'http://138.68.110.222:1546',
+
 	meta: {
 		title: 'Web Art Work',
 		description:

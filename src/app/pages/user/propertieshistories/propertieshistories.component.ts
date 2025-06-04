@@ -135,6 +135,9 @@ export class PropertieshistoriesComponent {
 	getTranslatedText(toTranslate: string) {
 		return this._translate.translate(toTranslate);
 	}
+	getTranslated(text: string): string {
+		return this._translate.translate('Common.' + text);
+	}
 
 	private _buildQuery(): string {
 		const params: string[] = [];
@@ -157,5 +160,4 @@ export class PropertieshistoriesComponent {
 			return acc;
 		}, {} as { [key: string]: number });
 	}
-	
 }
