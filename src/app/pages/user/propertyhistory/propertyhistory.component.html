@@ -14,8 +14,12 @@
 						{{ record.name }}
 					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click)="update(record)">Update</wbutton>
-						<wbutton (click)="delete(record)">Delete</wbutton>
+						<wbutton (click)="update(record)">
+							<span class="material-icons">update</span> 
+							<span translate>Record.Update</span></wbutton>
+						<wbutton (click)="delete(record)">
+							<span class="material-icons">delete</span> 
+							<span translate>Record.Delete</span></wbutton>
 					</div>
 				</div>
 			</div>
@@ -54,6 +58,10 @@
 				<div class="documents__type">
 					<strong>Created:</strong> {{ record.createdAt | date:'medium' }}
 				</div>
+				<div class="main-thumb" *ngIf="record.thumb">
+	<img [src]="record.thumb" alt="Record photo" />
+</div>
+
 
 				<div class="documents__type" *ngIf="record.files?.length">
 					<strong>Files:</strong>

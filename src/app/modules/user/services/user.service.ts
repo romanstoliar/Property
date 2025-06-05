@@ -59,7 +59,7 @@ export class UserService extends CrudService<User> {
 					!localStorage.getItem('waw_user') &&
 					this._router.url === '/sign'
 				) {
-					this._router.navigateByUrl('/profile');
+					this._router.navigateByUrl('/myproperties');
 				}
 
 				this.setUser(user);
