@@ -736,38 +736,36 @@ wform {
 	}
 
 	.lang-switch {
-  display: flex;
-  gap: 0.5rem;
+		display: flex;
+		gap: 0.5rem;
 
-  .lang {
-    cursor: pointer;
-    color: var(--c-text-primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    padding: 2px 6px;
-    border-radius: 4px;
+		.lang {
+			cursor: pointer;
+			font-weight: bold;
+			text-transform: uppercase;
+			transition: all 0.3s ease;
+			padding: 2px 8px;
+			border-radius: 4px;
+			background-color: transparent;
+			color: var(--c-text-primary);
 
-    &.active {
-      background-color: var(--c-secondary);
-      color: #fff;
-      text-decoration: none;
-    }
+			&.active {
+				background-color: var(--c-text-primary);
+				color: var(--c-bg-primary);
+			}
 
-    &:hover {
-      background-color: var(--c-primary);
-      color: #fff;
-    }
+			&:hover {
+				background-color: var(--c-text-primary);
+				color: var(--c-bg-primary);
+			}
 
-    &:active {
-      background-color: var(--c-primary-hover);
-      color: #fff;
-      transform: scale(0.95);
-    }
-  }
+			&:active {
+				transform: scale(0.95);
+			}
+		}
+	}
 }
 
-}
 .auth__language {
 	margin-top: auto;
 	width: 100%;
