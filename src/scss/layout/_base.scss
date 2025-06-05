@@ -816,3 +816,23 @@ wform {
   }
 }
 }
+.lang-time {
+	margin-top: 8px;
+	text-align: center;
+	transition: color 0.3s;
+
+	.lang-time__clock {
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.lang-time__date {
+		font-size: 16px;
+		margin-top: 2px;
+        font-weight: 600;
+		text-transform: capitalize;
+	}
+
+	// адаптація до тем
+	color: var(--c-text-primary);
+}

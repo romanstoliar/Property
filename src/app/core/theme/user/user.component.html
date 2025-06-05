@@ -147,25 +147,30 @@
 
 
 			<div class="page__language">
-					<div class="lang-switch">
-						<ng-container *ngFor="let lang of _translate.languages">
-							<span
-								class="lang"
-								[class.active]="lang.code === _translate.language.code"
-								(click)="set_language(lang.code)"
-							>
-								{{ lang.code }}
-							</span>
-							<span
-								*ngIf="lang !== _translate.languages[_translate.languages.length - 1]"
-							>
-								|
-							</span>
-						</ng-container>
-					</div>
+				<div class="lang-switch">
+	<ng-container *ngFor="let lang of _translate.languages">
+		<span
+			class="lang"
+			[class.active]="lang.code === _translate.language.code"
+			(click)="set_language(lang.code)"
+		>
+			{{ getLanguageLabel(lang.code) }}
+		</span>
+		<span
+			*ngIf="lang !== _translate.languages[_translate.languages.length - 1]"
+		>
+			|
+		</span>
+	</ng-container>
+</div>
+
 				</div>
+					<div class="lang-time">
+		<div class="lang-time__clock">{{ currentTime }}</div>
+		<div class="lang-time__date">{{ currentDate }}</div>
+	</div>
+
 			</div>
 		</div>
 		<router-outlet></router-outlet>
 	</div>
-</div>
