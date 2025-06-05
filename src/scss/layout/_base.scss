@@ -51,23 +51,15 @@ body {
 	overflow: auto;
 }
 
-.auth__wrap {
+.auth-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	max-width: 540px;
-
-	// Якщо треба два блоки поруч (форма + іконка), міняй flex-direction
-	// flex-direction: row; // Якщо зліва auth__img, справа auth__form
-	// flex-direction: column; // Якщо тільки форма
-}
-
-.auth__form {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	background: var(--c-bg-primary);
+	flex-grow: 1;
+	padding: 20px;
+	transition: all 0.3s;
+	height: 100vh;
 }
 
 .auth {
@@ -78,8 +70,7 @@ body {
 	box-shadow: 0px 0px 6px var(--c-shadow);
 	background: var(--c-bg-secondary);
 	display: flex;
-	flex-direction: column; // ОДНА форма - завжди column
-	align-items: stretch;
+	flex-flow: row wrap;
 	position: relative;
 
 	&__icon {
@@ -91,7 +82,8 @@ body {
 	}
 
 	@include media.bp-max(sm) {
-		padding: 20px;
+		padding: 25px;
+		flex-flow: column wrap;
 	}
 
 	&__title {
@@ -116,7 +108,19 @@ body {
 		}
 	}
 
-	// Якщо тобі не треба зображення - цей блок можна не використовувати
+	&__wrap {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		max-width: 880px;
+		width: 100%;
+
+		@include media.bp-max(sm) {
+			padding: 25px;
+			flex-flow: column wrap;
+		}
+	}
+
 	&__img {
 		flex: 0 0 50%;
 		max-width: 50%;
@@ -129,6 +133,7 @@ body {
 			transform: translate(-78%);
 			position: absolute;
 			font-size: 320px;
+			position: absolute;
 			opacity: 0;
 			cursor: pointer;
 
@@ -138,11 +143,16 @@ body {
 			}
 		}
 
-		img,
-		svg {
+		img {
 			max-width: 260px;
 			width: 100%;
 			object-fit: cover;
+		}
+
+		svg {
+			max-width: 260px;
+			width: 100%;
+			height: 100%;
 		}
 
 		@include media.bp-max(sm) {
@@ -158,11 +168,25 @@ body {
 		}
 	}
 
-	// Якщо потрібно
-	@include media.bp-max(sm) {
-		max-width: 100%;
-		.auth__form {
+	&__form {
+		width: 95%;
+		flex: 0 0 50%;
+		max-width: 50%;
+		padding-left: 40px;
+		display: flex;
+		justify-content: flex-end;
+
+		@include media.bp-max(sm) {
+			flex: 0 0 100%;
+			max-width: 100%;
+			justify-content: center;
 			padding: 0;
+		}
+	}
+
+	@include media.bp-max(sm) {
+		.form__title {
+			font-size: vars.$fs - 2px;
 		}
 	}
 }

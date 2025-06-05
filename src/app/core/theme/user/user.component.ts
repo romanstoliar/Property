@@ -23,7 +23,9 @@ export class UserComponent {
 			this.showSidebar = false;
 		}
 	}
-
+	ngOnInit(): void {
+		this.showSidebar = false;
+	}
 	constructor(
 		public us: UserService,
 		private _platform: Platform,

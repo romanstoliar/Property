@@ -1,6 +1,9 @@
 
 <div class="auth-wrapper" >
 	<div class="auth__wrap">
+		<div class="auth__img">
+			<icon-spider (click)="us.setMode(us.mode ? '' : 'dark')"></icon-spider>
+		</div>
 		<div class="auth__form">
 			<div class="auth">
 				<span
@@ -19,7 +22,7 @@
 				</span>
 				<wform (wSubmit)="submit()" [submition]="user" [config]="form">
 				</wform>
-				<div class="auth__language">
+				<!--<div class="auth__language">
 	<div class="lang-switch">
 		<ng-container *ngFor="let lang of _translate.languages">
 			<span
@@ -35,7 +38,7 @@
 	<strong><span translate>Sign.Set Language</span></strong>
 </div>
 
-				</div>
+				</div>-->
 				
 			</div>
 	</div>

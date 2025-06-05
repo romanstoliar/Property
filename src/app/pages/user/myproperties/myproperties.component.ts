@@ -48,6 +48,7 @@ export class MypropertiesComponent {
 		];
 
 		statusKeys.forEach((key) => this._translate.translate(key));
+		this.isMenuOpen = false; // явне закриття меню при завантаженні сторінки
 	}
 
 	load(): void {
