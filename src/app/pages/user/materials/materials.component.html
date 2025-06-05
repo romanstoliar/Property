@@ -1,66 +1,66 @@
-<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
-  <div class="documents-container">
-    <div class="documents-list">
-      <!-- Burger -->
-      <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
-        <div class="burger" [class.burger--close]="isMenuOpen"></div>
-      </div>
+  <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+    <div class="documents-container">
+      <div class="documents-list">
+        <!-- Burger -->
+        <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+          <div class="burger" [class.burger--close]="isMenuOpen"></div>
+        </div>
 
-      <!-- Sidebar -->
-      <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
-        <div class="documents-sidebar-content">
-          <div class="documents-sidebar__img">
-            <img src="assets/default.png" alt="Materials" />
-          </div>
+        <!-- Sidebar -->
+        <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+          <div class="documents-sidebar-content">
+            <div class="documents-sidebar__img">
+              <img src="assets/default.png" alt="Materials" />
+            </div>
 
-          <div class="documents-sidebar__title">
-            <span>{{ getTranslatedWithNamespace('Materials category', 'Materials') }}</span>
-          </div>
+            <div class="documents-sidebar__title">
+              <span>{{ getTranslatedWithNamespace('Materials category', 'Materials') }}</span>
+            </div>
 
-          <!-- Фільтр по назві -->
-          <div class="documents-sidebar__search">
-            <input
-              type="text"
-              [placeholder]="'🔍 ' + getTranslated('Search by category')"
-              [(ngModel)]="searchTerm"
-            />
+            <!-- Фільтр по назві -->
+            <div class="documents-sidebar__search">
+              <input
+                type="text"
+                [placeholder]="'🔍 ' + getTranslated('Search by category')"
+                [(ngModel)]="searchTerm"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Main Content -->
-      <div class="documents-main">
-        <div class="documents-main-content materials-grid">
-          <div 
-            *ngFor="let category of filteredCategories"
-            class="material-card"
-          >
-            <div class="material-card__img">
-              <img [src]="category.image || 'assets/default.png'" [alt]="getTranslatedLabel(category.label)">
-            </div>
-            <div class="material-card__title">
-              {{ getTranslatedLabel(category.label) }}
-            </div>
-            <a
-              class="material-card__btn"
-              [href]="category.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              (click)="$event.stopPropagation()"
-              tabindex="-1"
+        <!-- Main Content -->
+        <div class="documents-main">
+          <div class="documents-main-content materials-grid">
+            <div 
+              *ngFor="let category of filteredCategories"
+              class="material-card"
             >
-              <span class="material-icons">open_in_new</span>
-              <span>{{ getTranslatedWithNamespace('View on \"Epicentr\"', 'Materials') }}</span>
-            </a>
-          </div>
+              <div class="material-card__img">
+                <img [src]="category.image || 'assets/default.png'" [alt]="getTranslatedLabel(category.label)">
+              </div>
+              <div class="material-card__title">
+                {{ getTranslatedLabel(category.label) }}
+              </div>
+              <a
+                class="material-card__btn"
+                [href]="category.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                (click)="$event.stopPropagation()"
+                tabindex="-1"
+              >
+                <span class="material-icons">open_in_new</span>
+                <span>{{ getTranslatedWithNamespace('View on \"Epicentr\"', 'Materials') }}</span>
+              </a>
+            </div>
 
-          <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
-            <div class="documents__title">
-              <span>{{ getTranslatedWithNamespace('Nothing found', 'Materials') }}</span>
+            <div *ngIf="filteredCategories.length === 0" class="documents-main-row">
+              <div class="documents__title">
+                <span>{{ getTranslatedWithNamespace('Nothing found', 'Materials') }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

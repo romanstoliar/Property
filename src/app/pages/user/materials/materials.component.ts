@@ -89,10 +89,13 @@ export class MaterialsComponent {
 	get filteredCategories(): MaterialCategory[] {
 		const term = this.searchTerm.toLowerCase().trim();
 		if (!term) return this.materialCategories;
-		return this.materialCategories.filter((cat) =>
-			cat.label.toLowerCase().includes(term)
-		);
+
+		return this.materialCategories.filter((cat) => {
+			const translated = this.getTranslatedLabel(cat.label).toLowerCase();
+			return translated.includes(term);
+		});
 	}
+
 	getTranslatedText(toTranslate: string) {
 		return this._translate.translate(toTranslate);
 	}
