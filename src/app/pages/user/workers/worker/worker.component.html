@@ -37,13 +37,16 @@
       <span class="worker-loc__title">{{ worker.position }}</span>
     </div>
 
-    <div class="worker-detail" *ngIf="worker.experience">
-      <div class="worker-loc__img">
-        <span class="material-icons">work</span>
-      </div>
-      <strong><span translate>Worker.Experience:</span></strong>
-      <span class="worker-loc__title">{{ worker.experience }} years</span>
-    </div>
+<div class="worker-detail" *ngIf="worker.experience">
+  <div class="worker-loc__img">
+    <span class="material-icons">work</span>
+  </div>
+  <strong><span translate>Worker.Experience:</span></strong>
+  <span class="worker-loc__title">
+    {{ worker.experience }} {{ 'Worker.years' | translate }}
+  </span>
+</div>
+
 
     <div class="worker-detail" *ngIf="worker.task">
       <div class="worker-loc__img">

@@ -389,7 +389,7 @@ wform {
 }
 
 .record-no {
-  color: var(--c-text-secondary);
+  color: var(--c-text-primary);
   font-style: italic;
   margin-top: 1rem;
   font-size: 0.95rem;
@@ -509,6 +509,7 @@ wform {
         &-content{
             padding: 15px;
             height: 100%;
+            max-width: 260px;
             overflow-y: scroll;
             scrollbar-width: none;
             &::-webkit-scrollbar{

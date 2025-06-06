@@ -3,6 +3,7 @@
 	color: var(--c-text-primary);
 	min-height: 100vh;
 	display: flex;
+	flex-wrap:nowrap;
 	flex-direction: column;
 }
 

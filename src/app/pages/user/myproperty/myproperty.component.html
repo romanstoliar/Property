@@ -44,19 +44,20 @@
               <h3><span class="material-icons">info</span> 
                 <span translate>Property.General</span> </h3>
               <div *ngIf="property.description" class="prop-row">
-                <strong>Property.Description:</strong> {{ property.description }}
+                <strong><span translate>Property.Description:</span></strong> {{ property.description }}
               </div>
               <div *ngIf="property.status" class="prop-row">
                 <strong><span translate>Property.Status:</span></strong> {{ property.status }}
               </div>
               <div *ngIf="property.price" class="prop-row">
-                <strong><span translate>Property.Price:</span></strong> {{ property.price }} ₴
+                <strong><span translate>Property.Price:</span></strong> {{ property.price }} $
               </div>
             </div>
 
             <!-- Location -->
             <div class="prop-section" *ngIf="property.region || property.city || property.address">
-              <h3><span class="material-icons">location_on</span><span translate>Location</span></h3>
+              <h3><span class="material-icons">location_on</span>
+                <span translate>Property.Location</span> </h3>
               <div *ngIf="property.region" class="prop-row">
                 <strong>
                   <span translate>Property.Region:</span></strong> 
@@ -87,7 +88,7 @@
               <h3><span class="material-icons">domain</span>
               <span translate>Property.Specs</span></h3>
               <div *ngIf="property.area" class="prop-row">
-                <strong><span translate>Property.Area:</span></strong> {{ property.area }} m²
+                <strong><span translate>Property.Area:</span></strong> {{ property.area }}m²
               </div>
               <div *ngIf="property.rooms" class="prop-row">
                 <strong><span translate>Property.Rooms:</span></strong> {{ property.rooms }}

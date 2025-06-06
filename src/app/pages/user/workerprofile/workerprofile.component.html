@@ -70,11 +70,14 @@
                 <span class="worker-loc__title">{{ worker.position }}</span>
               </div>
 
-              <div class="worker-detail" *ngIf="worker.experience">
-                <span class="material-icons">work</span>
-                <strong><span translate>Worker.Experience:</span></strong>
-                <span class="worker-loc__title">{{ worker.experience }} years</span>
-              </div>
+<div class="worker-detail" *ngIf="worker.experience">
+  <span class="material-icons">work</span>
+  <strong><span translate>Worker.Experience:</span></strong>
+  <span class="worker-loc__title">
+    {{ worker.experience }} {{ 'Worker.years' | translate }}
+  </span>
+</div>
+
 
               <div class="worker-detail" *ngIf="worker.task">
                 <span class="material-icons">task</span>
